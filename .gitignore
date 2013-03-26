@@ -1,0 +1,12 @@
+# Which files should be hidden from the git repository?
+
+# Any files that are hidden on your file system anyway
+.*
+# well, except for this one
+!.gitignore
+
+# Anybody working in Netbeans always carries this meta-data, that we don't need
+nbproject/
+/nbproject/private/
+
+# Anything else?

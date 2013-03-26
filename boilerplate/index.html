@@ -7,71 +7,40 @@
 	<head>
 		<meta charset="utf-8">
 		<title>D3 Demo: Making a scatterplot with SVG</title>
+		<script type="text/javascript" src="../lib/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="../lib/d3.v3.js"></script>
+		
 		<style type="text/css">
 			/* No style rules here yet */		
+			h1 {
+				color: white;				
+				text-shadow: 0 0 5px rgba(0,0,0, .5);
+			}
+			
+			.paragraph {
+				font-family: sans-serif;
+			}
+			.highlight {
+				color: blue;
+			}
+			
+			#a1 {
+				font-size: 25px;
+			}
+			[title] {
+				color: yellow;
+			}
+			
+			circle:hover {
+				fill: green;
+				stroke: red;
+				stroke-weight: 5;
+			}
 		</style>
 	</head>
 	<body>
-		<h1>D3.js Boilerplate Template</h1>
+		<h1 style="color: red">D3.js Boilerplate Template</h1>
 		<p>This might be a good starting point for your D3 project</p>
-		<script type="text/javascript">
-
-			//Width and height
-			var w = 250;
-			var h = 500;
-			
-			var dataset = [
-							[50, 20], 
-							[467, 187], 
-							[239, 96], 
-							[67, 27], 
-							[314, 126],
-							[89, 78], 
-							[13, 5], 
-							[29, 12], 
-							[144, 58], 
-							[191, 76]
-						  ];
-	
-			//Create SVG element
-			var svg = d3.select("body")
-						.append("svg")
-						.attr("width", w)
-						.attr("height", h);
-
-			svg.selectAll("circle")
-			   .data(dataset)
-			   .enter()
-			   .append("circle")
-			   .attr("cx", function(d) {
-			   		return d[0] / 2;
-			   })
-			   .attr("cy", function(d) {
-			   		return h - (d[1]*2);
-			   })
-			   .attr("r", function(d) {
-			   		//return 10;
-			   		return Math.sqrt(d[1]);
-			   });
-
-			svg.selectAll("text")
-			   .data(dataset)
-			   .enter()
-			   .append("text")
-			   .text(function(d) {
-			   		return d[1]; // + "," + d[1];
-			   })
-			   .attr("x", function(d) {
-			   		return (d[0]/2) - (3 * (""+d[0]).length);
-			   })
-			   .attr("y", function(d) {
-			   		return ((h) - (d[1]*2)) - 20;
-			   })
-			   .attr("font-family", "sans-serif")
-			   .attr("font-size", "11px")
-			   .attr("fill", "red");
-			
-		</script>			
+		<script type="text/javascript" src="./app.js"></script>				
 	</body>
 </html>

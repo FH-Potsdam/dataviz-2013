@@ -1,10 +1,23 @@
 var app = app || {};
 
-
 jQuery(document).ready(function() {
-	// settings (could be injected via options)
-	app.people = people || [];
-	app.people_per_group = 3;
+	app.setup({
+		people: people,	// we get the people array from index.html
+		groupsize: 3
+	});
+
+	$("#btn-group-now").click(function() {
+		app.reveal();
+	});
+});
+
+app.setup = function(options) {
+	options = options || {};
+	// Settings (could be injected via options)
+	app.people = options.people || [];
+	app.people_per_group = options.groupsize || 3;
+	
+	// Some preparations
 	app.nr_of_groups = Math.ceil(people.length / app.people_per_group);
 	app.groups = [];
 	for (var i = 0; i < app.nr_of_groups; i++) {
@@ -29,6 +42,7 @@ jQuery(document).ready(function() {
 	var list = d3.select("#original").selectAll("div.member").data(app.people);
 	var offset = $("#original").offset();
 
+	// Create elements for the members and animate their entrance
 	list.enter().append("div")
 			.attr("class", "member")
 			.style("top",
@@ -45,29 +59,14 @@ jQuery(document).ready(function() {
 			})
 			.transition()
 			.duration(500)
-			.delay(function (d, i) { return i * 50; })
+			.delay(
+			function(d, i) {
+				return i * 50;
+			})
 			.style("left", offset.left + "px");
 
 	app.memberlist = list;
-
-	$("#btn-group-now").click(function(event) {
-		app.memberlist.transition()
-				.duration(300)
-				.delay(
-				function(d, i) {
-					return i * 400;
-				})
-				.style("top",
-				function(d) {
-					return d.offset.top + "px";
-				})
-				.style("left",
-				function(d) {
-					return d.offset.left + "px";
-				});
-	});
-
-});
+}
 
 
 /**
@@ -105,4 +104,25 @@ app.assign = function(people, nr_of_groups, people_per_group) {
 		}
 	}
 	return people;
+}
+
+/**
+ * Reveals the previously assigned groups in an animated transition
+ * @returns {undefined}
+ */
+app.reveal = function() {
+	app.memberlist.transition()
+			.duration(300)
+			.delay(
+			function(d, i) {
+				return i * 400;
+			})
+			.style("top",
+			function(d) {
+				return d.offset.top + "px";
+			})
+			.style("left",
+			function(d) {
+				return d.offset.left + "px";
+			});
 }

@@ -27,9 +27,9 @@ app.setup = function(options) {
 	// Create group containers for position reference
 	d3.select("#grouped").selectAll("div.group")
 			.data(app.groups)
-			.enter().append("div").attr("class", "group").text(
+			.enter().append("div").attr("class", "group").html(
 			function(d, i) {
-				return "Gruppe " + (i + 1);
+				return "<span>Gruppe " + (i + 1) + "</span>";
 			});
 
 	// Assign groups and final element positions
@@ -39,10 +39,11 @@ app.setup = function(options) {
 		p.offset = {top: offset.top + (p.group.position) * 20, left: offset.left};
 	});
 
-	var list = d3.select("#original").selectAll("div.member").data(app.people);
+	// Get container offset for absolute positioning of elements
 	var offset = $("#original").offset();
 
 	// Create elements for the members and animate their entrance
+	var list = d3.select("#original").selectAll("div.member").data(app.people);
 	list.enter().append("div")
 			.attr("class", "member")
 			.style("top",

@@ -11,7 +11,11 @@
 		<script type="text/javascript" src="../../lib/d3.v3.js"></script>
 
 		<style type="text/css">
-			/* No style rules here yet */		
+			/* No style rules here yet */	
+			body {
+				font-family: "Helvetica Neue", sans-serif;
+			}
+			
 			#original {
 				display: block;
 				height: 500px;
@@ -25,35 +29,24 @@
 				width: 300px;
 				height: 80px;
 				float: left;
-				border: 1px solid black;
 				margin: 0 20px 20px 0;
+			}
+			.group span {
+				color: #369;
 			}
 		</style>
 	</head>
 	<body>
 		<h1>groupr</h1>
-		<p>Gruppenfindung mit D3.js</p>
+		<p>Gruppenfindung mit D3.js 		<button id="btn-group-now">Jetzt gruppieren</button></p>
 		<div id="original"></div>
 		<div id="grouped"></div>
-		<button id="btn-group-now">Jetzt gruppieren</button>
 		<script type="text/javascript">
 
 			var people = [
-				{"nr": 1, "study": "ID", "name": "Christoph Wiedenmann"},
-				{"nr": 2, "study": "ID", "name": "Christian  Groß"},
-				{"nr": 3, "study": "ID", "name": "David Elsche"},
-				{"nr": 4, "study": "ID", "name": "Luis Grass"},
-				{"nr": 5, "study": "ID", "name": "Paul Vollmer"},
-				{"nr": 6, "study": "ID", "name": "Tim Pulver"},
-				{"nr": 7, "study": "ID", "name": "Sebastian Sadowski"},
-				{"nr": 8, "study": "ID", "name": "Susanne Bramer"},
-				{"nr": 9, "study": "ID", "name": "Niklas Dünger"},
-				{"nr": 10, "study": "ID", "name": "Sören Knöll"},
-				{"nr": 11, "study": "ID", "name": "Christopher Pietsch"},
-				{"nr": 12, "study": "ID", "name": "Cécile Zahorka"},
-				{"nr": 13, "study": "ID", "name": "Gabriel Credico"},
-				{"nr": 14, "study": "ID", "name": "Eric Grochowski"},
-				{"nr": 15, "study": "KD", "name": "Gregorio Gasperi"}
+				{"nr": 1, "study": "ID", "name": "Max Mustermann"},
+				{"nr": 2, "study": "ID", "name": "Vielen Dank"},
+				{"nr": 3, "study": "ID", "name": "John Doe"},
 			];
 		</script>				
 		<script type="text/javascript" src="./app.js"></script>				

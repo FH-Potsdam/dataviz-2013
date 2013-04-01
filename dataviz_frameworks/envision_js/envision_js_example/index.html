@@ -1,0 +1,48 @@
+	<!DOCTYPE html>
+	<html>
+    <head>
+    	<meta charset="utf-8">
+    	<title>tracker</title>
+
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+		
+        <link rel="stylesheet" type="text/css" href="css/envision.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/viz.css" />
+
+        <!--needed for html5 browser support check when using e.g. localStorage -->
+        <script src="js/modernizr.custom.74114.js"></script>
+    </head>
+    <body>
+        <h1>Tracker</h1>
+        <!--
+        <form id="add-value-form">
+            <input id="input-field" required type="number" step="any"/>
+            <input id="add-button" type="submit" value="Add" onsubmit="alert('yay')">
+        </form>
+        -->
+        <div id="container"></div>
+        <script src="js/envision.min.js"></script>
+        <script src="js/viz.js"></script>
+        <script type="text/javascript">
+ 
+        var form = document.getElementById("add-value-form");
+        var inputField = document.getElementById("input-field");
+ 
+        // will be called on submit
+        /*
+        form.addEventListener("submit", function() {
+            var date = new Date();
+            var value = inputField.value;
+            var timestamp = date.getTime();
+            alert("Got new value: " + value + ", date: " + timestamp);
+            x.push(timestamp);
+            aryTrace.push(value);
+            
+            objChart.
+            objChart = new envision.templates.TimeSeries(objChartOptions);           
+        });
+        */
+ 
+    </script>
+    </body>
+    </html>

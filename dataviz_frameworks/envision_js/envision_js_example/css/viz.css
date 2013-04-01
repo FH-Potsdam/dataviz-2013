@@ -1,0 +1,142 @@
+#container {
+    margin: 20px 60px 0px 60px;
+}
+
+h1 {
+    text-align: center;
+    /*font-family: 'Droid Serif', sans-serif;*/
+    font-family: 'Droid Sans', sans-serif;
+    /*font-family: 'Sarina', cursive;*/
+    font-weight: 700; 
+    font-size: 24px;
+    margin: 60px auto 110px auto;
+    color: #ddd;
+}
+
+.envision-component-container {
+    border: none;
+}
+
+.flotr-mouse-value{
+    background-color: #eee !important;
+    color: #111 !important;
+    padding: 8px 12px !important;
+}
+
+.envision-timeseries-connection {
+    /*color: #ff0000;*/
+}
+
+.flotr-handles-handle {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ddd;
+    border-radius: 2px 2px 2px 2px;
+    cursor: pointer;
+    position: absolute;
+}
+.flotr-handles-handle, .flotr-grid-label {
+    -moz-user-select: none;
+}
+.flotr-handles-drag {
+    height: 24px;
+    width: 6px;
+}
+.flotr-handles-scroll {
+    cursor: move;
+    height: 6px;
+}
+.flotr-handles-left {
+    cursor: w-resize;
+}
+.flotr-handles-right {
+    cursor: e-resize;
+}
+.envision-finance {
+    width: 600px;
+}
+.envision-finance-price .envision-component {
+    height: 400px;
+}
+.envision-finance-volume .envision-component {
+    height: 60px;
+}
+.envision-finance-connection .envision-component {
+    height: 16px;
+}
+.envision-finance-summary .envision-component {
+    cursor: all-scroll;
+    height: 70px;
+    margin-top: -2px;
+}
+.envision-finance-price, .envision-finance-volume {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+.envision-finance-price {
+}
+.envision-finance-volume {
+
+}
+.envision-finance-connection canvas {
+    background: none repeat scroll 0 0 #FFFFFF;
+    z-index: 10;
+}
+.envision-finance-connection canvas object {
+    position: absolute;
+    top: 0;
+}
+.envision-finance-price .flotr-grid-label {
+    margin-left: 1px;
+}
+.envision-finance-price .flotr-grid-label.first {
+    margin-top: -6px;
+}
+.envision-finance-price .flotr-grid-label.last {
+    margin-top: 6px;
+}
+.envision-finance-summary .flotr-grid-label {
+    margin-top: 3px;
+}
+.envision-finance-price .flotr-mouse-value {
+    font-size: 12px;
+}
+.envision-finance-volume .flotr-mouse-value {
+    display: none;
+}
+.envision-finance {
+    width: 100%;
+}
+.envision-finance-price .envision-component {
+    height: 120px;
+}
+.envision-finance-summary .envision-component, .envision-finance-volume .envision-component {
+    height: 40px;
+}
+.envision-timeseries {
+    width: auto;
+}
+.envision-timeseries-detail .envision-component {
+    height: 200px;
+}
+.envision-timeseries-connection .envision-component {
+    height: 16px;
+}
+.envision-timeseries-summary .envision-component {
+    cursor: all-scroll;
+    height: 80px;
+}
+.envision-timeseries-detail {
+    /*background: none repeat scroll 0 0 #fff;*/
+    background-color: #fff;
+    padding-top: 7px;
+}
+.envision-timeseries-connection canvas {
+    background: none repeat scroll 0 0 #FFFFFF;
+    z-index: 10;
+}
+.envision-timeseries-connection canvas object {
+    position: absolute;
+    top: 0;
+}
+.envision-timeseries-summary .envision-component {
+    margin-top: -2px;
+}

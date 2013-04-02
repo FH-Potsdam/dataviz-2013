@@ -24,13 +24,13 @@ jQuery(document).ready(function() {
 	];
 
 	// load JSON data via AJAX
-	d3.json("/dataviz-2013/data/population-germany/1978-2011.rows.json", function(data) {
+	d3.json("../../data/population-germany/1978-2011.rows.json", function(data) {
 		chart.setup({
 			columns: columnNames,
 			rows: data,
 			autostep: true,
-			w : document.width - 50,
-			h : Math.round(window.innerHeight * .6)
+			w: document.width - 50,
+			h: Math.round(window.innerHeight * .6)
 		});
 	});
 });
@@ -43,6 +43,7 @@ chart.setup = function(options) {
 	var cols = chart.cols = options.columns || [];
 	var rows = chart.rows = options.rows || [];
 	var currentYear = chart.current = 0;
+	chart.timer = null;
 
 	// create our SVG container and setup width and height
 	var svg = chart.svg = d3.select("body").append("svg");
@@ -118,6 +119,8 @@ chart.step = function() {
 	chart.current++;
 	chart.draw();
 	if (chart.options.autostep) {
-		window.setTimeout(chart.step, 100);
+		if (chart.timer !== null)
+			window.clearTimeout(chart.timer);
+		chart.timer = window.setTimeout(chart.step, 100);
 	}
 }

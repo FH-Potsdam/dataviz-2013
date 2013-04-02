@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Timeline JS Example</title>
+    <meta charset="utf-8">
+    <meta name="description" content="TimelineJS example">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <script type="text/javascript" src="js/storyjs-embed.js"></script>
+    <script type="text/javascript" src="lib/jquery.min.js"></script>
+    
+    <style>
+      html, body {
+       height:100%;
+       padding: 0px;
+       margin: 0px;
+      }
+    </style>
+    
+    
+    <script>
+    $(document).ready(function() {
+      createStoryJS({
+        width:              '100%',
+        height:             '100%',
+        source:             'https://docs.google.com/spreadsheet/pub?key=0Agl_Dv6iEbDadHdKcHlHcTB5bzhvbF9iTWwyMmJHdkE&amp;output=html',
+        start_at_end:       false,
+        start_at_slide:     '0',
+        start_zoom_adjust:  '3',
+        hash_bookmark:      true,
+        font:               'Bevan-PotanoSans',
+        debug:              false,
+        lang:               'de',
+        maptype:            'hybrid',
+        css:                'css/timeline.css',
+        js:                 'js/timeline-min.js',
+        embed_id:           'timeline'
+      });
+    });
+    </script>
+
+  </head>
+</html>
+<body>
+  <div id="timeline"></div>
+</body>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>it's peity time</title>
+    <script type="text/javascript" src="libs/jquery.min.js"></script>
+    <script type="text/javascript" src="libs/jquery.peity.js"></script>
+    <style type="text/css">
+      body {
+      	background-color: black;
+      }
+      h1 {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>it's peity time</h1>
+    <span class="pie-hour" data-colours='["#00A3C4", "#829CA1"]' data-diameter="200">0/23</span>
+    <span class="pie-minute" data-colours='["#00A3C4", "#829CA1"]' data-diameter="200">0/59</span>
+    <span class="pie-second" data-colours='["#00A3C4", "#829CA1"]' data-diameter="200">0/59</span>
+    <script>
+      var piehour = $("span.pie-hour").peity("pie");
+      var pieminutes = $("span.pie-minute").peity("pie");
+      var pieseconds = $("span.pie-second").peity("pie");
+
+      function update() {
+        var now = new Date();
+        var hour = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        console.log("Time: " + hour + ":" + minutes + ":" + seconds);
+
+        piehour.text(hour + "/23").change();
+        pieminutes.text(minutes + "/59").change();
+        pieseconds.text(seconds + "/59").change();
+      }
+
+      window.onload=function(){
+        update();
+      };
+
+      /* loop */
+      setInterval( function() { 
+        update();
+      }, 1000);
+
+    </script>
+  </body>
+</html>

@@ -57,7 +57,7 @@ chart.draw = function() {
   if(chart.current < chart.data.length){
     var chartRow = chart.chartRow = chart.data[chart.current],
         year = chartRow.shift();
-      
+
     var g = chart.svg.selectAll(".arc")
         .data(chart.pie(chartRow));
     

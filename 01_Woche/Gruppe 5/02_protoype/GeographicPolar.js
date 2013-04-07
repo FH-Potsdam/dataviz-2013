@@ -1,19 +1,14 @@
 $(document).ready(function() {
-    $('article#tut1 a.runScript').click(function() {
+	
+	    var w = 400;
+	    var h = 400;
+	
+		var data = d3.csv("./data/m_an.csv", function(d) {});
+		console.log(data);
 
-        // Referenz auf das DOM-Objekt der Zeichenfläche
-        var element = $('article#tut1 > div.paper');
-        
-        // Dimensionen der Zeichenfläche
-        var w = element.outerWidth();
-        var h = element.outerHeight();
-
-        // Das SVG-Element erzeugen!
-        var paper = new Raphael(element, w, h);
-
-        // Zwei Kreise zeichnen!		
-        paper.circle(w / 4, h / 2, w / 10);
-        paper.circle(w / 2, h / 2, w / 5);
-        return false;
-    });
+	    var svg = d3.select("#chartWrapper").append('svg').attr('width', w).attr('height', h);
+		var group = svg.append("g.geoPolar");
+		
+		bar = d3.svg.arc().innerRadius( 0 ).outerRadius( function(d,i) { return radius( timeseries[val][0][i] ); });
+					
 });

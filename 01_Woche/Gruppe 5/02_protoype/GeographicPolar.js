@@ -4,7 +4,9 @@ $(document).ready(function() {
     var h = 400;
 
 
-    raw_migratition_data_men = [
+
+
+    rawMigrationData_men = [
         ["Daenemark", "m", "an", "n", 1610, 1426, 1500, 1483, 1431, 1514, 1710, 1761, 1792, 1942],
         ["Schweden", "m", "an", "n", 1786, 1799, 1846, 1711, 1729, 1745, 1638, 1821, 1832, 2016],
         ["Finnland", "m", "an", "n", 925, 938, 1001, 260, 225, 1021, 879, 976, 1008, 1102],
@@ -33,32 +35,45 @@ $(document).ready(function() {
         ["Irland", "m", "an", "w", 1174, 1060, 853, 806, 960, 1060, 1191, 1308, 1313, 1580]
     ];
 
-    function generateClearJSON(data) {
 
-        var returnJSON = [];
-
-        for (i = 0; i < data.length; i++) {
-            var yearValues = [];
-            for (j = 0; j < 10; j++) {
-                yearValues[j] = data[i][j + 4];
-            }
-            
-            var country = {
-                name: "",
-                years: []
-            };
-            
-            country.name = data[i][0];
-            country.years = yearValues;
-
-            returnJSON.push(country);
-        }
-        console.log(returnJSON);
-    }
-
-    generateClearJSON(raw_migratition_data_men);
+    migrationData = generateClearJSON(rawMigrationData_men);
 
     var svg = d3.select("#chartWrapper").append('svg').attr('width', w).attr('height', h);
     var group = svg.append("g.geoPolar");
 
+    var arc = d3.svg.arc()
+            .startAngle(function(d) {
+        return d.startAngle;
+    })
+            .endAngle(function(d) {
+        return d.endAngle;
+    })
+            .innerRadius(20)
+            .outerRadius(100);
+
 });
+
+
+// this function generates a better structured json array to work with
+function generateClearJSON(data) {
+
+    var returnJSON = [];
+    for (i = 0; i < data.length; i++) {
+        var yearValues = [];
+        for (j = 0; j < 10; j++) {
+            yearValues[j] = data[i][j + 4];
+        }
+        var country = {
+            name: "",
+            years: [],
+            direction: ""
+        };
+
+        country.name = data[i][0];
+        country.years = yearValues;
+        country.direction = data[i][3];
+
+        returnJSON.push(country);
+    }
+    console.log(returnJSON);
+}

@@ -1,9 +1,11 @@
+var chart = chart || {};
+
 $(document).ready(function() {
 
-    var w = 400;
-    var h = 400;
+    var chart;
 
-
+    var w = 800;
+    var h = 800;
 
 
     rawMigrationData_men = [
@@ -36,22 +38,91 @@ $(document).ready(function() {
     ];
 
 
+
+    // convert the data into usable arrays
     migrationData = generateClearJSON(rawMigrationData_men);
 
-    var svg = d3.select("#chartWrapper").append('svg').attr('width', w).attr('height', h);
-    var group = svg.append("g.geoPolar");
+    var stepSize = (Math.PI * 2) / migrationData[4].years.length;
 
-    var arc = d3.svg.arc()
-            .startAngle(function(d) {
-        return d.startAngle;
-    })
-            .endAngle(function(d) {
-        return d.endAngle;
-    })
-            .innerRadius(20)
-            .outerRadius(100);
+    // create the SVG element
+    var svg = d3.select("#chartWrapper").append("svg").attr('width', w).attr('height', h);
 
+    // reference & create group to move the cirlce
+    var chart = svg.append("g");
+    chart.attr("class", "chart").attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
+
+
+    // this is the shit!
+    var arcGenerator = d3.svg.arc().
+            innerRadius(20).
+            outerRadius(function(d) {
+        return d / 10
+    }).
+            startAngle(function(d, i) {
+        return (i * stepSize)
+    }).
+            endAngle(function(d, i) {
+        return ((i + 1) * stepSize)
+    });
+
+
+    // bind the data to the groups    
+    arcs = chart.selectAll("g.chart g.arc").data(migrationData[0].years);
+    arcs.enter().append("g").attr("class", "arc");
+    arcs.append("path").attr("d", arcGenerator).attr("fill", "black");
+    arcs.exit();
 });
+
+
+chart.update = function(index) {
+    arcs.data(migrationData[index].years).trans;
+    var stepSize = (Math.PI * 2) / migrationData[4].years.length;
+
+
+    // this is the shit!
+    var arcGenerator = d3.svg.arc().
+            innerRadius(20).
+            outerRadius(function(d) {
+        return d / 10
+    }).
+            startAngle(function(d, i) {
+        return (i * stepSize)
+    }).
+            endAngle(function(d, i) {
+        return ((i + 1) * stepSize)
+    });
+    arcs.transition().duration(300).attr("d", arcGenerator);
+}
+
+
+
+function getAngle(size, currentIndex) {
+    return currentIndex / size;
+}
+
+// this function generates a better structured json array to work with
+function generateClearJSON(data) {
+
+    var returnJSON = [];
+    for (i = 0; i < data.length; i++) {
+        var yearValues = [];
+        for (j = 0; j < 10; j++) {
+            yearValues[j] = data[i][j + 4];
+        }
+        var country = {
+            name: "",
+            years: [],
+            direction: ""
+        };
+
+        country.name = data[i][0];
+        country.years = yearValues;
+        country.direction = data[i][3];
+
+        returnJSON.push(country);
+    }
+    return returnJSON;
+}
 
 
 // this function generates a better structured json array to work with
@@ -75,5 +146,5 @@ function generateClearJSON(data) {
 
         returnJSON.push(country);
     }
-    console.log(returnJSON);
+    return returnJSON;
 }

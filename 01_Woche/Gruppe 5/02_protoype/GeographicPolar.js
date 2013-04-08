@@ -89,8 +89,8 @@ $(document).ready(function() {
 
     $("#nextYear").click(function() {
         if (chart.yearIndex+1 <= 9) {
-        chart.yearIndex++;
-        chart.update();
+            chart.yearIndex++;
+            chart.update();
         }
         return false;
     });
@@ -120,9 +120,6 @@ chart.setup = function(options) {
         chart.countries.push(country);
     }
     
-    
-    
-
     // the stepsize defines the size of one bar in the polarchart
     chart.stepSize = (Math.PI * 2) / chart.countries.length;
 
@@ -132,11 +129,13 @@ chart.setup = function(options) {
     // create the SVG element
     chart.svg = d3.select("#chartWrapper").append("svg").attr('width', chart.w).attr('height', chart.h);
     
+    
+    // circular axis steps
     chart.axisTicks = [50, 100, 150, 200, 250, 300, 350];
-    chart.circleAxisGroup = chart.svg.append("g").attr("class", "axis").attr("transform", "translate(" + chart.w / 2 + "," + chart.h / 2 + ")");
-    chart.axisCircles = chart.circleAxisGroup.selectAll("circle.axis").data(chart.axisTicks);
+    chart.circularAxisGroup = chart.svg.append("g").attr("class", "axis").attr("transform", "translate(" + chart.w / 2 + "," + chart.h / 2 + ")");
+    chart.axisCircles = chart.circularAxisGroup.selectAll("circle.axis").data(chart.axisTicks);
     chart.axisCircles.enter().append("circle").attr("r", function(d) { return d} ).attr("class", "axis").attr("x", "0").attr("y", "0").attr("fill-opacity", "0.05").attr("stroke", "#cecece");
-
+    
     // reference & create shape-group which enables us to move the whole chart
     chart.group = chart.svg.append("g").attr("class", "chart").attr("transform", "translate(" + chart.w / 2 + "," + chart.h / 2 + ")");
     
@@ -187,6 +186,13 @@ chart.setup = function(options) {
     chart.outerRing.enter().append("path").attr("class", function(d, i) {
         return("outerRing " + chart.countries[i].direction)
     }).attr("d", chart.outerArcGenerator);
+    
+    chart.circularLabelGroup = chart.svg.append("g").attr("class", "labell").attr("transform", "translate(" + chart.w / 2 + "," + chart.h / 2 + ")");
+    
+    
+    // the labels for sizes
+    chart.axisLabels = chart.circularLabelGroup.selectAll("text").data(chart.axisTicks);
+    chart.axisLabels.enter().append("text").attr("y", function(d) { return d+5} ).text(function(d) { return d*100});
     //chart.arcs.exit();
 }
 

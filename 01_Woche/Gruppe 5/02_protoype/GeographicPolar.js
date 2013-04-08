@@ -19,6 +19,8 @@ $(document).ready(function() {
 
     chart.w = $("#chartWrapper").width();
     chart.h = 1000;
+	
+	/*
 
     chart.rawMigrationData_men = [
         ["Daenemark", "m", "an", "n", 1610, 1426, 1500, 1483, 1431, 1514, 1710, 1761, 1792, 1942],
@@ -49,7 +51,7 @@ $(document).ready(function() {
         ["Irland", "m", "an", "w", 1174, 1060, 853, 806, 960, 1060, 1191, 1308, 1313, 1580]
     ];
     
-    /*
+    */
     
     chart.rawMigrationData_all_out = [
         ["Daenemark","ges","ab","n",2974,2712,3062,2694,3115,4014,4549,4270,3322,3075],
@@ -79,6 +81,8 @@ $(document).ready(function() {
         ["Vereinigtes_Koenigreich","ges","ab","w",16662,15550,18529,17396,17319,17942,20299,19236,17259,16191],
         ["Irland","ges","ab","w",2634,2415,2489,2041,2330,2538,2729,2535,2011,1872]
     ];
+    
+    /*
     
     chart.rawMigrationData_all_in = [
   		["Daenemark","ges","an","n",2889,2693,2678,2669,2563,2631,3031,3157,3265,3440],
@@ -137,7 +141,7 @@ chart.setup = function(options) {
     chart.countries = [];
 
     // this loop extracts the country-metadata
-    for (i = 0; i < chart.rawMigrationData_men.length; i++) {
+    for (i = 0; i < chart.rawMigrationData_all_out.length; i++) {
 //        var s;
 //        if (chart.rawMigrationData_men[i][3] == "n") { s = (PI/2) / 3;}
 //        if (chart.rawMigrationData_men[i][3] == "o") { s = (PI/2) / 10;}
@@ -145,8 +149,8 @@ chart.setup = function(options) {
 //        if (chart.rawMigrationData_men[i][3] == "w") { s = (PI/2) / 8;}
 
         var country = {
-            name: chart.rawMigrationData_men[i][0],
-            direction: chart.rawMigrationData_men[i][3],
+            name: chart.rawMigrationData_all_out[i][0],
+            direction: chart.rawMigrationData_all_out[i][3],
             stepSize: 0.0
         };
 
@@ -205,7 +209,7 @@ chart.step = function() {
 // this function loads the data from the corresponding year into the data-array
 chart.updateDataset = function() {
     chart.immigrationValuesCurrent = [];
-    for (i = 0; i < chart.rawMigrationData_men.length; i++) {
-        chart.immigrationValuesCurrent[i] = chart.rawMigrationData_men[i][4 + chart.yearIndex];
+    for (i = 0; i < chart.rawMigrationData_all_out.length; i++) {
+        chart.immigrationValuesCurrent[i] = chart.rawMigrationData_all_out[i][4 + chart.yearIndex];
     }
 }

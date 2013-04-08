@@ -41,3 +41,19 @@ h1 {
     color:#000;
     text-decoration: none;
 }
+
+path.s {
+    fill:#ED7C52;
+}
+
+path.n {
+    fill:#B1C5C3;
+}
+
+path.o {
+    fill:#86B9D8;
+}
+
+path.w {
+    fill:#B2949C;
+}

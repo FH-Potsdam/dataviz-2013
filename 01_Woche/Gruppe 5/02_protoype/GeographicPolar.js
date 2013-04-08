@@ -48,6 +48,18 @@ $(document).ready(function() {
         ["Irland", "m", "an", "w", 1174, 1060, 853, 806, 960, 1060, 1191, 1308, 1313, 1580]
     ];
     
+    $("#lastYear").click(function() {
+    chart.yearIndex--;
+    chart.update();
+    return false;
+    });
+    
+    $("#nextYear").click(function() {
+    chart.yearIndex++;
+    chart.update();
+    return false;
+    });
+    
     chart.setup();
 });
 
@@ -95,20 +107,16 @@ chart.setup = function(options) {
     
 
     // bind the data to the groups    
-    chart.arcs = chart.group.selectAll("g.chart g.arc").data(chart.immigrationValuesCurrent);
-    console.log(chart);
-    
-    chart.arcs.enter().append("g").attr("class", "arc");
-    chart.arcs.append("path").attr("d", chart.arcGenerator).attr("fill", "black");
-    chart.arcs.exit();
+    chart.arcs = chart.group.selectAll("path.arc").data(chart.immigrationValuesCurrent);    
+    chart.arcs.enter().append("path").attr("class", function(d, i) { return("arc " + chart.countries[i].direction)}).attr("d", chart.arcGenerator).attr("fill", "black");
+    //chart.arcs.exit();
 }
 
 
+// this function updates the whole chart!
 chart.update = function(index) {
-    chart.yearIndex++;
     chart.updateDataset();
-    chart.arcs.enter().append("g").attr("class", "arc");
-    chart.group.selectAll("g.chart g.arc").data(chart.immigrationValuesCurrent).transition().duration(1000).attr("d", chart.arcGenerator);
+    chart.arcs.data(chart.immigrationValuesCurrent).transition().duration(500).attr("d", chart.arcGenerator);
 }
 
 chart.step = function() {

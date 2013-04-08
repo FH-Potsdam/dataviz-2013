@@ -20,8 +20,11 @@ h1,h2,h3,p {
 
 /* No style rules here yet */
 h1 {
-	color:#a1c4cb;
+	color:#000;
 	font-size:3em;
+        font-weight:200;
+        text-transform: uppercase;
+        text-align: center;
 }
 
 .cite {

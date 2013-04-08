@@ -1,23 +1,24 @@
 var chart = chart || {};
-    
-    // these variables need to be declared so we can use them thoughout the entire code
-    chart.immigrationValuesCurrent= []; // people that move into germany, per country
-    chart.immigrationValuesTotal = []; // all people that moved into germany, per country
-    chart.emigrattionValuesCurrent = []; // people that moved out of germany, per country 
-    chart.emigrattionValuesTotal = []; // all people that moved out of germany, per country
-    
-    chart.countries = [{ // country-metadata
-            name: "",
-            direction: "", 
-            stepSize: 0.0 // the part of the radius that is 
-        }];
-    
-    chart.yearIndex = 0;
+
+// these variables need to be declared so we can use them thoughout the entire code … i think.
+
+chart.immigrationValuesCurrent = []; // people that move into germany, per country
+chart.immigrationValuesTotal = []; // all people that moved into germany, per country
+chart.emigrattionValuesCurrent = []; // people that moved out of germany, per country 
+chart.emigrattionValuesTotal = []; // all people that moved out of germany, per country
+
+chart.countries = [{// country-metadata
+        name: "",
+        direction: "",
+        stepSize: 0.0 // the part of the radius that is 
+    }];
+
+chart.yearIndex = 0;
 
 $(document).ready(function() {
 
-    chart.w = 800;
-    chart.h = 800;
+    chart.w = $("#chartWrapper").width();
+    chart.h = 1000;
 
     chart.rawMigrationData_men = [
         ["Daenemark", "m", "an", "n", 1610, 1426, 1500, 1483, 1431, 1514, 1710, 1761, 1792, 1942],
@@ -47,27 +48,33 @@ $(document).ready(function() {
         ["Vereinigtes_Koenigreich", "m", "an", "w", 8372, 7536, 7278, 7226, 7336, 7486, 8606, 8925, 9329, 9993],
         ["Irland", "m", "an", "w", 1174, 1060, 853, 806, 960, 1060, 1191, 1308, 1313, 1580]
     ];
-    
+
+
+    // interaction-stuff
     $("#lastYear").click(function() {
-    chart.yearIndex--;
-    chart.update();
-    return false;
+        if (chart.yearIndex-1 >= 0) {
+        chart.yearIndex--;
+        chart.update();
+        }
+        return false;
     });
-    
+
     $("#nextYear").click(function() {
-    chart.yearIndex++;
-    chart.update();
-    return false;
+        if (chart.yearIndex+1 <= 9) {
+        chart.yearIndex++;
+        chart.update();
+        }
+        return false;
     });
-    
+
     chart.setup();
 });
 
 
 // setup function, only once called
 chart.setup = function(options) {
-        chart.countries = [];
-    
+    chart.countries = [];
+
     // this loop extracts the country-metadata
     for (i = 0; i < chart.rawMigrationData_men.length; i++) {
 //        var s;
@@ -75,7 +82,7 @@ chart.setup = function(options) {
 //        if (chart.rawMigrationData_men[i][3] == "o") { s = (PI/2) / 10;}
 //        if (chart.rawMigrationData_men[i][3] == "s") { s = (PI/2) / 5;}
 //        if (chart.rawMigrationData_men[i][3] == "w") { s = (PI/2) / 8;}
-        
+
         var country = {
             name: chart.rawMigrationData_men[i][0],
             direction: chart.rawMigrationData_men[i][3],
@@ -84,74 +91,60 @@ chart.setup = function(options) {
 
         chart.countries.push(country);
     }
-    
+
+    // the stepsize defines the size of one bar in the polarchart
     chart.stepSize = (Math.PI * 2) / chart.countries.length;
 
-    
+
     // convert the data into usable arrays
-    chart.updateDataset(); 
-    
+    chart.updateDataset();
+
     // create the SVG element
     chart.svg = d3.select("#chartWrapper").append("svg").attr('width', chart.w).attr('height', chart.h);
-    
+
     // reference & create shape-group which enables us to move the whole chart
     chart.group = chart.svg.append("g").attr("class", "chart").attr("transform", "translate(" + chart.w / 2 + "," + chart.h / 2 + ")");
-    
+
     // this is the shit!
-    chart.arcGenerator = 
+    chart.arcGenerator =
             d3.svg.arc().
             innerRadius(100).
-            outerRadius(function(d) { return d / 100 + 100;}).
-            startAngle(function(d, i) { return (i * chart.stepSize); }).
-            endAngle(function(d, i) { return ((i + 1) * chart.stepSize); });
-    
+            outerRadius(function(d) {
+        return d / 100 + 100;
+    }).
+            startAngle(function(d, i) {
+        return (i * chart.stepSize);
+    }).
+            endAngle(function(d, i) {
+        return ((i + 1) * chart.stepSize);
+    });
+
 
     // bind the data to the groups    
-    chart.arcs = chart.group.selectAll("path.arc").data(chart.immigrationValuesCurrent);    
-    chart.arcs.enter().append("path").attr("class", function(d, i) { return("arc " + chart.countries[i].direction)}).attr("d", chart.arcGenerator).attr("fill", "black");
+    chart.arcs = chart.group.selectAll("path.arc").data(chart.immigrationValuesCurrent);
+    chart.arcs.enter().append("path").attr("class", function(d, i) {
+        return("arc " + chart.countries[i].direction)
+    }).attr("d", chart.arcGenerator).attr("fill", "black");
     //chart.arcs.exit();
 }
 
 
 // this function updates the whole chart!
 chart.update = function(index) {
+    $("#yearIndex").text("Year " + (2002 + parseInt(chart.yearIndex)));
     chart.updateDataset();
     chart.arcs.data(chart.immigrationValuesCurrent).transition().duration(500).attr("d", chart.arcGenerator);
 }
 
 chart.step = function() {
-    
-    
+
+
 }
 
-// this function generates a better structured json array to work with
-function generateClearJSON(data) {
-
-    var returnJSON = [];
-    for (i = 0; i < data.length; i++) {
-        var yearValues = [];
-        for (j = 0; j < 10; j++) {
-            yearValues[j] = data[i][j + 4];
-        }
-        var country = {
-            name: "",
-            years: [],
-            direction: ""
-        };
-
-        country.name = data[i][0];
-        country.years = yearValues;
-        country.direction = data[i][3];
-
-        returnJSON.push(country);
-    }
-    return returnJSON;
-}
-
-// this function, loads the data from the corresponding year into the data-array
-chart.updateDataset = function () {
+// this function loads the data from the corresponding year into the data-array
+chart.updateDataset = function() {
     chart.immigrationValuesCurrent = [];
     for (i = 0; i < chart.rawMigrationData_men.length; i++) {
-            chart.immigrationValuesCurrent[i] = chart.rawMigrationData_men[i][4 + chart.yearIndex];
+        chart.immigrationValuesCurrent[i] = chart.rawMigrationData_men[i][4 + chart.yearIndex];
     }
 }

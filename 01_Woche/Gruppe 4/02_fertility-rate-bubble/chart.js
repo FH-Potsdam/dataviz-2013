@@ -12,7 +12,7 @@ jQuery(document).ready(function() {
       max: 2010
     });
   });
-  
+
 });
 
 chart.setup = function(options) {
@@ -68,7 +68,7 @@ chart.draw = function() {
         .attr("r", function(d) { return d.r })
         .style("fill", function(d, i) { return chart.color(i) })
         .on("mouseover", chart.hover);
-        
+
     node.append("text")
         .attr("dy", ".3em")
         .style("text-anchor", "middle")

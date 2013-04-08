@@ -49,6 +49,13 @@ path.outerRing {
     stroke:#cecece;
 }
 
+circle.axis {
+    stroke:#000000;
+    stroke-opacity:1.0;
+    fill-opacity:0.0;
+    fill:#ffffff;
+}
+
 path.s {
     fill:#ED7C52;
 }

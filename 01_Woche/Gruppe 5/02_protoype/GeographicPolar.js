@@ -119,6 +119,9 @@ chart.setup = function(options) {
 
         chart.countries.push(country);
     }
+    
+    
+    
 
     // the stepsize defines the size of one bar in the polarchart
     chart.stepSize = (Math.PI * 2) / chart.countries.length;
@@ -128,9 +131,17 @@ chart.setup = function(options) {
 
     // create the SVG element
     chart.svg = d3.select("#chartWrapper").append("svg").attr('width', chart.w).attr('height', chart.h);
+    
+    chart.axisTicks = [50, 100, 150, 200, 250, 300, 350];
+    chart.circleAxisGroup = chart.svg.append("g").attr("class", "axis").attr("transform", "translate(" + chart.w / 2 + "," + chart.h / 2 + ")");
+    chart.axisCircles = chart.circleAxisGroup.selectAll("circle.axis").data(chart.axisTicks);
+    chart.axisCircles.enter().append("circle").attr("r", function(d) { return d} ).attr("class", "axis").attr("x", "0").attr("y", "0").attr("fill-opacity", "0.05").attr("stroke", "#cecece");
 
     // reference & create shape-group which enables us to move the whole chart
     chart.group = chart.svg.append("g").attr("class", "chart").attr("transform", "translate(" + chart.w / 2 + "," + chart.h / 2 + ")");
+    
+    
+    
 
     // this is the shit!
     chart.innerArcGenerator =
@@ -146,6 +157,10 @@ chart.setup = function(options) {
         return ((i + 1) * chart.stepSize);
     });
     
+    
+    
+    
+    
     // this is the shit!
     chart.outerArcGenerator =
             d3.svg.arc().
@@ -159,6 +174,7 @@ chart.setup = function(options) {
             endAngle(function(d, i) {
         return ((i + 1) * chart.stepSize);
     });
+    
 
 
     // bind the data to the groups    

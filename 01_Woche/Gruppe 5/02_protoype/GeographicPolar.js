@@ -171,7 +171,7 @@ chart.setup = function(options) {
     chart.group = chart.svg.append("g").attr("class", "chart").attr("transform", "translate(" + chart.w / 2 + "," + chart.h / 2 + ")");
 
     // this is the shit!
-    chart.arcGenerator =
+    chart.innerArcGenerator =
             d3.svg.arc().
             innerRadius(100).
             outerRadius(function(d) {
@@ -186,10 +186,15 @@ chart.setup = function(options) {
 
 
     // bind the data to the groups    
-    chart.arcs = chart.group.selectAll("path.arc").data(chart.immigrationValuesCurrent);
-    chart.arcs.enter().append("path").attr("class", function(d, i) {
-        return("arc " + chart.countries[i].direction)
-    }).attr("d", chart.arcGenerator).attr("fill", "black");
+    chart.innerRing = chart.group.selectAll("path.innerRing").data(chart.immigrationValuesCurrent);
+    chart.innerRing.enter().append("path").attr("class", function(d, i) {
+        return("innerRing" + chart.countries[i].direction)
+    }).attr("d", chart.innerArcGenerator).attr("fill", "black");
+    
+    chart.outerRing = chart.group.selectAll("path.innerRing").data(chart.emmigrationValuesCurrent);
+    chart.outerRing.enter().append("path").attr("class", function(d, i) {
+        return("innerRing" + chart.countries[i].direction)
+    }).attr("d", chart.innerArcGenerator).attr("fill", "black");
     //chart.arcs.exit();
 }
 
@@ -198,7 +203,7 @@ chart.setup = function(options) {
 chart.update = function(index) {
     $("#yearIndex").text("Year " + (2002 + parseInt(chart.yearIndex)));
     chart.updateDataset();
-    chart.arcs.data(chart.immigrationValuesCurrent).transition().duration(500).attr("d", chart.arcGenerator);
+    chart.innerRing.data(chart.immigrationValuesCurrent).transition().duration(500).attr("d", chart.arcGenerator);
 }
 
 chart.step = function() {

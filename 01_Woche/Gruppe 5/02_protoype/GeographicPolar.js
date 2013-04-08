@@ -1,14 +1,25 @@
 var chart = chart || {};
+    
+    // these variables need to be declared so we can use them thoughout the entire code
+    chart.immigrationValuesCurrent= []; // people that move into germany, per country
+    chart.immigrationValuesTotal = []; // all people that moved into germany, per country
+    chart.emigrattionValuesCurrent = []; // people that moved out of germany, per country 
+    chart.emigrattionValuesTotal = []; // all people that moved out of germany, per country
+    
+    chart.countries = [{ // country-metadata
+            name: "",
+            direction: "", 
+            stepSize: 0.0 // the part of the radius that is 
+        }];
+    
+    chart.yearIndex = 0;
 
 $(document).ready(function() {
 
-    var chart;
+    chart.w = 800;
+    chart.h = 800;
 
-    var w = 800;
-    var h = 800;
-
-
-    rawMigrationData_men = [
+    chart.rawMigrationData_men = [
         ["Daenemark", "m", "an", "n", 1610, 1426, 1500, 1483, 1431, 1514, 1710, 1761, 1792, 1942],
         ["Schweden", "m", "an", "n", 1786, 1799, 1846, 1711, 1729, 1745, 1638, 1821, 1832, 2016],
         ["Finnland", "m", "an", "n", 925, 938, 1001, 260, 225, 1021, 879, 976, 1008, 1102],
@@ -36,68 +47,73 @@ $(document).ready(function() {
         ["Vereinigtes_Koenigreich", "m", "an", "w", 8372, 7536, 7278, 7226, 7336, 7486, 8606, 8925, 9329, 9993],
         ["Irland", "m", "an", "w", 1174, 1060, 853, 806, 960, 1060, 1191, 1308, 1313, 1580]
     ];
-
-
-
-    // convert the data into usable arrays
-    migrationData = generateClearJSON(rawMigrationData_men);
-
-    var stepSize = (Math.PI * 2) / migrationData[4].years.length;
-
-    // create the SVG element
-    var svg = d3.select("#chartWrapper").append("svg").attr('width', w).attr('height', h);
-
-    // reference & create group to move the cirlce
-    var chart = svg.append("g");
-    chart.attr("class", "chart").attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
-
-
-    // this is the shit!
-    var arcGenerator = d3.svg.arc().
-            innerRadius(20).
-            outerRadius(function(d) {
-        return d / 10
-    }).
-            startAngle(function(d, i) {
-        return (i * stepSize)
-    }).
-            endAngle(function(d, i) {
-        return ((i + 1) * stepSize)
-    });
-
-
-    // bind the data to the groups    
-    arcs = chart.selectAll("g.chart g.arc").data(migrationData[0].years);
-    arcs.enter().append("g").attr("class", "arc");
-    arcs.append("path").attr("d", arcGenerator).attr("fill", "black");
-    arcs.exit();
+    
+    chart.setup();
 });
 
 
-chart.update = function(index) {
-    arcs.data(migrationData[index].years).trans;
-    var stepSize = (Math.PI * 2) / migrationData[4].years.length;
+// setup function, only once called
+chart.setup = function(options) {
+        chart.countries = [];
+    
+    // this loop extracts the country-metadata
+    for (i = 0; i < chart.rawMigrationData_men.length; i++) {
+//        var s;
+//        if (chart.rawMigrationData_men[i][3] == "n") { s = (PI/2) / 3;}
+//        if (chart.rawMigrationData_men[i][3] == "o") { s = (PI/2) / 10;}
+//        if (chart.rawMigrationData_men[i][3] == "s") { s = (PI/2) / 5;}
+//        if (chart.rawMigrationData_men[i][3] == "w") { s = (PI/2) / 8;}
+        
+        var country = {
+            name: chart.rawMigrationData_men[i][0],
+            direction: chart.rawMigrationData_men[i][3],
+            stepSize: 0.0
+        };
 
+        chart.countries.push(country);
+    }
+    
+    chart.stepSize = (Math.PI * 2) / chart.countries.length;
 
+    
+    // convert the data into usable arrays
+    chart.updateDataset(); 
+    
+    // create the SVG element
+    chart.svg = d3.select("#chartWrapper").append("svg").attr('width', chart.w).attr('height', chart.h);
+    
+    // reference & create shape-group which enables us to move the whole chart
+    chart.group = chart.svg.append("g").attr("class", "chart").attr("transform", "translate(" + chart.w / 2 + "," + chart.h / 2 + ")");
+    
     // this is the shit!
-    var arcGenerator = d3.svg.arc().
-            innerRadius(20).
-            outerRadius(function(d) {
-        return d / 10
-    }).
-            startAngle(function(d, i) {
-        return (i * stepSize)
-    }).
-            endAngle(function(d, i) {
-        return ((i + 1) * stepSize)
-    });
-    arcs.transition().duration(300).attr("d", arcGenerator);
+    chart.arcGenerator = 
+            d3.svg.arc().
+            innerRadius(100).
+            outerRadius(function(d) { return d / 100 + 100;}).
+            startAngle(function(d, i) { return (i * chart.stepSize); }).
+            endAngle(function(d, i) { return ((i + 1) * chart.stepSize); });
+    
+
+    // bind the data to the groups    
+    chart.arcs = chart.group.selectAll("g.chart g.arc").data(chart.immigrationValuesCurrent);
+    console.log(chart);
+    
+    chart.arcs.enter().append("g").attr("class", "arc");
+    chart.arcs.append("path").attr("d", chart.arcGenerator).attr("fill", "black");
+    chart.arcs.exit();
 }
 
 
+chart.update = function(index) {
+    chart.yearIndex++;
+    chart.updateDataset();
+    chart.arcs.enter().append("g").attr("class", "arc");
+    chart.group.selectAll("g.chart g.arc").data(chart.immigrationValuesCurrent).transition().duration(1000).attr("d", chart.arcGenerator);
+}
 
-function getAngle(size, currentIndex) {
-    return currentIndex / size;
+chart.step = function() {
+    
+    
 }
 
 // this function generates a better structured json array to work with
@@ -124,27 +140,10 @@ function generateClearJSON(data) {
     return returnJSON;
 }
 
-
-// this function generates a better structured json array to work with
-function generateClearJSON(data) {
-
-    var returnJSON = [];
-    for (i = 0; i < data.length; i++) {
-        var yearValues = [];
-        for (j = 0; j < 10; j++) {
-            yearValues[j] = data[i][j + 4];
-        }
-        var country = {
-            name: "",
-            years: [],
-            direction: ""
-        };
-
-        country.name = data[i][0];
-        country.years = yearValues;
-        country.direction = data[i][3];
-
-        returnJSON.push(country);
+// this function, loads the data from the corresponding year into the data-array
+chart.updateDataset = function () {
+    chart.immigrationValuesCurrent = [];
+    for (i = 0; i < chart.rawMigrationData_men.length; i++) {
+            chart.immigrationValuesCurrent[i] = chart.rawMigrationData_men[i][4 + chart.yearIndex];
     }
-    return returnJSON;
 }

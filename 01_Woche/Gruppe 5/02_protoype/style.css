@@ -45,6 +45,10 @@ h1 {
     text-decoration: none;
 }
 
+path.outerRing {
+    stroke:#cecece;
+}
+
 path.s {
     fill:#ED7C52;
 }

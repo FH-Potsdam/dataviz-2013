@@ -1,0 +1,4 @@
+Quellen:
+	bundesliga*.json  ---> http://fussballdaten.sport.de/
+	beautiful_table/* ---> http://the-beautiful-table.com/
+	finanzen          ---> http://fussball-geld.de/

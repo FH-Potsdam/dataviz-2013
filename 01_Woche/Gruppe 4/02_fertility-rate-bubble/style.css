@@ -10,3 +10,11 @@ root {
     display: block;
 }
 
+
+.show {
+  display: inline;
+}
+
+.hide {
+  display: none;
+}

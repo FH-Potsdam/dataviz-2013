@@ -203,7 +203,7 @@ chart.update = function(index) {
     chart.updateDataset();
     chart.innerRing.data(chart.immigrationValuesCurrent).transition().duration(300).attr("d", chart.innerArcGenerator);
     chart.outerRing.data(chart.emigrationValuesCurrent).transition().duration(300).attr("d", chart.outerArcGenerator);
-
+    
 }
 
 chart.step = function() {

@@ -30,7 +30,7 @@ loader(filesequences[1], function(data) {
         .on("mouseover", tableOver)
         .on("mouseout", tableOut)
         .html(function (d, i) {
-          return d.place + d.team;
+          return d.team;
         });
   });
 });

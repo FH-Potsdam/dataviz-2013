@@ -1,0 +1,68 @@
+/* 
+    Document   : style
+    Created on : 01.04.2013, 23:33:57
+    Author     : marcus
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: Helvetica;
+  font-size: 11px;
+}
+root { 
+    display: block;
+}
+
+#tablecontainer {
+  float: left;
+}
+
+#navTitle {
+  padding: 5px 5px;
+  float: left;
+}
+.button {
+  background: #ddd;
+  float: left;
+  width: 20px;
+  margin: 2.5px;
+  padding: 5px;
+  text-align: center;
+  color: #fff;
+}
+#navigation {
+  margin: 2.5px;
+}
+#average {
+  background: #000;
+  color: #fff;
+  padding: 15px 15px;
+  position: absolute;
+  top: 255px;
+  left: 940px;
+  font-size: 18px;
+}
+
+#name {
+  position: absolute;
+  top: 60px;
+  left: 5px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+#total {
+  position: absolute;
+  top: 100px;
+  left: 5px;
+  font-size: 18px;
+  color: #333;
+}
+
+.games {
+  margin: 5px;
+}

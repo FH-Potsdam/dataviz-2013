@@ -90,7 +90,7 @@ chart.draw = function() {
         .on("mouseout", chart.out);
     
     d3.select("#bubble0").attr("style", "fill: transparent; stroke: #000");
-    //d3.select("#text0").attr("style", "z-index: fixed; top: 200px; left: 10px;");
+    //d3.select("#text0").attr("style", "zindex: fixed; top: 200px; left: 10px;");
   }
 }
 

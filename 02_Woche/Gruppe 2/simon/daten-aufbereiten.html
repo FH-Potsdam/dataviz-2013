@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- 
+	saved from url=(0085)http://alignedleft.com/content/3.tutorials/10.d3/140.making-a-scatterplot/demo/3.html 
+	edited by Marcus Paeschke for Dataviz Challenges class 2013 at FH Potsdam, Interface Design Programme
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3 Demo: Fussball Bundesliga</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="../../lib/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="../../lib/d3.v3.js"></script>		
+		<script type="text/javascript" src="../../lib/queue.v1.min.js"></script>		
+		<script type="text/javascript" src="file-loader.js"></script>		
+		<style>
+			div.games {
+				border: 1px solid #ccc;
+				padding: 10px;
+				margin-bottom: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Fussball-Daten: Daten aufbereiten</h1>
+		<a href="index.html">index</a>
+
+		<h2>Spieltage</h2>
+		<div id="gamecontainer"></div>
+
+		<h2>Tabellen</h2>
+		<div id="tablecontainer"></div>
+
+
+		<script type="text/javascript">
+			// siehe vorheriges Beispiel
+			var filesequences = [{
+					title: "Spiele",
+					basename: "../../data/bundesliga/bundesliga_sport_de-{i}.json",
+					start: 1,
+					end: 27
+				}, {
+					title: "Tabelle",
+					basename: "../../data/bundesliga/bundesliga_table_sport_de-{i}.json",
+					start: 1,
+					end: 27
+				}];
+
+
+
+			var cleanGame = function(gamedata) {
+				var date = gamedata.datetime.match(/\d+.\d+.\d+/)[0].split(".");
+				var time = gamedata.datetime.match(/\d+:\d+/)[0].split(":");
+				
+				var gametime = new Date();
+				gametime.setDate(parseInt(date[0], 10));
+				gametime.setMonth(parseInt(date[1], 10)-1); // Danger! - setMonth fängt bei 0 an zu zählen!?!
+				gametime.setFullYear(parseInt(date[2], 10));
+				gametime.setHours(parseInt(time[0], 10));
+				gametime.setMinutes(parseInt(time[1], 10));
+				gametime.setSeconds(0);
+				
+				var clean = {
+					datetime: gametime,
+					result: gamedata.result.substring(0, gamedata.result.indexOf(" ")),
+					team_home : gamedata.team_home,
+					team_guest : gamedata.team_guest
+				}
+				return clean;
+			}
+
+			var cleanTable = function(tablerow) {
+				return tablerow;
+			}
+
+
+			loader(filesequences[0], function(dirty_data) {
+				var clean_data = [];
+				dirty_data.forEach(function(row, i) {
+					var clean_row = [];
+					row.forEach(function(gamedata) {
+						clean_row.push(cleanGame(gamedata));
+					});
+					clean_data.push(clean_row);
+				});
+				console.log(clean_data);
+			});
+
+			loader(filesequences[1], function(data) {
+				console.log("Tabellen: ", data);
+				data.forEach(function(el, i) {
+					d3.select("#tablecontainer").append("div").classed("games", true).html("<strong>Spieltag " + (i + 1) + "</strong>").selectAll("div.table").data(el).enter().append("div").classed("table", true).html(function(d) {
+						return d.place + d.team;
+					});
+				});
+			});
+
+
+
+		</script>
+	</body>
+</html>

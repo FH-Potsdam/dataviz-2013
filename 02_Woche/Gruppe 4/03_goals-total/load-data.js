@@ -45,7 +45,7 @@ var loadData = function(currDay) {
       .duration(500)
       .attr("height", function(d, i) { var goals = $(this).attr("data-goal"); var average = $(this).attr("data-average"); return Math.abs((goals-average)*10) })
       .attr("y", function(d, i) { var goals = $(this).attr("data-goal"); var average = $(this).attr("data-average"); if((goals-average)*10 < 0) { return 250-Math.abs((goals-average)*10)} else {return 250} });
-d3.select("#average").html( function() { return "Tore im Durchschnitt: "+goalsTotal/18 });
+      d3.select("#average").html( function() { return "Tore im Durchschnitt: "+goalsTotal/18 });
   });
 }
 loadData(0);

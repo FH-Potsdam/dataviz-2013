@@ -1,43 +1,40 @@
 body {
 	background-color:#e7e7e7;
-	font-family:'Dosis',sans-serif;
-	font-weight:300;
+    font-family: 'Noto Serif', serif;
+	font-weight:400;
 	text-align:center;
+    font-size:14px;
 }
 
 article {
-	background-color:#fdfdfd;
-	box-shadow:0 0 10px 0 #a2a2a2;
 	padding:20px 80px;
 	margin:20px 50px;
 }
 
-h1,h2,h3,p {
-	margin:10px 0;
-	padding:0;
+h1, h2, h3, p {
+    padding:10px 0 10px 0;
+	margin:10px 0 10px 0;
 	text-align:left;
 }
 
 /* No style rules here yet */
 h1 {
 	color:#000;
-	font-size:3em;
-        font-weight:300;
-        text-transform: uppercase;
-        text-align: center;
-}
+	font-size:1.8em;
+    font-weight: 400;
+    font-style: italic;
+    border-bottom: 1px dotted #3E7A78;
+    }
 
 h2 {
 	color:#cecece;
 	font-size:2em;
-        text-decoration: none;
-        font-weight:200;
+        font-weight:400;
         text-align: center;
-}
+        font-style: italic;}
 
 .cite {
 	font-size:1.5em;
-	font-weight:100;
 	color:#4b4b4b;
 }
 

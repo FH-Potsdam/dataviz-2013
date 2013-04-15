@@ -26,14 +26,14 @@ var streamgraph = streamgraph || {};
 
   streamgraph.teams = [];
 
-  streamgraph.n = 18, // number of layers
-  streamgraph.m = 27, // number of samples per layer
+  streamgraph.n = 18, // number of layers ( in our case these represent clubs)
+  streamgraph.m = 27, // number of samples per layer ( in our case these represent the played days)
   streamgraph.stack = d3.layout.stack().offset("wiggle");
 
   // load the clubs-json, iterate through it and generates all teams for graph-data
    d3.json("../data/clubs.json", function(data) { 
     data.forEach( function(club, index ) {
-      streamgraph.addTeam(club.name, club.primary_hex_color, club.crest_url);
+      streamgraph.addTeam(club.name, club.url_encoded_name, club.primary_hex_color, club.crest_url);
     });
   });
 
@@ -44,12 +44,13 @@ var streamgraph = streamgraph || {};
 
 
 // this function adds a new team empty to the data-array!
-streamgraph.addTeam = function(teamName, teamColor, teamLogoURL) {
+streamgraph.addTeam = function(teamName, teamNameEncoded, teamColor, teamLogoURL) {
   // empty team
   var team = {
       "name" : teamName,
-      "scores" : [],
-      "rank" : [],
+      "name_encoded" : teamNameEncoded,
+      "scores" : new Array(27),
+      "rank" : new Array(27),
       "color" : teamColor,
       "logoURL" : teamLogoURL
   };
@@ -108,24 +109,22 @@ streamgraph.loadJSONData = function() {
 }
 
 
-// extract match-data from the given match and delegates a push of the extracted data into the team-array based on the given day in season
+// extract match-data from the given match and delegates an injection of the extracted data into the team-array based on the given day in season
 streamgraph.extractMatchData = function(match, dayIndex) {
 
-  teamHome = match.team_home;
-  teamGuest = match.team_guest;
-
+  // split the string with the results into two
   var cleanScore = match.result.split(" ");
   var scores = cleanScore[0].split(":");
 
-  teamHomeScore = scores[0];
-  teamGuestScore = scores[1];
+  var teamHomeScore = parseInt(scores[0]);
+  var teamGuestScore = parseInt(scores[1]);
 
-  streamgraph.pushGoalsToTeam(dayIndex, teamHome, teamHomeScore);
-  streamgraph.pushGoalsToTeam(dayIndex, teamGuest, teamGuestScore);
+  streamgraph.pushGoalsToTeam(dayIndex, match.team_home, teamHomeScore);
+  streamgraph.pushGoalsToTeam(dayIndex, match.team_guest, teamGuestScore);
 
 }
 
-
+// injects the match-data for the given day (dayIndex) and team (teamName) into the data-object
 streamgraph.pushGoalsToTeam = function(dayIndex, teamName, score) {
 
 	console.log("Am " + (parseInt(dayIndex) + 1) + ". Spieltag schoss " + teamName  + " " + score + " Tore.");
@@ -133,6 +132,9 @@ streamgraph.pushGoalsToTeam = function(dayIndex, teamName, score) {
     streamgraph.teams.forEach(
       function(team) {
       if (team.name == teamName) {
+        //console.log(team.name == teamName);
+        //console.log(team.scores);
+        //team.scores.push(score);
         team.scores[dayIndex] = score;
       }
     });

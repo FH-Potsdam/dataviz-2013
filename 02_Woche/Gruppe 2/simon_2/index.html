@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Effizienz der 1. Fussball Bundesliga</title>
+		<script type="text/javascript" src="../../../lib/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="../../../lib/d3.v3.js"></script>
+	</head>
+	<body>
+        <script type="text/javascript">
+
+
+            d3.csv("data/effizienz_bundesliga.csv", function(data) {
+                console.log(data);
+
+                    var dataSet = data;
+                    var width = 800;
+                    var height = innerHeight;
+
+
+
+                    var widthScale1 = d3.scale.linear()
+                            .domain([0, 100000000])
+                            .range([0,width]);
+
+                    var widthScale2 = d3.scale.linear()
+                        .domain([0, 81])
+                        .range([0,width]);
+
+                    var canvas = d3.select("body")
+                            .append("svg")
+                            .attr("width",width)
+                            .attr("height",height);
+
+                    var bars1 = canvas.selectAll("rect")
+                            .data(dataSet)
+                            .enter()
+                            .append("rect")
+                            .attr("width", function(d) { return widthScale1(d.lizenzspieleretat); })
+                            .attr("height", 10)
+                            .attr("y", function(d, i) { return i*25; })
+                            .attr("fill", "rgb(216,179,101)");
+
+                    var bars2 = canvas.selectAll("rect")
+                        .data(dataSet)
+                        .enter()
+                        .append("rect")
+                        .attr("width", function(d) { return widthScale1(d.punkte); })
+                        .attr("height", 10)
+                        .attr("y", function(d, i) { return i*11; })
+                        .attr("fill", "rgb(90,180,172)");
+            });
+
+        </script>
+	</body>
+</html>

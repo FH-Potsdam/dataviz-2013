@@ -27,7 +27,7 @@ loader(filesequences[1], function(data) {
             .append("div")
             .classed("table", true)
             .html(function (d) {
-                return d.draws + d.team;
+                return d.goal_difference;
             });
     });
 });

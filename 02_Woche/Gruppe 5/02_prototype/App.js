@@ -109,6 +109,10 @@ streamgraph.extractMatchData = function(matchData, dayIndex) {
 
 streamgraph.pushGoalsToTeam = function(day, teamName, score) {
 
+	console.log(streamgraph.seasonData);
+	
+	/*
+
     streamgraph.seasonData.forEach(function(dayInSeason, dayIndex) {
       if (dayIndex == day) {
         dayInSeason.forEach(function(team) {
@@ -118,6 +122,8 @@ streamgraph.pushGoalsToTeam = function(day, teamName, score) {
         });
       }
     });
+    
+    */
 }
 
 

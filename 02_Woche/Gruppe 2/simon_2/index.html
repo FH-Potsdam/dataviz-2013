@@ -12,16 +12,16 @@
 
 
             d3.csv("data/effizienz_bundesliga.csv", function(data) {
-                console.log(data);
+                //console.log(data);
 
                     var dataSet = data;
                     var width = 800;
                     var height = innerHeight;
 
-
+                    console.log(d3.max(data, function(d){ return d.lizenzspieleretat; });
 
                     var widthScale1 = d3.scale.linear()
-                            .domain([0, 100000000])
+                            .domain([0, d3.max(data, function(d){ return d.lizenzspieleretat; }])
                             .range([0,width]);
 
                     var widthScale2 = d3.scale.linear()
@@ -33,7 +33,10 @@
                             .attr("width",width)
                             .attr("height",height);
 
-                    var bars1 = canvas.selectAll("rect")
+                    var group_1 = canvas.append("g");
+                    var group_2 = canvas.append("g");
+
+                    var bars1 = group_1.selectAll("rect")
                             .data(dataSet)
                             .enter()
                             .append("rect")
@@ -42,13 +45,13 @@
                             .attr("y", function(d, i) { return i*25; })
                             .attr("fill", "rgb(216,179,101)");
 
-                    var bars2 = canvas.selectAll("rect")
+                    var bars2 = group_2.selectAll("rect")
                         .data(dataSet)
                         .enter()
                         .append("rect")
-                        .attr("width", function(d) { return widthScale1(d.punkte); })
+                        .attr("width", function(d) { return widthScale2(d.punkte); })
                         .attr("height", 10)
-                        .attr("y", function(d, i) { return i*11; })
+                        .attr("y", function(d, i) { return i*25 + 10; })
                         .attr("fill", "rgb(90,180,172)");
             });
 

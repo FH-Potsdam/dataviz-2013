@@ -45,15 +45,37 @@ chart.setup = function(options) {
 
 chart.draw = function() {
   for(var j = 0; j < chart.data.length; j++) {
-      var bar = chart.bar = chart.svg.append("g").selectAll("rect").data(chart.data[j]);
+
+
+      var day = chart.data[j];
+
+      day.forEach(function (game) {
+        game.goalsshot = parseInt(game.result.substring(0, game.result.indexOf(":")));
+      });
+
+      /* day.sort(function (a,b) {
+        if(a.goalsshot > b.goalsshot) return 1;
+        if(a.goalsshot < b.goalsshot) return -1;
+        return 0;
+      }); */
+
+      var bar = chart.bar = chart.svg.append("g").selectAll("rect")
+      .data(day);
       var color = chart.color = d3.rgb(255,255,0);
       bar.enter().append("rect")
         .attr("y", function(d, i) { return i*(chart.barWidth+5)} )
         .attr("x", function(d, i) { return j*(chart.barWidth+5)} )
         .attr("width", chart.barWidth)
         .attr("height", chart.barWidth)
-        .attr("fill", function(d, i) { var result = d.result.split(" "); var goal = result[0].split(":"); console.log(goal[0] + goal[1]); var r = 255/9*goal[0]; var g = 255/9*goal[1]; return d3.rgb(r,g,0); })
+        .attr("fill", function(d, i) { 
+          var result = d.result.split(" "); 
+          var goal = d.result.split(":");
+          console.log(goal[0] + goal[1]); 
+          var r = 255/9*parseInt(goal[0]); 
+          var g = 255/9*(parseInt(goal[1])); 
+          return d3.rgb(r,g,0); })
         .on("mouseover", chart.over);
+      //bar.selectAll("rect").
   }
 }
 

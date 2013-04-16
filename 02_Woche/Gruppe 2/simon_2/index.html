@@ -12,16 +12,14 @@
 
 
             d3.csv("data/effizienz_bundesliga.csv", function(data) {
-                //console.log(data);
+                    console.log(data);
 
                     var dataSet = data;
                     var width = 800;
                     var height = innerHeight;
 
-                    console.log(d3.max(data, function(d){ return d.lizenzspieleretat; });
-
                     var widthScale1 = d3.scale.linear()
-                            .domain([0, d3.max(data, function(d){ return d.lizenzspieleretat; }])
+                            .domain([0, d3.max(data, function(d){ return parseInt(d.lizenzspieleretat); })])
                             .range([0,width]);
 
                     var widthScale2 = d3.scale.linear()

@@ -19,7 +19,7 @@
 					
 					
                     var width = 600;
-                    var height = 570;
+                    var height = 650;
 					
                     var widthScale1 = d3.scale.linear()
                             .domain([0, d3.max(data, function(d){ return parseInt(d.lizenzspieleretat); })])
@@ -43,7 +43,6 @@
 							.ticks(4)
 							.tickSize(height,0,0);
 						
-
                     var canvas = d3.select("body")
                             .append("svg")
                             .attr("width", width)
@@ -63,27 +62,25 @@
                             .enter()
                             .append("rect")
                             .attr("height", 10)
-                            .attr("y", function(d, i) { return i*30; })
+                            .attr("y", function(d, i) { return i*35; })
                             .attr("fill", "rgb(90, 180, 172)")
 							.transition()
 							.duration(500)
 							.ease("cubic-in-out")
                             .attr("width", function(d) { return widthScale1(d.lizenzspieleretat); });
                             
-
                     var bars2 = group_2.selectAll("rect")
                         .data(dataSet)
                         .enter()
                         .append("rect")
 						.attr("height", 10)
-                        .attr("y", function(d, i) { return i*30 + 11; })
+                        .attr("y", function(d, i) { return i*35 + 11; })
                         .attr("fill", "rgb(153, 153, 153)")
 						.transition()
 						.duration(500)
 						.ease("cubic-in-out")
 						.delay(500)
                         .attr("width", function(d) { return widthScale2(d.punkte); });
-						
 						
 						
 						canvas.append("g")

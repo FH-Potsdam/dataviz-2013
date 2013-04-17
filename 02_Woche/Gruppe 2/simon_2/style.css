@@ -17,3 +17,19 @@ root {
 .canvas {
 	padding: 50px;
 }
+
+.grid path{
+	fill: none;
+	stroke: none;
+}
+
+.grid line {
+	fill: none;
+	stroke: lightgrey;
+	shape-rendering: crispEdges;
+}
+
+.grid text {
+	display: none;
+}
+

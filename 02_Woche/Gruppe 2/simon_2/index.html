@@ -16,10 +16,11 @@
                     console.log(data);
 
                     var dataSet = data;
+					
+					
                     var width = 800;
-                    var height = innerHeight;
-					var padding = 1;
-
+                    var height = 600;
+					
                     var widthScale1 = d3.scale.linear()
                             .domain([0, d3.max(data, function(d){ return parseInt(d.lizenzspieleretat); })])
                             .range([0,width]);
@@ -32,16 +33,27 @@
 						
 					var xAxis = d3.svg.axis()
 						.scale(widthScale1)
-						.orient("bottom")
+						.orient("top")
 						.ticks(4)
 						.tickFormat(formatMillion);
+						
+					var xGrid = d3.svg.axis()
+							.scale(widthScale1)
+							.orient("bottom")
+							.ticks(4)
+							.tickSize(height,0,0);
 						
 
                     var canvas = d3.select("body")
                             .append("svg")
-                            .attr("width",width)
+                            .attr("width", width)
                             .attr("height",height)
 							.attr("class", "canvas");
+							
+						canvas.append("g")
+							.attr("class", "grid")
+							.call(xGrid)
+							.attr("transform", "translate(0,-30)");
 
                     var group_1 = canvas.append("g");
                     var group_2 = canvas.append("g");
@@ -64,10 +76,13 @@
                         .attr("y", function(d, i) { return i*25 + 10; })
                         .attr("fill", "rgb(90,180,172)");
 						
+						
+						
 						canvas.append("g")
 							.attr("class", "axis")
 							.call(xAxis)
-							.attr("transform", "translate(0," + height + ")");
+							.attr("transform", "translate(0,-30)");
+						
 							
             });
 

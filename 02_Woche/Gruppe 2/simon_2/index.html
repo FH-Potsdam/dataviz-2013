@@ -59,7 +59,7 @@
                     var group_1 = canvas.append("g");
                     var group_2 = canvas.append("g");
 					
-					var logo_group = canvas.append("g");
+					var logo_group = canvas.append("g").attr("transform", "translate(0,-2)");
 
                     var bars1 = group_1.selectAll("rect") //Create bars: lizenzspieleretat
                             .data(dataSet)
@@ -96,7 +96,7 @@
 							.append("image")
 							.attr("xlink:href", function(d,i) { return "logos/"+d.platz+".png" })
 							.attr("height", 25)
-              .attr("width", 25)
+              			  	.attr("width", 25)
 							.attr("y", function(d, i) { return i*35; });
 						
 						

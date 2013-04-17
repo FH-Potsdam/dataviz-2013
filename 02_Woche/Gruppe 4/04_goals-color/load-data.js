@@ -40,28 +40,31 @@ chart.setup = function(options) {
     .attr("width", chart.data.length*(chart.barWidth+5))
     .classed("games", true);
   
+    
   chart.draw();
 }
 
 chart.draw = function() {
   for(var j = 0; j < chart.data.length; j++) {
-
-
-      var day = chart.data[j];
+      var day = chart.day = chart.data[j];
 
       day.forEach(function (game) {
-        game.goalsshot = parseInt(game.result.substring(0, game.result.indexOf(":")));
+        game.goalsHome = parseInt(game.result.substring(0, game.result.indexOf(":")));
+        game.goalsGuest = parseInt(game.result.substring(game.result.indexOf(":")+1, game.result.indexOf(" ")));
+        console.log(game.result.indexOf(":"));
       });
-
-      /* day.sort(function (a,b) {
-        if(a.goalsshot > b.goalsshot) return 1;
-        if(a.goalsshot < b.goalsshot) return -1;
-        return 0;
-      }); */
-
+      
+      chart.sortHome();
+      
+      $("body").click(chart.sortHome);
+      
       var bar = chart.bar = chart.svg.append("g").selectAll("rect")
-      .data(day);
+        .data(day);
       var color = chart.color = d3.rgb(255,255,0);
+      bar.transition()
+        .delay(1000)
+        .attr("y", function(d, i) { return i*(chart.barWidth+5)} )
+        .attr("x", function(d, i) { return j*(chart.barWidth+5)} )
       bar.enter().append("rect")
         .attr("y", function(d, i) { return i*(chart.barWidth+5)} )
         .attr("x", function(d, i) { return j*(chart.barWidth+5)} )
@@ -70,13 +73,30 @@ chart.draw = function() {
         .attr("fill", function(d, i) { 
           var result = d.result.split(" "); 
           var goal = d.result.split(":");
-          console.log(goal[0] + goal[1]); 
           var r = 255/9*parseInt(goal[0]); 
           var g = 255/9*(parseInt(goal[1])); 
-          return d3.rgb(r,g,0); })
+          return d3.rgb(r,g,g); })
         .on("mouseover", chart.over);
       //bar.selectAll("rect").
   }
+}
+
+chart.sortHome = function() {
+  chart.day.sort(function (a,b) {
+    if(a.goalsHome > b.goalsHome) return 1;
+    if(a.goalsHome < b.goalsHome) return -1;
+    return 0;
+  });
+  //chart.draw();
+}
+
+chart.sortGuest = function() {
+  chart.day.sort(function (a,b) {
+    if(a.goalsGuest > b.goalsGuest) return 1;
+    if(a.goalsGuest < b.goalsGuest) return -1;
+    return 0;
+  });
+  //chart.draw();
 }
 
 chart.over = function(d, i) {

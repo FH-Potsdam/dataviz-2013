@@ -56,6 +56,17 @@ h2 {
 	font-weight: 400;
 	color: #808080;
 	padding-left: 50px;
+	padding-bottom: 0px;
+	line-height: 0.2em;
+	
+}
+
+h3 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	font-weight: 400;
+	color: #D3D3D3;
+	padding-left: 50px;
 	padding-bottom: 50px;
 }
 

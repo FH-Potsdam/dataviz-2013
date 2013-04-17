@@ -94,8 +94,9 @@
 							.data(dataSet)
 							.enter()
 							.append("image")
-							.attr("xlink:href", "logos/1.png")
+							.attr("xlink:href", function(d,i) { return "logos/"+d.platz+".png" })
 							.attr("height", 25)
+              .attr("width", 25)
 							.attr("y", function(d, i) { return i*35; });
 						
 						

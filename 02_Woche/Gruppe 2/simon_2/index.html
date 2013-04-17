@@ -62,19 +62,27 @@
                             .data(dataSet)
                             .enter()
                             .append("rect")
-                            .attr("width", function(d) { return widthScale1(d.lizenzspieleretat); })
                             .attr("height", 10)
                             .attr("y", function(d, i) { return i*30; })
-                            .attr("fill", "rgb(90, 180, 172)");
+                            .attr("fill", "rgb(90, 180, 172)")
+							.transition()
+							.duration(500)
+							.ease("cubic-in-out")
+                            .attr("width", function(d) { return widthScale1(d.lizenzspieleretat); });
+                            
 
                     var bars2 = group_2.selectAll("rect")
                         .data(dataSet)
                         .enter()
                         .append("rect")
-                        .attr("width", function(d) { return widthScale2(d.punkte); })
-                        .attr("height", 10)
+						.attr("height", 10)
                         .attr("y", function(d, i) { return i*30 + 11; })
-                        .attr("fill", "rgb(153, 153, 153)");
+                        .attr("fill", "rgb(153, 153, 153)")
+						.transition()
+						.duration(500)
+						.ease("cubic-in-out")
+						.delay(500)
+                        .attr("width", function(d) { return widthScale2(d.punkte); });
 						
 						
 						

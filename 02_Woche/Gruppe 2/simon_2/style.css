@@ -1,24 +1,32 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 root { 
     display: block;
 }
 
-.axis path,
+.axis path{
+	fill: none;
+	stroke: none;
+}
+
 .axis line {
 	fill: none;
-	stroke: gray;
+	stroke: lightgrey;
 	shape-rendering: crispEdges;
 }
 
 .axis text {
-	font-family: sans serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 10px;
+	font-weight: 400;
+	fill: #808080;
 }
 
 .canvas {
 	padding: 50px;
 }
 
-.grid path{
+.grid path {
 	fill: none;
 	stroke: none;
 }

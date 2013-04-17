@@ -18,8 +18,8 @@
                     var dataSet = data;
 					
 					
-                    var width = 800;
-                    var height = 600;
+                    var width = 600;
+                    var height = 570;
 					
                     var widthScale1 = d3.scale.linear()
                             .domain([0, d3.max(data, function(d){ return parseInt(d.lizenzspieleretat); })])
@@ -64,8 +64,8 @@
                             .append("rect")
                             .attr("width", function(d) { return widthScale1(d.lizenzspieleretat); })
                             .attr("height", 10)
-                            .attr("y", function(d, i) { return i*25; })
-                            .attr("fill", "rgb(216,179,101)");
+                            .attr("y", function(d, i) { return i*30; })
+                            .attr("fill", "rgb(90, 180, 172)");
 
                     var bars2 = group_2.selectAll("rect")
                         .data(dataSet)
@@ -73,8 +73,8 @@
                         .append("rect")
                         .attr("width", function(d) { return widthScale2(d.punkte); })
                         .attr("height", 10)
-                        .attr("y", function(d, i) { return i*25 + 10; })
-                        .attr("fill", "rgb(90,180,172)");
+                        .attr("y", function(d, i) { return i*30 + 11; })
+                        .attr("fill", "rgb(153, 153, 153)");
 						
 						
 						

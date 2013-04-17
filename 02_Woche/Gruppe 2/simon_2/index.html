@@ -90,13 +90,12 @@
 							.delay(500)
                         	.attr("width", function(d) { return widthScale2(d.punkte); });
 							
-							
-					var logos = logo_group.selectAll("rect")
+					var logos = logo_group.selectAll("image")
 							.data(dataSet)
 							.enter()
-							.append("rect")
+							.append("image")
+							.attr("xlink:href", "logos/1.png")
 							.attr("height", 25)
-							.attr("width", 25)
 							.attr("y", function(d, i) { return i*35; });
 						
 						

@@ -41,3 +41,21 @@ root {
 	display: none;
 }
 
+h1 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+	color: #CD5C5C;
+	padding-top: 20px;
+	padding-left: 50px;
+}
+
+h2 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #808080;
+	padding-left: 50px;
+	padding-bottom: 50px;
+}
+

@@ -1,46 +1,10 @@
-   /*
-    streamgraph.teams = [];
-    streamgraph.n = 18, // number of layers ( in our case these represent clubs)
-    streamgraph.m = 27, // number of samples per layer ( in our case these represent the played days)
-    streamgraph.stack = d3.layout.stack().offset("wiggle");
-    streamgraph.layers0 = streamgraph.stack(d3.range(streamgraph.n).map(function() { return bumpLayer(streamgraph.m); })),
-    streamgraph.layers1 = streamgraph.stack(d3.range(streamgraph.n).map(function() { return bumpLayer(streamgraph.m); }));
-    streamgraph.width = 960,
-    streamgraph.height = 500;
-    streamgraph.x = d3.scale.linear().domain([0, streamgraph.m - 1]).range([0, streamgraph.width]);
-    streamgraph.y = d3.scale.linear().domain([0, d3.max(streamgraph.layers0.concat(streamgraph.layers1), function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); })]).range([streamgraph.height, 0]);
-    streamgraph.color = d3.scale.linear().range(["#aad", "#556"]);
-    streamgraph.area = d3.svg.area().x(function(d) { return streamgraph.x(d.x); }).y0(function(d) { return streamgraph.y(d.y0); }).y1(function(d) { return streamgraph.y(d.y0 + d.y); });
-    streamgraph.svg = d3.select("body").append("svg").attr("width", streamgraph.width).attr("height", streamgraph.height);
-    streamgraph.svg.selectAll("path").data(streamgraph.layers0).enter().append("path").attr("d", streamgraph.area).style("fill", function() { return streamgraph.color(Math.random()); });
-  */
-
-/*
-
-
-streamgraph.generateStreamGraphLayers = function() {
-  // every day
-  var day = 0;
-  while( day < 27) {
-    // go trough all teams ( sorted by rank )
-    var ranking = 0;
-    while (ranking < 18) {
-    streamgraph.teams.forEach( function(team) {
-      if (team.rank[dayInSeason] == ranking) {
-          team.rank[dayIndex] = rank;
-        }
-      });
-    }
-    day++
-  }
-}
-
-*/
-
-
 var streamgraph = streamgraph || {};
 
   $(document).ready(function() {
+
+    $("#runScript").click(function() {
+        streamgraph.setup();
+    });
 
     streamgraph.teams = new Array();
 
@@ -50,7 +14,6 @@ var streamgraph = streamgraph || {};
         streamgraph.addTeam(club.name, club.primary_hex_color, club.crest_url);
       });
       streamgraph.loadJSONData();
-      streamgraph.setup();
     });
 
 });
@@ -59,35 +22,26 @@ var streamgraph = streamgraph || {};
 streamgraph.setup =  function() {
 
 
-    streamgraph.n = 18, // number of layers ( in our case these represent clubs)
-    streamgraph.m = 27, // number of samples per layer ( in our case these represent the played days)
+    streamgraph.n = 18; // number of layers ( in our case these represent clubs)
+    streamgraph.m = 27; // number of samples per layer ( in our case these represent the played days)
 
-
-    streamgraph.stack = d3.layout.stack().offset("zero").values(
-      function(d) {
-        var scores = new Array();
-          for (var i = 0; i < d.scores.length; i++) {
-            console.log(d.scores[i]);
-
-              var values = { "x" : i, "y" : 1  };
-              scores.push(values);
+    var test = streamgraph.teams.map( function(team, index) {
+      var scores = new Array();
+          for( var j in team.scores ) {
+            scores[j] = { "x" : parseInt(j), "y" : team.scores[j] };
           }
-          console.log(scores);
           return scores;
-        });
+    });
 
+    console.log(test[0]);
 
-
-          //     d.scores.forEach( function(goals, day) {
-          //   console.log("!")
-          //   var values = { "x" : day, "y" : goals };
-          //   //scores.push(values);
-          //   //console.log("x"  +  day +  "y"  + goals );
-          // });
-    
+    streamgraph.stack = d3.layout.stack().offset("zero").values(function(element, index) {
+      return element[index];
+    });
 
     //console.log(streamgraph.teams);
-    streamgraph.layers0 = streamgraph.stack(streamgraph.teams);
+    streamgraph.layers0 = streamgraph.stack(d3.map());
+    console.log(streamgraph.layers0);
 
     streamgraph.width = 960;
     streamgraph.height = 500;
@@ -105,6 +59,8 @@ streamgraph.setup =  function() {
 
     streamgraph.svg = d3.select("body").append("svg").attr("width", streamgraph.width).attr("height", streamgraph.height);
     streamgraph.svg.selectAll("path").data(streamgraph.layers0).enter().append("path").attr("d", streamgraph.area).style("fill", function() { return streamgraph.color(Math.random()); });
+
+
 
 }
 
@@ -139,7 +95,7 @@ streamgraph.transition = function() {
 
 
   // loads all the game-data
-streamgraph.loadJSONData = function() {
+streamgraph.loadJSONData = function(callback) {
 
   // mini-format zur definition von Datei-Sequenzen
   var filesequences = [{
@@ -169,8 +125,7 @@ streamgraph.loadJSONData = function() {
           );
         }
       );
-    });
-    
+    });    
 
 // loads all the ranks and puts them into the data-object
 
@@ -222,7 +177,7 @@ streamgraph.injectGoalsToTeam = function(dayIndex, teamName, score) {
     streamgraph.teams.forEach(
       function(team) {
       if (team.name == teamName) {
-      console.log("Am " + (parseInt(dayIndex) + 1) + ". Spieltag schoss " + teamName  + " " + score + " Tore.");
+      // console.log("Am " + (parseInt(dayIndex) + 1) + ". Spieltag schoss " + teamName  + " " + score + " Tore.");
         team.scores[dayIndex] = score;
       }
     });

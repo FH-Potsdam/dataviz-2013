@@ -17,28 +17,26 @@
 
 /*
 
-streamgraph.generateStreamGraphLayers = function() {
 
+streamgraph.generateStreamGraphLayers = function() {
   // every day
   var day = 0;
   while( day < 27) {
-
     // go trough all teams ( sorted by rank )
     var ranking = 0;
     while (ranking < 18) {
-
     streamgraph.teams.forEach( function(team) {
       if (team.rank[dayInSeason] == ranking) {
           team.rank[dayIndex] = rank;
         }
       });
     }
-
     day++
   }
 }
 
 */
+
 
 var streamgraph = streamgraph || {};
 
@@ -47,7 +45,7 @@ var streamgraph = streamgraph || {};
     streamgraph.teams = new Array();
 
     // load the clubs-json, iterate through it and generates all teams for graph-data
-     d3.json("../data/clubs.json", function(data) { 
+     d3.json("./data/clubs.json", function(data) { 
       data.forEach( function(club, index ) {
         streamgraph.addTeam(club.name, club.primary_hex_color, club.crest_url);
       });
@@ -60,8 +58,10 @@ var streamgraph = streamgraph || {};
 
 streamgraph.setup =  function() {
 
+
     streamgraph.n = 18, // number of layers ( in our case these represent clubs)
     streamgraph.m = 27, // number of samples per layer ( in our case these represent the played days)
+
 
     streamgraph.stack = d3.layout.stack().offset("silhouette").values(
       function(d) {
@@ -73,6 +73,7 @@ streamgraph.setup =  function() {
           });
         });
     
+
     console.log(streamgraph.teams);
     streamgraph.layers0 = streamgraph.stack(streamgraph.teams);
 
@@ -131,12 +132,12 @@ streamgraph.loadJSONData = function() {
   // mini-format zur definition von Datei-Sequenzen
   var filesequences = [{
       title: "Spiele",
-      basename: "../data/bundesliga_sport_de-{i}.json",
+      basename: "./data/bundesliga_sport_de-{i}.json",
       start: 1,
       end: 27
     }, {
       title: "Tabelle",
-      basename: "../data/bundesliga_table_sport_de-{i}.json",
+      basename: "./data/bundesliga_table_sport_de-{i}.json",
       start: 1,
       end: 27
     }];
@@ -201,6 +202,7 @@ streamgraph.injectRankToTeam = function(dayIndex, teamName, rank) {
     });
 }
 
+
 // injects the match-data for the given day (dayIndex) and team (teamName) into the data-object
 streamgraph.injectGoalsToTeam = function(dayIndex, teamName, score) {
 
@@ -209,9 +211,6 @@ streamgraph.injectGoalsToTeam = function(dayIndex, teamName, score) {
     streamgraph.teams.forEach(
       function(team) {
       if (team.name == teamName) {
-        //console.log(team.name == teamName);
-        //console.log(team.scores);
-        //team.scores.push(score);
         team.scores[dayIndex] = score;
       }
     });

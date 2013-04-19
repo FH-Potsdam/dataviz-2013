@@ -63,19 +63,36 @@ streamgraph.setup =  function() {
     streamgraph.m = 27, // number of samples per layer ( in our case these represent the played days)
 
 
-    streamgraph.stack = d3.layout.stack().offset("silhouette").values(
+    streamgraph.stack = d3.layout.stack().offset("zero").values(
       function(d) {
-          d.scores.forEach( function(goals, day) {
-            var values = {
-              "x" : day, "y" : goals
-            };
-            return values;
-          });
+        var scores = new Array();
+          for (var i = 0; i < 26; i++) {
+            console.log("!");
+              var values = { "x" : i, "y" : d.scores[i] , "y0" : 0};
+              scores.push(values);
+          }
+          return scores;
+        } ).out(function(d, y0, y) {
+          d.y0 = y0 + y;
+          d.y = y;
         });
+
+
+
+          //     d.scores.forEach( function(goals, day) {
+          //   console.log("!")
+          //   var values = { "x" : day, "y" : goals };
+          //   //scores.push(values);
+          //   //console.log("x"  +  day +  "y"  + goals );
+          // });
     
 
-    console.log(streamgraph.teams);
+    //console.log(streamgraph.teams);
     streamgraph.layers0 = streamgraph.stack(streamgraph.teams);
+
+    console.log(streamgraph.stack().x());
+
+    console.log(streamgraph.layers0);
 
     streamgraph.width = 960;
     streamgraph.height = 500;
@@ -206,7 +223,7 @@ streamgraph.injectRankToTeam = function(dayIndex, teamName, rank) {
 // injects the match-data for the given day (dayIndex) and team (teamName) into the data-object
 streamgraph.injectGoalsToTeam = function(dayIndex, teamName, score) {
 
-	console.log("Am " + (parseInt(dayIndex) + 1) + ". Spieltag schoss " + teamName  + " " + score + " Tore.");
+	//console.log("Am " + (parseInt(dayIndex) + 1) + ". Spieltag schoss " + teamName  + " " + score + " Tore.");
 
     streamgraph.teams.forEach(
       function(team) {

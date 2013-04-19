@@ -66,15 +66,14 @@ streamgraph.setup =  function() {
     streamgraph.stack = d3.layout.stack().offset("zero").values(
       function(d) {
         var scores = new Array();
-          for (var i = 0; i < 26; i++) {
-            console.log("!");
-              var values = { "x" : i, "y" : d.scores[i] , "y0" : 0};
+          for (var i = 0; i < d.scores.length; i++) {
+            console.log(d.scores[i]);
+
+              var values = { "x" : i, "y" : 1  };
               scores.push(values);
           }
+          console.log(scores);
           return scores;
-        } ).out(function(d, y0, y) {
-          d.y0 = y0 + y;
-          d.y = y;
         });
 
 
@@ -89,10 +88,6 @@ streamgraph.setup =  function() {
 
     //console.log(streamgraph.teams);
     streamgraph.layers0 = streamgraph.stack(streamgraph.teams);
-
-    console.log(streamgraph.stack().x());
-
-    console.log(streamgraph.layers0);
 
     streamgraph.width = 960;
     streamgraph.height = 500;
@@ -223,11 +218,11 @@ streamgraph.injectRankToTeam = function(dayIndex, teamName, rank) {
 // injects the match-data for the given day (dayIndex) and team (teamName) into the data-object
 streamgraph.injectGoalsToTeam = function(dayIndex, teamName, score) {
 
-	//console.log("Am " + (parseInt(dayIndex) + 1) + ". Spieltag schoss " + teamName  + " " + score + " Tore.");
 
     streamgraph.teams.forEach(
       function(team) {
       if (team.name == teamName) {
+      console.log("Am " + (parseInt(dayIndex) + 1) + ". Spieltag schoss " + teamName  + " " + score + " Tore.");
         team.scores[dayIndex] = score;
       }
     });

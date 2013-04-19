@@ -9,7 +9,7 @@
     },
     {
         "id": 224,
-        "name": "Schalke 04",
+        "name": "Schalke\u00a004",
         "url_encoded_name": "schalke-04",
         "s3_url_encoded_name": "schalke-04",
         "primary_hex_color": "#3402FD",
@@ -41,7 +41,7 @@
     },
     {
         "id": 228,
-        "name": "Hannover 96",
+        "name": "Hannover\u00a096",
         "url_encoded_name": "hannover-96",
         "s3_url_encoded_name": "hannover-96",
         "primary_hex_color": "#F50316",
@@ -49,7 +49,7 @@
     },
     {
         "id": 229,
-        "name": "Mainz 05",
+        "name": "Mainz\u00a005",
         "url_encoded_name": "fsv-mainz-05",
         "s3_url_encoded_name": "fsv-mainz-05",
         "primary_hex_color": "#F50316",
@@ -73,7 +73,7 @@
     },
     {
         "id": 232,
-        "name": "Hamburger SV",
+        "name": "Hamburger\u00a0SV",
         "url_encoded_name": "hamburger-sv",
         "s3_url_encoded_name": "hamburger-sv",
         "primary_hex_color": "#F50316",
@@ -81,7 +81,7 @@
     },
     {
         "id": 233,
-        "name": "SC Freiburg",
+        "name": "SC\u00a0Freiburg",
         "url_encoded_name": "sc-freiburg",
         "s3_url_encoded_name": "sc-freiburg",
         "primary_hex_color": "#000000",
@@ -89,7 +89,7 @@
     },
     {
         "id": 234,
-        "name": "VfB Stuttgart",
+        "name": "VfB\u00a0Stuttgart",
         "url_encoded_name": "vfb-stuttgart",
         "s3_url_encoded_name": "vfb-stuttgart",
         "primary_hex_color": "#F50316",
@@ -97,7 +97,7 @@
     },
     {
         "id": 235,
-        "name": "1899 Hoffenheim",
+        "name": "1899\u00a0Hoffenheim",
         "url_encoded_name": "hoffenheim",
         "s3_url_encoded_name": "hoffenheim",
         "primary_hex_color": "#23559E",
@@ -113,7 +113,7 @@
     },
     {
         "id": 237,
-        "name": "1. FC Nürnberg",
+        "name": "1.\u00a0FC Nürnberg",
         "url_encoded_name": "1.-fc-nürnberg",
         "s3_url_encoded_name": "1.-fc-nurnberg",
         "primary_hex_color": "#800006",
@@ -121,7 +121,7 @@
     },
     {
         "id": 238,
-        "name": "VfL Wolfsburg",
+        "name": "VfL\u00a0Wolfsburg",
         "url_encoded_name": "vfl-wolfsburg",
         "s3_url_encoded_name": "vfl-wolfsburg",
         "primary_hex_color": "#3F9E30",
@@ -137,7 +137,7 @@
     },
     {
         "id": 240,
-        "name": "FC Augsburg",
+        "name": "FC\u00a0Augsburg",
         "url_encoded_name": "fc-augsburg",
         "s3_url_encoded_name": "fc-augsburg",
         "primary_hex_color": "#BA3733",

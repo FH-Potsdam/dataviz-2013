@@ -1,4 +1,7 @@
-d3.csv("data/effizienz_bundesliga.csv", function(data) {
+d3.csv("data/effizienz_bundesliga.csv",
+
+
+function(data) {
                     console.log(data);
 
                     var dataSet = data;
@@ -86,6 +89,9 @@ d3.csv("data/effizienz_bundesliga.csv", function(data) {
 							.attr("class", "axis")
 							.call(xAxis)
 							.attr("transform", "translate(30,-30)");
+							
+							
+
 						
 							
 									

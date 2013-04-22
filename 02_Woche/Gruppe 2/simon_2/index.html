@@ -52,13 +52,14 @@
                             .attr("height",height)
 							.attr("class", "canvas");
 							
-						canvas.append("g")
+					canvas.append("g")
 							.attr("class", "grid")
 							.call(xGrid)
 							.attr("transform", "translate(30,-30)");
 
-                    var group_1 = canvas.append("g");
-                    var group_2 = canvas.append("g");
+                    var group_1 = canvas.append("g").attr("transform", "translate(30,0)");
+                    var group_2 = canvas.append("g").attr("transform", "translate(30,0)");
+					var labels_group = canvas.append("g").attr("transform", "translate(35,0)");
 
 					var logo_group = canvas.append("g").attr("transform", "translate(0,-2)");
 
@@ -68,7 +69,6 @@
                             .append("rect")
                             .attr("height", 10)
                             .attr("y", function(d, i) { return i*35; })
-							.attr("transform", "translate(30,0)")
                             .attr("fill", "rgb(90, 180, 172)")
 							.attr("opacity", 0.8)
 							.transition()
@@ -82,7 +82,6 @@
                         	.append("rect")
 							.attr("height", 10)
                         	.attr("y", function(d, i) { return i*35 + 11; })
-							.attr("transform", "translate(30,0)")
                         	.attr("fill", "rgb(153, 153, 153)")
 							.attr("opacity", 0.8)
 							.transition()
@@ -90,6 +89,24 @@
 							.ease("cubic-in-out")
 							.delay(500)
                         	.attr("width", function(d) { return widthScale2(d.punkte); });
+							
+					var pointLabels = labels_group.selectAll("text") //Create Labels Punkte neben bars2
+			                .data(dataSet)
+			                .enter()
+							.append("text")
+							.text(function(d){ return (d.punkte); })
+							.attr("y", function(d, i) { return i*35 + 20; })
+							.attr("x", function(d) { return widthScale2(d.punkte); })
+							.attr("class", "labels")
+							.attr("opacity", 0.0);
+							
+					pointLabels
+							.transition()
+							.duration(500)
+							.ease("cubic-in-out")
+							.delay(1000)
+							.attr("opacity", 1.0);		
+							
 							
 					var logos = logo_group.selectAll("image")
 							.data(dataSet)
@@ -99,8 +116,9 @@
 							.attr("height", 25)
               			  	.attr("width", 25)
 							.attr("y", function(d, i) { return i*35; });
-						
-							canvas.append("g")
+							
+							
+					canvas.append("g")
 							.attr("class", "axis")
 							.call(xAxis)
 							.attr("transform", "translate(30,-30)");

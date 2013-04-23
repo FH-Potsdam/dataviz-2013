@@ -18,6 +18,10 @@
 				padding: 10px;
 				margin-bottom: 30px;
 			}
+			path {
+				stroke: #3cf;
+				stroke-width: 1;
+			}
 		</style>
 	</head>
 	<body>
@@ -109,11 +113,18 @@
 					draw: function(data) {
 						data.forEach(function(table, i) {
 							var g = svg.append("g");
-							g.selectAll("rect").data(table).enter().append("rect").attr("w", 10).attr("h", 10)
+							g.selectAll("rect").data(table).enter().append("rect").attr("width", 10).attr("height", 10)
 									.attr("x", i * 20)
 									.attr("y", function(d, j) {
-								return j * 20;
+								return d.place * 20;
 							});
+							g.selectAll("path").data(table).enter().append("path")
+									.attr("d",
+									function(d, j) {
+										console.log(d.place_before);
+										return "M " + (i * 20) + " " + (d.place * 20) + " L " + ((i-1) * 20) + " " + (d.place_before * 20);
+									});
+
 						});
 					}
 				}

@@ -1,0 +1,122 @@
+
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+	<title>1.Bundesliga - Übersicht aller Spielerwechsel - transfermarkt.de</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+	
+ 
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+var json = {}, clubs = [], connections = [], club, myObject = new Object();
+
+//create structure for network json
+json.nodes =[];
+json.links =[];
+
+// get all clubs
+function findIndexByKeyValue(obj, key, value)
+{
+	for (var i = 0; i < obj.length; i++) {
+	    if (obj[i][key] == value) {
+	        return i;
+	    }
+	}
+	return null;
+}
+
+
+//get json
+var jqxhr = $.getJSON( "parsedConnections.json", function(data) {
+  console.log( "success" );
+
+		//create array of clubs + create json for later with nodes
+		function searchClub(c, it, modus) {
+		  	var club = $.trim(c);
+			var found = jQuery.inArray(club, clubs);
+			if (found < 0) {  // Element was not found, add it.	
+				clubs.push(club); 
+				json.nodes.unshift({}); //Add new object to the beginning of an array
+				json.nodes[0]['name'] = club;
+				json.nodes[0]['color'] = '#323232';
+				json.nodes[0]['highestIncoming'] = 0;
+				json.nodes[0]['highestOutgoing'] = 0;
+				if(modus == 0 ) { 
+						json.nodes[0]['logo'] = it.fromlogo; 
+						json.nodes[0]['totalExpenses'] = 0; 
+				}
+				else if(modus == 1 ) {
+						json.nodes[0]['logo'] = it.tologo; 
+						json.nodes[0]['totalExpenses'] = it.total; 
+				} 
+				 
+				//check all find highest value  
+				$.each(data, function(i,_item){
+
+					if( $.trim(_item.to) == club ) {
+							if( _item.for > json.nodes[0]['highestIncoming'])
+							{ json.nodes[0]['highestIncoming'] = _item.for; }
+					}	
+
+					if( $.trim(_item.from) == club ) {
+							if( _item.for > json.nodes[0]['highestOutgoing'])
+							{ json.nodes[0]['highestOutgoing'] = _item.for; }
+					}	
+
+				});
+
+
+//var res = getObjects(json.nodes, 'name', '1.FC Nürnberg'); // Returns an array of matching objects
+//var res = jQuery.inArray(club, json.nodes);
+
+		 	} 
+		}
+
+  	//get all clubs
+	$.each(data, function(i,item){
+
+		searchClub(item.to, item, 1);
+		searchClub(item.from, item, 0);
+
+	});
+
+
+
+
+
+})
+.done(function(data) { 
+	console.log( "second success" ); 
+console.log( json ); 
+	//var res = findIndexByKeyValue(json.nodes, 'name', 'Rapid Bukarest')
+	//console.log( res );
+	// create connections
+	$.each(data, function(i,item){
+		
+		json.links.unshift({}); //Add new object to the beginning of an array
+		json.links[0]['source']  = 	findIndexByKeyValue(json.nodes, 'name', $.trim(item.from));
+		json.links[0]['target'] = 	findIndexByKeyValue(json.nodes, 'name',$.trim(item.to));
+		json.links[0]['name'] = 	item.name;
+		json.links[0]['value'] = 	item.for;
+ 
+		var from = 	findIndexByKeyValue(json.nodes, 'name', $.trim(item.from));  
+		json.links[0]['color'] = json.nodes[from].color; 
+
+	});
+
+	//console.log( JSON.stringify(json) );
+	//console.log( (json) );
+
+})
+.fail(function() { console.log( "error" ); })
+.always(function() { console.log( "complete" ); });
+ 
+
+
+
+
+</script>
+</body>
+</html>

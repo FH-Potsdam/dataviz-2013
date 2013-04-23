@@ -1,0 +1,1967 @@
+{
+    "nodes": [
+        {
+            "name": "Asteras Tripolis",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 250000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/6676k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Hapoel Tel Aviv",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 2500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/1017k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Polonia Bytom",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 420000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/7976k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Al-Nasr Riad",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/18544k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Legia Warschau",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 2000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/255k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Porto",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 300000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/720k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Flamurtari Vlore",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/12460k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "AC Siena",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 2000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/1387k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Assyriska FF",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 280000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/4380k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Hertha BSC",
+            "color": "#323232",
+            "highestIncoming": 700000,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/44k.png",
+            "totalExpenses": 1400000
+        },
+        {
+            "name": "RB Leipzig",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/23826k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Rosenborg Trondheim",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/195k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Chelsea U21",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1300000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/9250k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Chelsea",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 2500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/631k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "1.FC Union Berlin",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/89k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "1.FC Heidenheim 1846",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/2036k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "NEC Nijmegen",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/467k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FSV Frankfurt",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 175000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/293k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Bayern München II",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/28k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "SpVgg Greuther Fürth",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1800000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/65k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Panathinaikos Athen",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 200000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/265k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Borussia Mönchengladbach U19",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/4121k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Hamburger SV",
+            "color": "#323232",
+            "highestIncoming": 4000000,
+            "highestOutgoing": 600000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/41k.png",
+            "totalExpenses": 10900000
+        },
+        {
+            "name": "VfL Bochum",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1800000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/80k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "SV Wehen Wiesbaden",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 400000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/108k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Lilleström SK",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 2300000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/353k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Spartak Moskau",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/232k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Manchester City U21",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/9265k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Levski Sofia",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 2200000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/156k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Metz",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/347k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Zenit St. Petersburg",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 200000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/964k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "1.FC Köln",
+            "color": "#323232",
+            "highestIncoming": 2800000,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/3k.png",
+            "totalExpenses": 5880000
+        },
+        {
+            "name": "Slovan Bratislava",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 300000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/540k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "NK Zadar",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 250000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/2566k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "KRC Genk",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 780000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/1184k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "VfB Stuttgart II",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/102k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "SV Kapfenberg",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 200000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/2394k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Kaizer Chiefs",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/568k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Basel 1893",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/26k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Twente Enschede II",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 100000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/18026k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Dynamo Dresden",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 200000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/129k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "1.FC Saarbrücken",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/1k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "TSG 1899 Hoffenheim II",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/983k.png",
+            "totalExpenses": 5480000
+        },
+        {
+            "name": "1.FC Kaiserslautern U19",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/2371k.png",
+            "totalExpenses": 6630000
+        },
+        {
+            "name": "FC Thun",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 400000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/938k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FK Jablonec",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 2000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/1322k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Los Angeles Galaxy",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/1061k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "VfL Wolfsburg II",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 200000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/143k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "OFK Belgrad",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/53k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Hansa Rostock",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 200000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/30k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Schalke 04 U19",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 100000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/1463k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "BSC Young Boys",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/452k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FK Austria Wien",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1100000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/14k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "SV Werder Bremen",
+            "color": "#323232",
+            "highestIncoming": 5000000,
+            "highestOutgoing": 700000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/86k.png",
+            "totalExpenses": 8800000
+        },
+        {
+            "name": "West Ham United",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/379k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Trabzonspor",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 300000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/449k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Liverpool",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/31k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Helsingborgs IF",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 3400000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/699k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Barcelona",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 700000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/131k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Cracovia Krakau",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/5689k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Juventus Turin",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/506k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "1.FC Kaiserslautern",
+            "color": "#323232",
+            "highestIncoming": 2500000,
+            "highestOutgoing": 4000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/2k.png",
+            "totalExpenses": 6630000
+        },
+        {
+            "name": "CD Nacional",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 2500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/982k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Académica Coimbra",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/2990k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Sion",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 5800000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/321k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "PAOK Thessaloniki",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 4000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/1091k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Skendija Tetovo",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 400000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/1167k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FK Vojvodina Novi Sad",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 2000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/448k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Viktoria Pilsen",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 3500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/941k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Zürich",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 7500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/260k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Stabaek IF",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 450000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/1274k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Polonia Warschau",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1100000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/2745k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "SV Ried",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 600000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/266k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Hannover 96",
+            "color": "#323232",
+            "highestIncoming": 1800000,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/42k.png",
+            "totalExpenses": 4200000
+        },
+        {
+            "name": "PSV Eindhoven",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1800000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/383k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Augsburg",
+            "color": "#323232",
+            "highestIncoming": 500000,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/167k.png",
+            "totalExpenses": 1175000
+        },
+        {
+            "name": "Albirex Niigata",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/8344k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "MSV Duisburg",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 260000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/52k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "SC Freiburg",
+            "color": "#323232",
+            "highestIncoming": 2200000,
+            "highestOutgoing": 3000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/60k.png",
+            "totalExpenses": 3450000
+        },
+        {
+            "name": "Eintracht Braunschweig",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/23k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Tottenham Hotspur",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 550000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/148k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Bayer 04 Leverkusen",
+            "color": "#323232",
+            "highestIncoming": 8000000,
+            "highestOutgoing": 800000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/15k.png",
+            "totalExpenses": 19810000
+        },
+        {
+            "name": "Manchester United",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1800000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/985k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Kopenhagen",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 3500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/190k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Karlsruher SC",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/48k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Kashiwa Reysol",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 400000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/6632k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Adelaide United",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/875k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "VfL Wolfsburg",
+            "color": "#323232",
+            "highestIncoming": 9000000,
+            "highestOutgoing": 2800000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/82k.png",
+            "totalExpenses": 49100000
+        },
+        {
+            "name": "Borussia Mönchengladbach",
+            "color": "#323232",
+            "highestIncoming": 1000000,
+            "highestOutgoing": 0,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/18k.png",
+            "totalExpenses": 2650000
+        },
+        {
+            "name": "HJK Helsinki",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/1008k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "VfB Stuttgart",
+            "color": "#323232",
+            "highestIncoming": 4500000,
+            "highestOutgoing": 9000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/79k.png",
+            "totalExpenses": 11300000
+        },
+        {
+            "name": "Alemannia Aachen",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 1500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/8k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "1.FSV Mainz 05",
+            "color": "#323232",
+            "highestIncoming": 2300000,
+            "highestOutgoing": 8000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/39k.png",
+            "totalExpenses": 10900000
+        },
+        {
+            "name": "Eintracht Frankfurt",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 3000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/24k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "TSG 1899 Hoffenheim",
+            "color": "#323232",
+            "highestIncoming": 1500000,
+            "highestOutgoing": 4500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/533k.png",
+            "totalExpenses": 5480000
+        },
+        {
+            "name": "Manchester City",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 13500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/281k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Gamba Osaka",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 300000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/596k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Schalke 04",
+            "color": "#323232",
+            "highestIncoming": 3800000,
+            "highestOutgoing": 22000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/33k.png",
+            "totalExpenses": 7300000
+        },
+        {
+            "name": "FC Genua 1893",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 5500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/252k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Energie Cottbus",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 2800000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/25k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Bayern München",
+            "color": "#323232",
+            "highestIncoming": 22000000,
+            "highestOutgoing": 5000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/27k.png",
+            "totalExpenses": 44100000
+        },
+        {
+            "name": "Central Coast Mariners",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 300000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/6954k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "FC Brügge",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 5500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/2282k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "Chemnitzer FC",
+            "color": "#323232",
+            "highestIncoming": 0,
+            "highestOutgoing": 200000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/21k.png",
+            "totalExpenses": 0
+        },
+        {
+            "name": "1.FC Nürnberg",
+            "color": "#323232",
+            "highestIncoming": 2000000,
+            "highestOutgoing": 5500000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/4k.png",
+            "totalExpenses": 4150000
+        },
+        {
+            "name": "Borussia Dortmund",
+            "color": "#323232",
+            "highestIncoming": 5500000,
+            "highestOutgoing": 1000000,
+            "logo": "http://static.transfermarkt.net/static/wappen_small/16k.png",
+            "totalExpenses": 11500000
+        }
+    ],
+    "links": [
+        {
+            "source": 77,
+            "target": 61,
+            "name": "Olcay Sahan",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 1,
+            "target": 61,
+            "name": "Gil Vermouth",
+            "value": 750000,
+            "color": "#323232"
+        },
+        {
+            "source": 81,
+            "target": 61,
+            "name": "Richard Sukuta-Pasu",
+            "value": 280000,
+            "color": "#323232"
+        },
+        {
+            "source": 0,
+            "target": 61,
+            "name": "Konstantinos Fortounis",
+            "value": 250000,
+            "color": "#323232"
+        },
+        {
+            "source": 102,
+            "target": 61,
+            "name": "Dorge Kouemaha",
+            "value": 100000,
+            "color": "#323232"
+        },
+        {
+            "source": 1,
+            "target": 61,
+            "name": "Itay Shechter",
+            "value": 2500000,
+            "color": "#323232"
+        },
+        {
+            "source": 81,
+            "target": 61,
+            "name": "Nicolai Jörgensen",
+            "value": 30000,
+            "color": "#323232"
+        },
+        {
+            "source": 2,
+            "target": 61,
+            "name": "Jakub Swierczok",
+            "value": 420000,
+            "color": "#323232"
+        },
+        {
+            "source": 53,
+            "target": 61,
+            "name": "Sandro Wagner",
+            "value": 300000,
+            "color": "#323232"
+        },
+        {
+            "source": 3,
+            "target": 61,
+            "name": "Anthar Yahia",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 4,
+            "target": 61,
+            "name": "Ariel Borysiuk",
+            "value": 2000000,
+            "color": "#323232"
+        },
+        {
+            "source": 51,
+            "target": 31,
+            "name": "Ammar Jemal",
+            "value": 300000,
+            "color": "#323232"
+        },
+        {
+            "source": 5,
+            "target": 31,
+            "name": "Henrique Sereno",
+            "value": 300000,
+            "color": "#323232"
+        },
+        {
+            "source": 6,
+            "target": 31,
+            "name": "Odise Roshi",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 7,
+            "target": 31,
+            "name": "Mato Jajalo",
+            "value": 2000000,
+            "color": "#323232"
+        },
+        {
+            "source": 87,
+            "target": 31,
+            "name": "Sascha Riether",
+            "value": 2800000,
+            "color": "#323232"
+        },
+        {
+            "source": 8,
+            "target": 31,
+            "name": "Mikael Ishak",
+            "value": 280000,
+            "color": "#323232"
+        },
+        {
+            "source": 23,
+            "target": 31,
+            "name": "Chong Tese",
+            "value": 200000,
+            "color": "#323232"
+        },
+        {
+            "source": 22,
+            "target": 9,
+            "name": "Änis Ben-Hatira",
+            "value": 600000,
+            "color": "#323232"
+        },
+        {
+            "source": 53,
+            "target": 9,
+            "name": "Peter Niemeyer",
+            "value": 700000,
+            "color": "#323232"
+        },
+        {
+            "source": 100,
+            "target": 9,
+            "name": "Thomas Kraft",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 100,
+            "target": 9,
+            "name": "Andreas Ottl",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 22,
+            "target": 9,
+            "name": "Tunay Torun",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 93,
+            "target": 9,
+            "name": "Maik Franz",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 78,
+            "target": 9,
+            "name": "Felix Bastians",
+            "value": 100000,
+            "color": "#323232"
+        },
+        {
+            "source": 61,
+            "target": 22,
+            "name": "Ivo Ilicevic",
+            "value": 4000000,
+            "color": "#323232"
+        },
+        {
+            "source": 13,
+            "target": 22,
+            "name": "Slobodan Rajkovic",
+            "value": 2000000,
+            "color": "#323232"
+        },
+        {
+            "source": 10,
+            "target": 22,
+            "name": "Sven Neuhaus",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 11,
+            "target": 22,
+            "name": "Per Ciljan Skjelbred",
+            "value": 500000,
+            "color": "#323232"
+        },
+        {
+            "source": 13,
+            "target": 22,
+            "name": "Michael Mancienne",
+            "value": 2500000,
+            "color": "#323232"
+        },
+        {
+            "source": 12,
+            "target": 22,
+            "name": "Jacopo Sala",
+            "value": 100000,
+            "color": "#323232"
+        },
+        {
+            "source": 12,
+            "target": 22,
+            "name": "Gökhan Töre",
+            "value": 1300000,
+            "color": "#323232"
+        },
+        {
+            "source": 13,
+            "target": 22,
+            "name": "Jeffrey Bruma",
+            "value": 500000,
+            "color": "#323232"
+        },
+        {
+            "source": 89,
+            "target": 75,
+            "name": "Dawda Bah",
+            "value": 200000,
+            "color": "#323232"
+        },
+        {
+            "source": 14,
+            "target": 75,
+            "name": "Dominic Peitz",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 15,
+            "target": 75,
+            "name": "Patrick Mayer",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 16,
+            "target": 75,
+            "name": "Lorenzo Davids",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 84,
+            "target": 75,
+            "name": "Sebastian Langkamp",
+            "value": 100000,
+            "color": "#323232"
+        },
+        {
+            "source": 17,
+            "target": 75,
+            "name": "Sascha Mölders",
+            "value": 175000,
+            "color": "#323232"
+        },
+        {
+            "source": 87,
+            "target": 75,
+            "name": "Akaki Gogia",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 97,
+            "target": 75,
+            "name": "Jan Morávek",
+            "value": 75000,
+            "color": "#323232"
+        },
+        {
+            "source": 23,
+            "target": 75,
+            "name": "Matthias Ostrzolek",
+            "value": 500000,
+            "color": "#323232"
+        },
+        {
+            "source": 87,
+            "target": 75,
+            "name": "Ja-Cheol Koo",
+            "value": 125000,
+            "color": "#323232"
+        },
+        {
+            "source": 97,
+            "target": 92,
+            "name": "Mario Gavranovic",
+            "value": 200000,
+            "color": "#323232"
+        },
+        {
+            "source": 83,
+            "target": 92,
+            "name": "Zdenek Pospech",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 91,
+            "target": 92,
+            "name": "Zoltán Stieber",
+            "value": 900000,
+            "color": "#323232"
+        },
+        {
+            "source": 18,
+            "target": 92,
+            "name": "Deniz Yilmaz",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 19,
+            "target": 92,
+            "name": "Nicolai Müller",
+            "value": 1800000,
+            "color": "#323232"
+        },
+        {
+            "source": 20,
+            "target": 92,
+            "name": "Andreas Ivanschitz",
+            "value": 200000,
+            "color": "#323232"
+        },
+        {
+            "source": 21,
+            "target": 92,
+            "name": "Yunus Malli",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 22,
+            "target": 92,
+            "name": "Eric Maxim Choupo-Moting",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 81,
+            "target": 92,
+            "name": "Marcel Risse",
+            "value": 800000,
+            "color": "#323232"
+        },
+        {
+            "source": 23,
+            "target": 92,
+            "name": "Christian Fuchs",
+            "value": 1800000,
+            "color": "#323232"
+        },
+        {
+            "source": 24,
+            "target": 92,
+            "name": "Fabian Schönheim",
+            "value": 400000,
+            "color": "#323232"
+        },
+        {
+            "source": 25,
+            "target": 92,
+            "name": "Anthony Ujah",
+            "value": 2300000,
+            "color": "#323232"
+        },
+        {
+            "source": 52,
+            "target": 92,
+            "name": "Julian Baumgartlinger",
+            "value": 1100000,
+            "color": "#323232"
+        },
+        {
+            "source": 26,
+            "target": 92,
+            "name": "Malik Fathi",
+            "value": 1000000,
+            "color": "#323232"
+        },
+        {
+            "source": 27,
+            "target": 92,
+            "name": "Loris Karius",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 105,
+            "target": 92,
+            "name": "Mohamed Zidan",
+            "value": 400000,
+            "color": "#323232"
+        },
+        {
+            "source": 38,
+            "target": 78,
+            "name": "Beg Ferati",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 104,
+            "target": 78,
+            "name": "Daniel Batz",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 28,
+            "target": 78,
+            "name": "Garra Dembélé",
+            "value": 2200000,
+            "color": "#323232"
+        },
+        {
+            "source": 29,
+            "target": 78,
+            "name": "Fallou Diagne",
+            "value": 500000,
+            "color": "#323232"
+        },
+        {
+            "source": 30,
+            "target": 78,
+            "name": "Michael Lumb",
+            "value": 200000,
+            "color": "#323232"
+        },
+        {
+            "source": 31,
+            "target": 78,
+            "name": "Sebastian Freis",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 32,
+            "target": 78,
+            "name": "Karim Guédé",
+            "value": 300000,
+            "color": "#323232"
+        },
+        {
+            "source": 33,
+            "target": 78,
+            "name": "Ivan Santini",
+            "value": 250000,
+            "color": "#323232"
+        },
+        {
+            "source": 34,
+            "target": 94,
+            "name": "Koen Casteels",
+            "value": 780000,
+            "color": "#323232"
+        },
+        {
+            "source": 78,
+            "target": 94,
+            "name": "Daniel Williams",
+            "value": 200000,
+            "color": "#323232"
+        },
+        {
+            "source": 35,
+            "target": 94,
+            "name": "Sven Schipplock",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 87,
+            "target": 94,
+            "name": "Fabian Johnson",
+            "value": 700000,
+            "color": "#323232"
+        },
+        {
+            "source": 36,
+            "target": 94,
+            "name": "Michael Gregoritsch",
+            "value": 200000,
+            "color": "#323232"
+        },
+        {
+            "source": 37,
+            "target": 94,
+            "name": "Knowledge Musona",
+            "value": 1500000,
+            "color": "#323232"
+        },
+        {
+            "source": 38,
+            "target": 94,
+            "name": "Sandro Wieser",
+            "value": 1000000,
+            "color": "#323232"
+        },
+        {
+            "source": 39,
+            "target": 94,
+            "name": "Stefan Thesker",
+            "value": 100000,
+            "color": "#323232"
+        },
+        {
+            "source": 87,
+            "target": 94,
+            "name": "Srdjan Lakic",
+            "value": 1000000,
+            "color": "#323232"
+        },
+        {
+            "source": 40,
+            "target": 104,
+            "name": "Alexander Esswein",
+            "value": 200000,
+            "color": "#323232"
+        },
+        {
+            "source": 41,
+            "target": 104,
+            "name": "Manuel Zeitz",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 45,
+            "target": 104,
+            "name": "Tomás Pekhart",
+            "value": 2000000,
+            "color": "#323232"
+        },
+        {
+            "source": 42,
+            "target": 104,
+            "name": "Wilson Kamavuaka",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 43,
+            "target": 104,
+            "name": "Philipp Klement",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 105,
+            "target": 104,
+            "name": "Markus Feulner",
+            "value": 150000,
+            "color": "#323232"
+        },
+        {
+            "source": 50,
+            "target": 104,
+            "name": "Patrick Rakovsky",
+            "value": 100000,
+            "color": "#323232"
+        },
+        {
+            "source": 90,
+            "target": 104,
+            "name": "Daniel Didavi",
+            "value": 300000,
+            "color": "#323232"
+        },
+        {
+            "source": 44,
+            "target": 104,
+            "name": "Timm Klose",
+            "value": 400000,
+            "color": "#323232"
+        },
+        {
+            "source": 45,
+            "target": 104,
+            "name": "Adam Hlousek",
+            "value": 1000000,
+            "color": "#323232"
+        },
+        {
+            "source": 46,
+            "target": 104,
+            "name": "Omar González",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 81,
+            "target": 104,
+            "name": "Hanno Balitsch",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 47,
+            "target": 53,
+            "name": "Florian Hartherz",
+            "value": 200000,
+            "color": "#323232"
+        },
+        {
+            "source": 48,
+            "target": 53,
+            "name": "Aleksandar Ignjovski",
+            "value": 500000,
+            "color": "#323232"
+        },
+        {
+            "source": 100,
+            "target": 53,
+            "name": "Mehmet Ekici",
+            "value": 5000000,
+            "color": "#323232"
+        },
+        {
+            "source": 104,
+            "target": 53,
+            "name": "Andreas Wolf",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 49,
+            "target": 53,
+            "name": "Tom Trybull",
+            "value": 200000,
+            "color": "#323232"
+        },
+        {
+            "source": 97,
+            "target": 53,
+            "name": "Lukas Schmitz",
+            "value": 1000000,
+            "color": "#323232"
+        },
+        {
+            "source": 50,
+            "target": 53,
+            "name": "Aleksandar Stevanovic",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 98,
+            "target": 53,
+            "name": "Sokratis",
+            "value": 600000,
+            "color": "#323232"
+        },
+        {
+            "source": 51,
+            "target": 53,
+            "name": "François Affolter",
+            "value": 500000,
+            "color": "#323232"
+        },
+        {
+            "source": 52,
+            "target": 53,
+            "name": "Zlatko Junuzovic",
+            "value": 800000,
+            "color": "#323232"
+        },
+        {
+            "source": 54,
+            "target": 87,
+            "name": "Thomas Hitzlsperger",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 55,
+            "target": 87,
+            "name": "Hrvoje Cale",
+            "value": 300000,
+            "color": "#323232"
+        },
+        {
+            "source": 56,
+            "target": 87,
+            "name": "Sotirios Kyrgiakos",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 57,
+            "target": 87,
+            "name": "Rasmus Jönsson",
+            "value": 3400000,
+            "color": "#323232"
+        },
+        {
+            "source": 58,
+            "target": 87,
+            "name": "Aleksandr Hleb",
+            "value": 700000,
+            "color": "#323232"
+        },
+        {
+            "source": 59,
+            "target": 87,
+            "name": "Mateusz Klich",
+            "value": 1500000,
+            "color": "#323232"
+        },
+        {
+            "source": 93,
+            "target": 87,
+            "name": "Patrick Ochs",
+            "value": 3000000,
+            "color": "#323232"
+        },
+        {
+            "source": 60,
+            "target": 87,
+            "name": "Hasan Salihamidzic",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 61,
+            "target": 87,
+            "name": "Srdjan Lakic",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 93,
+            "target": 87,
+            "name": "Marco Russ",
+            "value": 3000000,
+            "color": "#323232"
+        },
+        {
+            "source": 90,
+            "target": 87,
+            "name": "Christian Träsch",
+            "value": 9000000,
+            "color": "#323232"
+        },
+        {
+            "source": 62,
+            "target": 87,
+            "name": "Felipe",
+            "value": 2500000,
+            "color": "#323232"
+        },
+        {
+            "source": 63,
+            "target": 87,
+            "name": "Ibrahim Sissoko",
+            "value": 1500000,
+            "color": "#323232"
+        },
+        {
+            "source": 64,
+            "target": 87,
+            "name": "Giovanni Sio",
+            "value": 5800000,
+            "color": "#323232"
+        },
+        {
+            "source": 65,
+            "target": 87,
+            "name": "Vieirinha",
+            "value": 4000000,
+            "color": "#323232"
+        },
+        {
+            "source": 66,
+            "target": 87,
+            "name": "Ferhan Hasani",
+            "value": 400000,
+            "color": "#323232"
+        },
+        {
+            "source": 67,
+            "target": 87,
+            "name": "Slobodan Medojevic",
+            "value": 2000000,
+            "color": "#323232"
+        },
+        {
+            "source": 68,
+            "target": 87,
+            "name": "Petr Jirácek",
+            "value": 3500000,
+            "color": "#323232"
+        },
+        {
+            "source": 69,
+            "target": 87,
+            "name": "Ricardo Rodríguez",
+            "value": 7500000,
+            "color": "#323232"
+        },
+        {
+            "source": 72,
+            "target": 73,
+            "name": "Daniel Royer",
+            "value": 600000,
+            "color": "#323232"
+        },
+        {
+            "source": 70,
+            "target": 73,
+            "name": "Henning Hauger",
+            "value": 450000,
+            "color": "#323232"
+        },
+        {
+            "source": 71,
+            "target": 73,
+            "name": "Artur Sobiech",
+            "value": 1100000,
+            "color": "#323232"
+        },
+        {
+            "source": 72,
+            "target": 73,
+            "name": "Samuel Radlinger",
+            "value": 250000,
+            "color": "#323232"
+        },
+        {
+            "source": 97,
+            "target": 73,
+            "name": "Christian Pander",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 82,
+            "target": 73,
+            "name": "Mame Diouf",
+            "value": 1800000,
+            "color": "#323232"
+        },
+        {
+            "source": 74,
+            "target": 90,
+            "name": "Francisco Rodríguez",
+            "value": 1800000,
+            "color": "#323232"
+        },
+        {
+            "source": 83,
+            "target": 90,
+            "name": "William Kvist",
+            "value": 3500000,
+            "color": "#323232"
+        },
+        {
+            "source": 75,
+            "target": 90,
+            "name": "Ibrahima Traoré",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 105,
+            "target": 90,
+            "name": "Tamás Hajnal",
+            "value": 1000000,
+            "color": "#323232"
+        },
+        {
+            "source": 94,
+            "target": 90,
+            "name": "Vedad Ibisevic",
+            "value": 4500000,
+            "color": "#323232"
+        },
+        {
+            "source": 76,
+            "target": 90,
+            "name": "Gotoku Sakai",
+            "value": 500000,
+            "color": "#323232"
+        },
+        {
+            "source": 90,
+            "target": 81,
+            "name": "Bernd Leno",
+            "value": 500000,
+            "color": "#323232"
+        },
+        {
+            "source": 77,
+            "target": 81,
+            "name": "David Yelldell",
+            "value": 260000,
+            "color": "#323232"
+        },
+        {
+            "source": 92,
+            "target": 81,
+            "name": "André Schürrle",
+            "value": 8000000,
+            "color": "#323232"
+        },
+        {
+            "source": 78,
+            "target": 81,
+            "name": "Ömer Toprak",
+            "value": 3000000,
+            "color": "#323232"
+        },
+        {
+            "source": 79,
+            "target": 81,
+            "name": "Karim Bellarabi",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 80,
+            "target": 81,
+            "name": "Vedran Corluka",
+            "value": 550000,
+            "color": "#323232"
+        },
+        {
+            "source": 90,
+            "target": 81,
+            "name": "Bernd Leno",
+            "value": 7500000,
+            "color": "#323232"
+        },
+        {
+            "source": 82,
+            "target": 88,
+            "name": "Joshua King",
+            "value": 100000,
+            "color": "#323232"
+        },
+        {
+            "source": 83,
+            "target": 88,
+            "name": "Oscar Wendt",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 84,
+            "target": 88,
+            "name": "Matthias Zimmermann",
+            "value": 1000000,
+            "color": "#323232"
+        },
+        {
+            "source": 84,
+            "target": 88,
+            "name": "Lukas Rupp",
+            "value": 600000,
+            "color": "#323232"
+        },
+        {
+            "source": 85,
+            "target": 88,
+            "name": "Yuki Otsu",
+            "value": 400000,
+            "color": "#323232"
+        },
+        {
+            "source": 86,
+            "target": 88,
+            "name": "Mathew Leckie",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 87,
+            "target": 88,
+            "name": "Tolga Cigerci",
+            "value": 350000,
+            "color": "#323232"
+        },
+        {
+            "source": 89,
+            "target": 88,
+            "name": "Alexander Ring",
+            "value": 200000,
+            "color": "#323232"
+        },
+        {
+            "source": 89,
+            "target": 97,
+            "name": "Teemu Pukki",
+            "value": 1500000,
+            "color": "#323232"
+        },
+        {
+            "source": 90,
+            "target": 97,
+            "name": "Ciprian Marica",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 91,
+            "target": 97,
+            "name": "Marco Höger",
+            "value": 1500000,
+            "color": "#323232"
+        },
+        {
+            "source": 92,
+            "target": 97,
+            "name": "Christian Fuchs",
+            "value": 3800000,
+            "color": "#323232"
+        },
+        {
+            "source": 93,
+            "target": 97,
+            "name": "Ralf Fährmann",
+            "value": 0,
+            "color": "#323232"
+        },
+        {
+            "source": 94,
+            "target": 97,
+            "name": "Chinedu Obasi",
+            "value": 500000,
+            "color": "#323232"
+        },
+        {
+            "source": 95,
+            "target": 100,
+            "name": "Jérôme Boateng",
+            "value": 13500000,
+            "color": "#323232"
+        },
+        {
+            "source": 96,
+            "target": 100,
+            "name": "Takashi Usami",
+            "value": 300000,
+            "color": "#323232"
+        },
+        {
+            "source": 97,
+            "target": 100,
+            "name": "Manuel Neuer",
+            "value": 22000000,
+            "color": "#323232"
+        },
+        {
+            "source": 98,
+            "target": 100,
+            "name": "Rafinha",
+            "value": 5500000,
+            "color": "#323232"
+        },
+        {
+            "source": 99,
+            "target": 100,
+            "name": "Nils Petersen",
+            "value": 2800000,
+            "color": "#323232"
+        },
+        {
+            "source": 101,
+            "target": 105,
+            "name": "Mustafa Amini",
+            "value": 300000,
+            "color": "#323232"
+        },
+        {
+            "source": 102,
+            "target": 105,
+            "name": "Ivan Perisic",
+            "value": 5500000,
+            "color": "#323232"
+        },
+        {
+            "source": 103,
+            "target": 105,
+            "name": "Chris Löwe",
+            "value": 200000,
+            "color": "#323232"
+        },
+        {
+            "source": 104,
+            "target": 105,
+            "name": "Ilkay Gündogan",
+            "value": 5500000,
+            "color": "#323232"
+        }
+    ]
+}

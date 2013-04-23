@@ -137,7 +137,7 @@ chart.over = function(d, i) {
   var el = $(this);
   var style = $(this).attr("style");
   el.attr("style", style +"padding: 5px; width: "+chart.barWidth*6+"px; height: "+chart.barWidth*8+"px; z-index:999; margin-top: -"+parseInt((chart.barWidth*8/2)-chart.barWidth/2)+"px; margin-left: -"+parseInt((chart.barWidth*6/2)-chart.barWidth/2)+"px;" );
-  el.html("<b>Heim:</b></br>"+d.team_home+"</br></br><b>Gast:</b></br> "+d.team_guest+"</br></br><b>Ergebnis:</b></br>"+d.result+"</br></br><b>Spieltag:</b></br>"+d.day);
+  el.html("<span><b>Heim:</b></br>"+d.team_home+"</br></br><b>Gast:</b></br> "+d.team_guest+"</br></br><b>Ergebnis:</b></br>"+d.result+"</br></br><b>Spieltag:</b></br>"+d.day+"</span>");
 
 }
 

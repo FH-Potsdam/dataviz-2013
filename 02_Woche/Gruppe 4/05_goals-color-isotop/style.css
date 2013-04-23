@@ -50,6 +50,10 @@ h2 {
   color: #fff;
 }
 
+.game span{
+  pointer-events: none;
+}
+
 #legende {
   position: absolute;
   top: 435px;

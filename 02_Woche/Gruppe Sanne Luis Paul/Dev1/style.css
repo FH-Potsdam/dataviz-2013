@@ -1,0 +1,26 @@
+/* 
+    Document   : style
+    Created on : 01.04.2013, 23:33:57
+    Author     : marcus
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+		  	background-color: #434A51;
+		  	color: #fff;
+		  }
+			div.games {
+				border: 1px solid #ccc;
+				padding: 10px;
+				margin-bottom: 30px;
+			}
+
+			line {  
+        stroke: green;
+        stroke-width: 10px;
+      }

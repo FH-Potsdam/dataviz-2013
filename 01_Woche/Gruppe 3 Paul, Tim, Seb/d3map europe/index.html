@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+</style>
+<body> 
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+  var width  = 1000;
+  var height = 800; 
+
+  var vis = d3.select("body").append("svg")
+      .attr("width", width).attr("height", height)
+
+  // domain min, max manuell, better later automatically
+  var color = d3.scale.linear().domain([10,20000]).interpolate(d3.interpolateHsl).range(["hsl(250,100%,50%)", "hsl(180,100%,50%)"]);
+
+
+  d3.json("europe.geojson", function(json) {
+      // create a first guess for the projection
+      var center = d3.geo.centroid(json)
+      var scale  = 300;
+      var offset = [width/2, height/2];
+      var projection = d3.geo.mercator().scale(scale).center(center)
+          .translate(offset);
+
+      // create the path
+      var path = d3.geo.path().projection(projection);
+
+      // using the path determine the bounds of the current map and use 
+      // these to determine better values for the scale and translation
+      var bounds  = path.bounds(json);
+      var hscale  = scale*width  / (bounds[1][0] - bounds[0][0]);
+      var vscale  = scale*height / (bounds[1][1] - bounds[0][1]);
+      var scale   = (hscale < vscale) ? hscale : vscale;
+      var offset  = [width - (bounds[0][0] + bounds[1][0])/2,
+                        height - (bounds[0][1] + bounds[1][1])/2];
+
+      // new projection
+      projection = d3.geo.mercator().center(center)
+        .scale(scale).translate(offset);
+      path = path.projection(projection);
+
+      // add a rectangle to see the bound of the svg
+      vis.append("rect").attr('width', width).attr('height', height)
+        .style('stroke', 'black').style('fill', 'none');
+
+      // fill attribute is based on the length of the state name
+      vis.selectAll("path").data(json.features).enter().append("path")
+        .attr("d", path)
+        .attr('class', "district")
+        .attr('id', function(d){return d.properties.NAME.replace(/\s+/g, '')})
+        .style("stroke-width", "1")
+        .style("stroke", "black");
+
+      vis.selectAll("text")
+        .data(json.features)
+        .enter()
+        .append("svg:text")
+        .text(function(d){return d.properties.name;})
+        .attr("x", function(d){return path.centroid(d)[0];})
+        .attr("y", function(d){return  path.centroid(d)[1];})
+        .attr("text-anchor","middle")
+        .attr("fill","black")
+        .attr('font-family','Arial')
+        .attr('font-size','8pt');
+
+        // show data
+        d3.json("stat.json", function(data) {
+            update(data,"Türkei");
+        });
+
+  });
+
+
+
+  function update(data, term) { 
+      // look at the loaded districts
+
+      vis.selectAll("path")
+        // update colors based on data
+        .style('fill', function(d) {
+          var districtName = d.properties.NAME;
+          for(i=0;i<data.length;i++) {
+            if( data[i][0] == districtName) {
+              var col = data[i][1];
+              console.log(data[i][0] + ": " + data[i][1]);
+              return color(col);
+            }
+          }
+          return "white";
+        });
+  }
+
+ 
+</script>

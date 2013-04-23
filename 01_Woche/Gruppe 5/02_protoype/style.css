@@ -1,0 +1,91 @@
+body {
+	background-color:#e7e7e7;
+	font-family:'Dosis',sans-serif;
+	font-weight:300;
+	text-align:center;
+}
+
+article {
+	background-color:#fdfdfd;
+	box-shadow:0 0 10px 0 #a2a2a2;
+	padding:20px 80px;
+	margin:20px 50px;
+}
+
+h1,h2,h3,p {
+	margin:10px 0;
+	padding:0;
+	text-align:left;
+}
+
+/* No style rules here yet */
+h1 {
+	color:#000;
+	font-size:3em;
+        font-weight:300;
+        text-transform: uppercase;
+        text-align: center;
+}
+
+h2 {
+	color:#cecece;
+	font-size:2em;
+        text-decoration: none;
+        font-weight:200;
+        text-align: center;
+}
+
+.cite {
+	font-size:1.5em;
+	font-weight:100;
+	color:#4b4b4b;
+}
+
+.paper {
+    height:500px;
+}
+
+p#interface {
+    text-align: center;
+}
+
+a.button {
+    padding:10px;
+    text-decoration: none;
+    border:1px solid #cecece;
+}
+
+span#yearIndex {
+    padding:5px;
+}
+
+
+.runScript {
+    border:1px solid #999999;
+    padding:5px;
+    color:#000;
+    text-decoration: none;
+}
+
+circle.axis {
+    stroke:#000000;
+    stroke-opacity:1.0;
+    fill-opacity:0.0;
+    fill:#ffffff;
+}
+
+path.s {
+    fill:#ED7C52;
+}
+
+path.n {
+    fill:#B1C5C3;
+}
+
+path.o {
+    fill:#86B9D8;
+}
+
+path.w {
+    fill:#B2949C;
+}

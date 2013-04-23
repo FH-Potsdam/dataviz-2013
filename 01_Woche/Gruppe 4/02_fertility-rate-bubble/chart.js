@@ -6,13 +6,13 @@ jQuery(document).ready(function() {
       rows: data,
       autostep: false,
       w: 1000,
-      h: 800,
+      h: 500,
       r: 200,
       cur: 1980,
       max: 2010
     });
   });
-  
+
 });
 
 chart.setup = function(options) {
@@ -27,6 +27,14 @@ chart.setup = function(options) {
   var color = chart.color = d3.scale.category20c();
       //.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#98abc5", "#8a89a6"]);
   
+  chart.yearTitle = d3.select("body")
+      .append("h2");
+  
+  chart.btn = d3.select("body")
+      .append("button")
+      .text("➜")
+      .on("click", chart.step);
+      
   var bubble = chart.bubble = d3.layout.pack()
       .sort(null)
       .size([w,h])
@@ -37,44 +45,62 @@ chart.setup = function(options) {
       .attr("width" , w)
       .attr("height" , h)
       .attr("class", "bubble");
-    
-  chart.yearTitle = d3.select("body")
-      .append("h2");
-      
-  chart.population = d3.select("body")
-      .append("span")
-      .attr("class", "population");
-      
-  chart.btn = d3.select("body")
-      .append("button")
-      .text("➜")
-      .on("click", chart.step);
-  
+
   chart.draw();
 }
 
 chart.draw = function() {
   if(chart.current <= chart.max) {
+    chart.yearTitle.text(chart.current);
+    
     var chartRow = chart.chartRow = chart.data;
     
     var node = chart.node = chart.svg.selectAll(".node")
-        .data(chart.bubble.nodes(chart.classes(chartRow, chart.current)))
-      .enter().append("g")
-        .attr("class", "node")
-        .attr("transform", function(d) { return "translate("+d.x+","+d.y+")"; });
-
+        .data(chart.bubble.nodes(chart.classes(chartRow, chart.current)));
     
-    node.append("circle")
-        .attr("r", function(d) { return d.r })
-        .style("fill", function(d, i) { return chart.color(i) })
-        .on("mouseover", chart.hover);
+    node.transition()
+        .duration(1000)
+        .attr("transform", function(d) { return "translate("+d.x+","+d.y+")"; });
         
-    node.append("text")
-        .attr("dy", ".3em")
-        .style("text-anchor", "middle")
+    node.select("circle").transition()
+        .duration(1000)
+        .attr("r", function(d) { return d.r });
+    
+        
+    node.select("text").transition()
+        .duration(1000)
         .text(function(d) { return d.value });
-    //chart.yearTitle.text(year);
+    
+    node.enter()
+      .append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) { return "translate("+d.x+","+d.y+")"; })
+      .append("circle")
+        .attr("id", function(d, i) { return "bubble"+i; })
+        .attr("r", function(d) { return d.r })
+        .on("mouseover", chart.over)
+        .on("mouseout", chart.out)
+        .style("fill", function(d, i) { return chart.color(d.r) });
+        
+      node.append("text")
+        .style("display", "none")
+        .attr("id", function(d, i) { return "text"+i; })
+        .text(function(d) { return d.value })
+        .on("mouseover", chart.over)
+        .on("mouseout", chart.out);
+    
+    d3.select("#bubble0").attr("style", "fill: transparent; stroke: #000");
+    //d3.select("#text0").attr("style", "zindex: fixed; top: 200px; left: 10px;");
   }
+}
+
+chart.over = function(d, i) {
+  //alert("#"+i);
+  d3.select("#text"+i).style("display", "inline");
+}
+
+chart.out = function(d, i) {
+  d3.select("#text"+i).style("display", "none");
 }
 
 chart.step = function() {
@@ -86,8 +112,6 @@ chart.classes = function(root, year) {
   var classes = [];
   
   function recurse(name, node) {
-
-
     if (node[year]) node[year].forEach(function(child) { recurse(node, child); });
     else classes.push({value: node});
   }

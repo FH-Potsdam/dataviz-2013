@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"i/>
+<title>Wer regiert die Bundesliga | Paul, Sebastian, Tim</title>
+<script type="text/javascript" src="d3.v3.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<style>
+	body { background: #f6fcf2; padding: 0px; margin: 0px;
+		font-family: 'Noto Sans', sans-serif; 
+		font-weight: 400;
+		font-size: 0.6em;
+	}
+
+	.label {
+	  font-size: 11px;
+	  text-transform: uppercase;
+	  display: none;
+		font-weight: bold;	  
+	}
+
+	div.tooltip {   
+	  position: absolute;           
+	  width: 130px; 
+	  padding: 8px;             
+	  font-size: 14px;        
+	  background: white;   
+	  border: 0px;      
+	  pointer-events: none; 
+	  color: #333;        
+	}
+
+	.info { position: absolute; top: 30px; left: 30px;}
+	h2 { font-size: 26px; margin: 0px; margin-bottom: 10px;font-style: italic; line-height: 1;}
+	h3 { color: #444; font-size: 18px; margin: 0px; font-weight: normal; display: none;}
+	h4 { margin: 0px; font-weight: bold; color: #111; font-size: 15px; }
+	.txt { color: #888;display: block; margin: 4px 0px 6px 0px; }
+	button {
+		padding: 0 25px;
+		margin: 0;
+		background-color: #dce2db;
+		color: #111;
+		/*border: 1px solid #84c49e;*/
+		border:0px;
+		-webkit-border-radius: 2px;
+		border-radius: 2px;
+		cursor: default;
+		font-weight: bold;
+		text-align: center;
+		white-space: nowrap;
+		height: 30px;
+		min-width: 70px;
+		outline: 0;
+		padding: 0 8px;
+		cursor: default;
+		font-size: 11px;
+		font-weight: bold;
+		text-align: center;
+		white-space: nowrap;
+		line-height: 26px;
+		margin: 20px 0px; 
+	}
+
+</style>
+
+
+<script>
+
+/* =======================================================
+ * Checkbox Event
+ * =======================================================
+ */
+$(document).ready(function() {
+	$('#text').click (function (){
+		$("text.label").toggle();
+	});
+});
+
+
+/* =======================================================
+ * Number Helper: 100000 -> 100,000 €
+ * =======================================================
+ */
+
+function toEU(number)
+{
+	var numberStr = parseFloat(number).toFixed(2).toString();
+	var numFormatDec = numberStr.slice(-2); /*decimal 00*/
+	numberStr = numberStr.substring(0, numberStr.length-3); /*cut last 3 strings*/
+	var numFormat = new Array;
+	while (numberStr.length > 3) {
+		numFormat.unshift(numberStr.slice(-3));
+		numberStr = numberStr.substring(0, numberStr.length-3);
+	}
+	numFormat.unshift(numberStr);
+	return numFormat.join('.')+" €"; /*format 000.000.000,00 */
+}
+
+
+/* =======================================================
+ * D3 Draw
+ * =======================================================
+ */
+
+
+function draw(data) 
+{ 
+
+	var width = window.innerWidth;
+	var height = window.innerHeight;
+
+	var nodes = d3.range(200).map(function() { return {radius: Math.random() * 12 + 4}; });
+
+	var svg = d3.select("body")
+				.append("svg")
+				.attr("id", "canvas")
+				.attr("width", width)
+				.attr("height", height);
+
+
+	var force = d3.layout.force()
+				.charge(-600)
+				.linkDistance(110)
+				.gravity(0.25)
+				.friction(0.9)
+				.size([width-100, height-100])
+				.nodes(data.nodes)
+				.links(data.links)
+				.start();
+
+
+
+
+	var link = svg.selectAll(".link")
+				.data(data.links)
+				.enter().append("line")
+					.attr("stroke-width", function(d) { if(d.value==0) { return 1; } else return Math.sqrt(d.value/130000); })
+					.attr("stroke", function(d) { return d.color; })
+					.attr("id", "link")
+					.attr("class",  function(d,i) { return "links link_"+i; } )	
+					.style("opacity", 0.8)			 
+					.on("mouseover", function(d,i) {      
+			            div.transition()        
+			                .duration(0)      
+			                .style("opacity", .9);    
+			            div .html(d.name + " für <br>" + toEU(d.value)  )  
+			                .style("left", (d3.event.pageX) + "px")     
+			                .style("top", (d3.event.pageY - 28) + "px");    
+			            })                  
+			        .on("mouseout", function(d) {       
+			            div.transition()        
+			                .duration(0)      
+			                .style("opacity", 0);   
+			        })
+			        .on("click", function(d) {
+			        	$('.links').attr('stroke','#323232');
+			        	d3.select(this).attr("stroke", function(d) { return d.color; });    	
+			        }); 
+
+	 
+	var node = svg.selectAll(".node")
+				.data(data.nodes)
+				.enter()
+				.append("circle")
+					.attr("class", "node")
+					.attr("r", function(d) { if(d.highestIncoming == 0) { return 5; } else return Math.sqrt(d.highestIncoming/5000); }) 
+					.attr("fill", function(d) { return d.color; } ) 
+					.style("opacity", 1)	
+					 .on("mouseover", function(d) {      
+			            _div.transition()        
+			                .duration(20)       
+			                .style("opacity", 0.95);       
+			            _div .html("<h4>"+d.name+"</h4><br>Max. Einkaufswert " + toEU(d.highestIncoming) + "<br>Max. Verkaufswert " + toEU(d.highestOutgoing))   
+			                .style("left", (d3.event.pageX + 40) + "px")     
+			                .style("top", (d3.event.pageY - 30) + "px");    
+			            })                  
+			        .on("mouseout", function(d) {  
+			        	d3.selectAll(".node").attr("fill", function(d) { return d.color; } )  
+			            _div.transition()        
+			              	.duration(0)      
+			              	.style("opacity", 0); 
+			        })
+			         .on("click", function(d) {
+			         	$('.links').attr('stroke','#323232');  
+			         	d3.selectAll(".node").attr("fill", '#323232' );  
+			            d3.select(this).transition()        
+			                .duration(10)  
+			                .attr("fill", function(d) { return d.color; } )    
+			                .style("opacity", 1);  
+
+		                	for(var i=0; i<data.links.length; i++){
+			                	if(data.links[i].source.name === d.name){
+			                		$('.link_'+i).attr('stroke',function(d) { return  data.links[i].source.color; });
+			                	}
+			                	if(data.links[i].target.name === d.name){
+			                		$('.link_'+i).attr('stroke',function(d) { return  data.links[i].target.color; });
+								}
+			                }
+
+			         });                  
+
+
+	var texts = svg.selectAll("text.label")
+	            .data(data.nodes)
+	            .enter().append("text")
+	            .attr("class", "label")
+	            .attr("fill", "black")
+	            .text(function(d) {  return d.name;  })
+	            .attr("x", function(d) { return d.x + 100; })
+				.attr("y", function(d) { return d.y + 10; }); 
+
+
+
+
+	var div = d3.select("body").append("div")   
+			    .attr("class", "tooltip")               
+			    .style("opacity", 0);
+	var _div = d3.select("body").append("div")   
+			    .attr("class", "tooltip")               
+			    .style("opacity", 0);
+
+
+	force.on("tick", function() {
+
+		var q = d3.geom.quadtree(nodes),
+	      i = 0,
+	      n = nodes.length;
+
+		  while (++i < n) {
+		    q.visit(collide(nodes[i]));
+		  }
+
+		link.attr("x1", function(d) { return d.source.x; })
+			.attr("y1", function(d) { return d.source.y; })
+			.attr("x2", function(d) { return d.target.x; })
+			.attr("y2", function(d) { return d.target.y; });
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) { return d.y; });
+
+		texts.attr("x", function(d) { return d.x+8; })
+			.attr("y", function(d) { return d.y; });
+		});
+
+	function collide(node) {
+	  var r = node.radius + 16,
+	      nx1 = node.x - r,
+	      nx2 = node.x + r,
+	      ny1 = node.y - r,
+	      ny2 = node.y + r;
+	  return function(quad, x1, y1, x2, y2) {
+	    if (quad.point && (quad.point !== node)) {
+	      var x = node.x - quad.point.x,
+	          y = node.y - quad.point.y,
+	          l = Math.sqrt(x * x + y * y),
+	          r = node.radius + quad.point.radius;
+	      if (l < r) {
+	        l = (l - r) / l * .5;
+	        node.x -= x *= l;
+	        node.y -= y *= l;
+	        quad.point.x += x;
+	        quad.point.y += y;
+	      }
+	    }
+	    return x1 > nx2
+	        || x2 < nx1
+	        || y1 > ny2
+	        || y2 < ny1;
+	  };
+	}
+
+}
+
+</script>
+</head>
+<body>
+	<script>
+		d3.json("data/parsedVisReady_neuefarben.json", draw);
+	</script>
+
+
+	<div class="info">
+		<h2>Wer regiert die Bundesliga?</h2>
+		<h3>Der schlaue Radgeber für die Kneipe</h3>
+		<span class="txt">	<span class="txt">Einkäufe / Verkäufe von Spielern in der 1. Bundesliga.
+			<br>Quelle: Transfermarkt, 1.Bundesliga, Saison 2011/2012</span>
+		<button type="button" id="text">Zeige / Verstecke Text</button>
+	</div>
+</body>
+</html>

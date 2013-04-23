@@ -1,0 +1,99 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+root { 
+    display: block;
+}
+
+.axis path{
+	fill: none;
+	stroke: none;
+}
+
+.axis line {
+	fill: none;
+	stroke: #F0F0F0;
+	shape-rendering: crispEdges;
+}
+
+.axis text {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	font-weight: 400;
+	fill: #999999;
+}
+
+.labels {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 9px;
+	font-weight: 400;
+	fill: #999999;
+}
+
+.legend {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	font-weight: 400;
+	fill: #999999;
+}
+
+.canvas {
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 500px;
+	padding-bottom: 50px;
+	
+	
+}
+
+.grid path {
+	fill: none;
+	stroke: none;
+}
+
+.grid line {
+	fill: none;
+	stroke: #F0F0F0;
+	shape-rendering: crispEdges;
+}
+
+.grid text {
+	display: none;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+	color: #CD5C5C;
+	padding-top: 20px;
+	padding-left: 50px;
+}
+
+h2 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #808080;
+	padding-left: 50px;
+	padding-bottom: 0px;
+	line-height: 0.2em;
+	
+}
+
+h3 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	font-weight: 400;
+	color: #D3D3D3;
+	padding-left: 50px;
+	padding-bottom: 30px;
+}
+
+#legendBox {
+	fill: #F0F0F0;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+}
+

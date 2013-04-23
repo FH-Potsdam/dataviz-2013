@@ -1,0 +1,152 @@
+/* 
+    Document   : style
+    Created on : 01.04.2013, 23:33:57
+    Author     : marcus
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body{
+  background: #eee;
+}
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Noticia Text', serif;
+  font-size: 11px;
+}
+root { 
+    display: block;
+}
+
+h1 {
+  margin: 80px 80px 0 80px;
+  font-size: 30px;
+  color: #333;
+}
+
+h2 {
+  margin: 10px 80px 0 80px;
+  font-size: 18px;
+  font-weight: normal;
+  color: #555;
+}
+
+#wrapper {
+  margin: 0 auto;
+}
+
+#container {
+  height: 355px;
+  z-index: 999;
+}
+
+.games {
+  padding: 80px;
+}
+
+.game {
+  margin: 0 5px 5px 0;
+  color: #fff;
+}
+
+#legende {
+  position: absolute;
+  top: 435px;
+  left: 80px;
+}
+
+.legende {
+  display: none;
+}
+
+.block4 {
+  text-align: center;
+  float: left;
+  display: block;
+  width: 86px;
+  margin: 0 12px 0 0;
+}
+
+.block3 {
+  text-align: center;
+  float: left;
+  display: block;
+  width: 64px;
+  margin: 0 12px 0 0;
+}
+
+.block2 {
+  text-align: center;
+  float: left;
+  display: block;
+  width: 42px;
+  margin: 0 12px 0 0;
+}
+
+.block1 {
+  text-align: center;
+  float: left;
+  display: block;
+  width: 20px;
+  margin: 0 12px 0 0;
+}
+
+#filters {
+  margin: 0 80px;
+}
+
+#filters a{
+  color: #333;
+}
+
+#filters a:hover{
+  color: #888;
+}
+
+a {
+  padding: 5px 10px;
+}
+
+.axes {
+  height: 100px;
+}
+
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  overflow: hidden;
+  -webkit-transition-property: -webkit-transform, opacity, height, width, margin, font-size, color;
+     -moz-transition-property:    -moz-transform, opacity, height, width, margin, font-size, color;
+      -ms-transition-property:     -ms-transform, opacity, height, width, margin, font-size, color;
+       -o-transition-property:      -o-transform, opacity, height, width, margin, font-size, color;
+          transition-property:         transform, opacity, height, width, margin, font-size, color;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}

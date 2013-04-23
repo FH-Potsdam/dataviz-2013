@@ -1,0 +1,25 @@
+/* 
+    Document   : style
+    Created on : 01.04.2013, 23:33:57
+    Author     : marcus
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+root { 
+    display: block;
+}
+
+.games {
+  float: left;
+  width: 200px;
+  padding: 0px;
+}
+
+.table {
+  margin: 10px 0;
+}

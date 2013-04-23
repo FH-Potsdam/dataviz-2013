@@ -1,0 +1,27 @@
+/* 
+    Document   : style
+    Created on : 01.04.2013, 23:33:57
+    Author     : marcus
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: Helvetica;
+  font-size: 11px;
+}
+root { 
+    display: block;
+}
+
+#tablecontainer {
+  float: left;
+}
+
+#description {
+  float: left;
+  width: 400px;
+  height: 100px;
+}

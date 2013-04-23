@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+    <title>D3 - Facebook - Prephase</title>
+    <script type="text/javascript" src="javascript/d3.min.js"></script>
+    <script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
+  </head>
+  <body>
+    <!-- Data can be aquired from https://morning-citadel-3664.herokuapp.com/ -->
+    <script type="text/javascript">
+
+      var friends;
+      var mutualfriends;
+      var connections;
+
+      $.getJSON("friends.json", function(json) {
+        friends = json;
+        console.log("friends loaded");
+        $.getJSON("connections.json", function(json) {
+          connections = json;
+          console.log("connections loaded");
+          $.getJSON("mutualfriends.json", function(json) {
+            mutualfriends = json;
+            console.log("mutuals loaded");
+            startDraw();
+          }).fail(function() { console.log( "error" ); });
+        });
+      });
+
+      function startDraw(){
+        var w = 1000;
+        var h = 1000;
+ 
+        var svg = d3.select("#circle")
+                .append('svg:svg')
+                .attr('width', w)
+                .attr('height', h);
+
+      }
+
+    </script>
+    <div id="circle"></div>
+  </body>
+</html>

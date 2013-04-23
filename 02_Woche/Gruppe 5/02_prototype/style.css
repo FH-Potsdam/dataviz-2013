@@ -1,0 +1,91 @@
+body {
+	background-color:#e7e7e7;
+    font-family: 'Noto Serif', serif;
+	font-weight:400;
+	text-align:center;
+    font-size:14px;
+}
+
+article {
+	padding:20px 80px;
+	margin:20px 50px;
+}
+
+h1, h2, h3, p {
+    padding:10px 0 10px 0;
+	margin:10px 0 10px 0;
+	text-align:left;
+}
+
+/* No style rules here yet */
+h1 {
+	color:#000;
+	font-size:1.8em;
+    font-weight: 400;
+    font-style: italic;
+    border-bottom: 1px dotted #3E7A78;
+    }
+
+h2 {
+	color:#cecece;
+	font-size:2em;
+        font-weight:400;
+        text-align: center;
+        font-style: italic;}
+
+.cite {
+	font-size:1.5em;
+	color:#4b4b4b;
+}
+
+.paper {
+    height:500px;
+}
+
+p#interface {
+    text-align: center;
+}
+
+a.button {
+    padding:10px;
+    text-decoration: none;
+    border:1px solid #cecece;
+}
+
+span#yearIndex {
+    padding:5px;
+}
+
+
+.runScript {
+    width:300px;
+    height:600px;
+    border:1px solid #999999;
+    padding:5px;
+    color:#000;
+    font-size: 3em;
+    text-decoration: none;
+}
+
+circle.axis {
+    stroke:#000000;
+    stroke-opacity:1.0;
+    fill-opacity:0.0;
+    fill:#ffffff;
+}
+
+path.s {
+    fill:#ED7C52;
+}
+
+path.n {
+    fill:#B1C5C3;
+}
+
+path.o {
+    fill:#86B9D8;
+}
+
+path.w {
+    fill:#B2949C;
+}

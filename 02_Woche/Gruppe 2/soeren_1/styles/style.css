@@ -1,0 +1,86 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+#top{
+	
+	margin:auto;
+	border-bottom:1px solid #9da2a5;
+
+}
+
+root { 
+    display: block;
+}
+
+.axis path{
+	fill: none;
+	stroke: none;
+}
+
+.axis line {
+	fill: none;
+	stroke: lightgrey;
+	shape-rendering: crispEdges;
+}
+
+.axis text {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	font-weight: 400;
+	fill: #808080;
+}
+
+.canvas {
+
+	width:1100px;
+	margin:auto;
+	padding-top:40px ;
+	padding-left:50px ;
+}
+
+.grid path {
+	fill: none;
+	stroke: none;
+}
+
+.grid line {
+	fill: none;
+	stroke: lightgrey;
+	shape-rendering: crispEdges;
+}
+
+.grid text {
+	display: none;
+}
+
+
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 26px;
+	font-weight: 700;
+	color:#888888;
+	padding-top: 20px;
+	padding-left: 80px;
+}
+
+h2 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	color:#888888;
+	padding-left: 80px;
+	padding-bottom: 0px;
+	line-height: 0.2em;
+	
+}
+
+h3 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	font-weight: 400;
+	color: #D3D3D3;
+	padding-left: 80px;
+	padding-bottom: 20px;
+}
+
+

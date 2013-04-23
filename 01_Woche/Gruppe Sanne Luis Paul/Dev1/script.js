@@ -1,6 +1,9 @@
 $(function () {
 	var mySeries = new Array ();
 	var mySeries2 = new Array ();
+	
+	var mySeries3 = new Array ();
+	var mySeries4 = new Array ();
 	/*var mySeriesJanuar = [];
 	var mySeriesFebruar = [];
 	var mySeriesMaerz = [];
@@ -30,7 +33,7 @@ $(function () {
 				aktSeries = [];
 				aktYear = val[0];
 			}
-			aktSeries.push(val[4]/10000);
+			aktSeries.push(val[4]/2000);
 		}
 		//console.log(val);
 		//if (val[0] > anfangsdatum) mySeries.push(val[4]);
@@ -43,10 +46,52 @@ $(function () {
 		if (val[0] > anfangsdatum && val[1] == "M‰rz") mySeriesMaerz.push(val[4]);*/
 	  });
 	  
-	  console.log(mySeries2);
-	  doHighchart();
-	});
+	  //console.log(mySeries2);
+	  
+	  $.getJSON('data/berlin-1984-2012.rows.json', function(data) {
+		  console.log(data);
+		  
+		  var marker = {};
+		  marker["symbol"] = "circle";
+		  marker["radius"] = "2";
+					
+		  var aktYear = "";
+		  var aktSeries = [];
+		  $.each(data, function(key, val) {
+			val[1]+="";
+			val[1] = val[1].substring(0, 4);
+			if (val[1]>=anfangsdatum) {
+				if (aktYear == "") aktYear = val[1];
+				if (aktYear != val[1]) {
+					var obj = {};
+					
+					obj["type"] = 'spline';
+					obj["name"] = aktYear;
+					obj["data"] = aktSeries;
+					obj["lineWidth"] = 1;
+					obj["marker"] = marker;
+ 
+					mySeries2.push(obj);
+					
+					mySeries3[aktYear] = aktSeries;
+					//mySeries.splice(aktYear,0,aktSeries);
+					aktSeries = [];
+					aktYear = val[1];
+				}
+				aktSeries.push(val[6]);
+			}
+		  });
 		
+		  doHighchart();
+	  });/*.fail(function( jqxhr, textStatus, error ) {
+		  var err = textStatus + ', ' + error;
+		  console.log( "Request Failed: " + err);
+		});*/
+
+
+     });	
+      
+		  
 	function doHighchart() {
 		$('#container').highcharts({
 			chart: {
@@ -56,7 +101,7 @@ $(function () {
 				text: 'Zeugungen 1985 bis 2011'
 			},
 			subtitle: {
-				text: 'Untertitel'
+				text: ''
 			},
 			xAxis: {
 				//type: 'datetime',
@@ -77,7 +122,7 @@ $(function () {
 				},
 				labels: {
 					formatter: function() {
-						return this.value +' Grad';
+						return this.value+' Grad';
 					}
 				}
 			},

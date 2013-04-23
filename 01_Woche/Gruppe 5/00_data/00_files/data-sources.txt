@@ -1,0 +1,28 @@
+/*
+  1950-2011.format.json
+   
+  Geburten, Sterbefälle und Überschuss in Deutschland 1950-2011
+  Anzahl
+  Quelle: https://www.destatis.de/DE/ZahlenFakten/Indikatoren/LangeReihen/Bevoelkerung/lrbev04.html?cms_gtp=151956_list%253D1&https=1
+  Kein Wert: null
+*/
+
+
+
+/* 
+  1978-2011.format.json
+  
+  Bevölkerungsstand in Deutschland nach Bundesland 1978 - 2011
+  Anzahl der Einwohner
+  Quelle: https://www.destatis.de/DE/ZahlenFakten/GesellschaftStaat/Bevoelkerung/Bevoelkerungsstand/Bevoelkerungsstand.html
+  Kein Wert: -1
+*/
+
+/*
+  2009-2060
+ 
+  Bevölkerungsentwicklung in Deutschland nach Bundesland
+  Anzahl der Einwohner in Tausend
+  Quelle: https://www.destatis.de/DE/ZahlenFakten/GesellschaftStaat/Bevoelkerung/Bevoelkerungsvorausberechnung/Bevoelkerungsvorausberechnung.html 
+*/
+

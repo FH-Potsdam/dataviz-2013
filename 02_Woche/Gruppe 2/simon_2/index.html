@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Der Effizienzvergleich - Eine andere Liga</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="../../../lib/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="../../../lib/d3.v3.js"></script>
+	</head>
+	<body>
+		
+		<h1>DER EFFIZIENZVERGLEICH &ndash; EINE ANDERE LIGA</h1>
+		<h2>WELCHES TEAM DER 1. BUNDESLIGA IST DAS BESTE GEMESSEN AN SEINEN AUSGABEN FÜR SPIELER?</h2><br>
+		<h3>INFORMATIONSVISUALISIERUNG VON SÖREN KNÖLL & SIMON MARTIN</h3>
+		
+        <script type="text/javascript">
+
+
+            d3.csv("data/effizienz_bundesliga.csv", function(data) {
+                    console.log(data);
+
+                    var dataSet = data;
+                    var width = 600;
+                    var height = 650;
+					
+                    var widthScale1 = d3.scale.linear()
+                            .domain([0, d3.max(data, function(d){ return parseInt(d.lizenzspieleretat); })])
+                            .range([0,width]);
+
+                    var widthScale2 = d3.scale.linear()
+                        	.domain([0, d3.max(data, function(d){ return parseInt(d.punkte); })])
+                        	.range([0,width]);
+					
+					var widthScale3 = d3.scale.linear()
+							.domain([d3.max(data, function(d){ return parseInt(d.lizenzspieleretat) / parseInt(d.punkte); }), 0])
+							.range([0,width]);					
+					
+					var formatMillion = d3.format("2,d");
+						
+					var xAxis = d3.svg.axis()
+							.scale(widthScale1)
+							.orient("top")
+							.ticks(4)
+							.tickFormat(formatMillion);
+					
+					var xGrid = d3.svg.axis()
+							.scale(widthScale1)
+							.orient("bottom")
+							.ticks(4)
+							.tickSize(height,0,0);
+						
+                    var canvas = d3.select("body") //Create SVG element
+                            .append("svg")
+                            .attr("width", width)
+                            .attr("height",height)
+							.attr("class", "canvas");
+							
+					canvas.append("g")
+							.attr("class", "grid")
+							.call(xGrid)
+							.attr("transform", "translate(30,-30)");
+
+                    var group_1 = canvas.append("g").attr("transform", "translate(30,0)");
+                    var group_2 = canvas.append("g").attr("transform", "translate(30,0)");
+					var group_3 = canvas.append("g").attr("transform", "translate(30,0)");
+					var labels_group = canvas.append("g").attr("transform", "translate(32,0)");
+					var logo_group = canvas.append("g").attr("transform", "translate(0,-1)");
+					var legend_group = canvas.append("g").attr("class", "legend");
+					
+                    var bars1 = group_1.selectAll("rect") //Create bars: lizenzspieleretat
+                            .data(dataSet)
+                            .enter()
+                            .append("rect")
+                            .attr("height", 7)
+                            .attr("y", function(d, i) { return i*35; })
+                            .attr("fill", "rgb(90, 180, 172)")
+							.attr("opacity", 0.8)
+							.transition()
+							.duration(500)
+							.ease("cubic-in-out")
+                            .attr("width", function(d) { return widthScale1(d.lizenzspieleretat); });
+                            
+                    var bars2 = group_2.selectAll("rect")  //Create bars: punkte
+                        	.data(dataSet)
+                        	.enter()
+                        	.append("rect")
+							.attr("height", 7)
+                        	.attr("y", function(d, i) { return i*35 + 8; })
+                        	.attr("fill", "rgb(153, 153, 153)")
+							.attr("opacity", 0.8)
+							.transition()
+							.duration(500)
+							.ease("cubic-in-out")
+							.delay(500)
+                        	.attr("width", function(d) { return widthScale2(d.punkte); });
+		                    
+					var bars3 = group_3.selectAll("rect")  //Create bars: punkte
+		                   	.data(dataSet)
+		                    .enter()
+		                    .append("rect")
+							.attr("height", 7)
+		                    .attr("y", function(d, i) { return i*35 + 16; })
+		                    .attr("fill", "rgb(255, 50, 0)")
+							.attr("opacity", 0.8)
+							.transition()
+							.duration(500)
+							.ease("cubic-in-out")
+							.delay(1000)
+		                    .attr("width", function(d) { return widthScale3(d.lizenzspieleretat / d.punkte); });
+							
+				/*	var pointLabels = labels_group.selectAll("text") //Create Labels Punkte neben bars2
+			                .data(dataSet)
+			                .enter()
+							.append("text")
+							.text(function(d){ return (d.punkte); })
+							.attr("y", function(d, i) { return i*35 + 15; })
+							.attr("x", function(d) { return widthScale2(d.punkte); })
+							.attr("class", "labels")
+							.attr("opacity", 0.0); 
+							
+					pointLabels
+							.transition()
+							.duration(500)
+							.ease("cubic-in-out")
+							.delay(1000)
+							.attr("opacity", 1.0);	*/	
+							
+					var logos = logo_group.selectAll("image")
+							.data(dataSet)
+							.enter()
+							.append("image")
+							.attr("xlink:href", function(d,i) { return "logos/"+d.platz+".png" })
+							.attr("height", 25)
+              			  	.attr("width", 25)
+							.attr("y", function(d, i) { return i*35; });
+							
+					legend_group.append("rect")
+					        .attr("width", 180)
+					        .attr("height", 60)
+							.attr("id", "legendBox")
+							.attr("x", width)
+							.attr("transform", "translate(140,-50)");
+							
+					var color = d3.scale.ordinal()
+						    .range(["rgb(90, 180, 172)", "rgb(153, 153, 153)", "rgb(255, 50, 0)"]);
+
+					var legend = legend_group.selectAll(".legend")
+						    .data(['Lizenzspieleretat in EUR', 'Punkte', 'Effizienz'])
+						    .enter().append("g")
+						    .attr("transform", function(d, i) { return "translate(130," + i * 11 + ")"; });
+							
+					legend.append("rect")
+						    .attr("x", width - 18)
+						    .attr("width", 10)
+						    .attr("height", 10)
+						    .style("fill", color)
+							.attr("transform", "translate(50,-35)");
+
+					legend.append("text")
+						    .attr("x", width - 5)
+						    .attr("y", 5)
+						    .attr("dy", ".35em")
+						    .style("text-anchor", "begin")
+						    .text(function(d) { return d; })
+							.attr("transform", "translate(50,-35)");
+							
+					canvas.append("g")
+							.attr("class", "axis")
+							.call(xAxis)
+							.attr("transform", "translate(30,-30)");
+							
+					
+							
+							
+									
+            });
+
+        </script>
+	</body>
+</html>

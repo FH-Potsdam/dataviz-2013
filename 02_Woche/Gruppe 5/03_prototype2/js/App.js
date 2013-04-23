@@ -201,7 +201,18 @@ chart.setup = function(options) {
     for(var i = 0; i < chart.teams.length; i++) {  
         console.log(chart.teams[i]);
         // if(chart.teams[i].hasOwnProperty('scores')) console.log('wh00p'); // <- IT SEEMS TO HAVE!
+        // console.log(chart.teams[i].scores[i]);
         
+        for(var dudeldu in chart.teams[i]) {
+            console.log(dudeldu);
+            // WTF?! :(
+        }
+        
+        /*
+        $(jQuery.parseJSON(JSON.stringify(chart.teams[i]))).each(function() {  
+            console.log(this.scores);
+        });
+        */
     }
     
     /*

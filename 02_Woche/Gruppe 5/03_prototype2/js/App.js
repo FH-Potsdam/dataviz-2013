@@ -112,12 +112,7 @@ chart.addTeam = function(teamName, teamColor, teamLogoURL) {
   };
   // add it to the existing list
   chart.teams.push(team);
-  // console.log('Add Team called!');
 }
-
-/*
- *   / Added
- */
 
 
 // setup function, only once called
@@ -127,16 +122,16 @@ chart.setup = function(options) {
     
     chart.loadJSONData();
     
+    /*
+     *      ONLY CHECKS iF DATA IS COMING IN PROPERLY
+     */
+    
     for(var i = 0; i < chart.teams.length; i++) {
+        
         console.log(chart.teams[i]);
         
         for(var j = 0; j < chart.teams[i].scores.length; j++) {
-            // console.log(chart.teams[i].scores[j]);
-            /*
-             * 
-             *  MORE MAGIC PLEASE!
-             * 
-             */
+          // console.log(chart.teams[i].scores[j]);
         }
     }
     
@@ -148,17 +143,27 @@ chart.setup = function(options) {
        
     */
    
-   var m = 27;
-
-    stack = d3.layout.stack().offset("zero"),
-       layers0 = stack(d3.range(chart.teams[0].scores.length).map(function() { 
-            return bumpLayer(m);
-       })),
-       layers1 = stack(d3.range(chart.teams[0].scores.length).map(function() {
-            return bumpLayer(m);
+   /*
+   
+   var totalGames = [];
+   
+   for(var j = 0; j < chart.teams.length; j++) {
+       for(var k = 0; k < chart.teams[j].scores.length; k++) {
+           // console.log('WH00P');
+           totalGames.push(chart.teams[j].scores[k]);
        }
-    ));
-
+   }
+   
+   console.log(totalGames);
+   
+   */
+   
+   var m = 18
+   var n = 27;
+   
+   stack = d3.layout.stack().offset("zero"),
+       layers0 = stack(d3.range(chart.teams[0].scores.length).map(function() { return bumpLayer(m);})),
+       layers1 = stack(d3.range(chart.teams[0].scores.length).map(function() { return bumpLayer(m);}));
 
     var width = 960,
         height = 500;
@@ -170,11 +175,6 @@ chart.setup = function(options) {
     var y = d3.scale.linear()
         .domain([0, d3.max(layers0.concat(layers1), function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); })])
         .range([height, 0]);
-
-    /*
-    var color = d3.scale.linear()
-        .range(["#aad", "#556"]);
-    */
    
    var teamColors = [];
    var teamNames = [];
@@ -183,9 +183,6 @@ chart.setup = function(options) {
        teamColors.push(chart.teams[i].color);
        teamNames.push(chart.teams[i].name);
    }
-   
-   console.log(teamColors);
-   console.log(teamNames);
    
    var color = d3.scale.ordinal()
            .range(teamColors);
@@ -204,7 +201,6 @@ chart.setup = function(options) {
       .enter().append("path")
         .attr("d", area)
         .attr("fill", function(d, i) { return color(i); });
-     // .style("fill", function() { return color(); });
 
     function transition() {
       d3.selectAll("path")
@@ -212,6 +208,7 @@ chart.setup = function(options) {
             var d = layers1;
             layers1 = layers0;
             return layers0 = d;
+            
           })
         .transition()
           .duration(2500)
@@ -235,6 +232,7 @@ chart.setup = function(options) {
       for (i = 0; i < n; ++i) a[i] = 0;
       for (i = 0; i < 5; ++i) bump(a);
       return a.map(function(d, i) { return {x: i, y: Math.max(0, d)}; });
+      console.log(a.map(function(d, i) { return {x: i, y: Math.max(0, d)}; }));
     }
     
 }

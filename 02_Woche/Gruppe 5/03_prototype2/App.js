@@ -56,8 +56,8 @@ streamgraph.addTeam = function(teamName, teamColor, teamLogoURL) {
   // empty team
   var team = {
       "name" : teamName,
-      "scores" : new Array(27), // the goals over the 27 days of season
-      "rank" : new Array(27), // the rank over the 27 days of season
+      "scores" : [], // the goals over the 27 days of season
+      "rank" : [], // the rank over the 27 days of season
       "color" : teamColor,
       "logoURL" : teamLogoURL
   };

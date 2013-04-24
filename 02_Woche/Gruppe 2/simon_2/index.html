@@ -12,7 +12,7 @@
 		
 		<h1>DER EFFIZIENZVERGLEICH &ndash; EINE ANDERE LIGA</h1>
 		<h2>WELCHES TEAM DER 1. BUNDESLIGA IST DAS BESTE GEMESSEN AN SEINEN AUSGABEN FÜR SPIELER?</h2><br>
-		<h3>INFORMATIONSVISUALISIERUNG VON SÖREN KNÖLL & SIMON MARTIN</h3>
+		<h3>INFORMATIONSVISUALISIERUNG VON SÖREN KNÖLL & SIMON MARTIN<br>QUELLE: TRANSFERMARKT.DE / 1.BUNDESLIGA, SAISON 2011/12</h3>
 		
         <script type="text/javascript">
 
@@ -33,8 +33,8 @@
                         	.range([0,width]);
 					
 					var widthScale3 = d3.scale.linear()
-							.domain([d3.max(data, function(d){ return parseInt(d.lizenzspieleretat) / parseInt(d.punkte); }), 0])
-							.range([0,width]);					
+							.domain([0, 1500000])
+							.range([0, width]);					
 					
 					var formatMillion = d3.format("2,d");
 						
@@ -64,9 +64,11 @@
                     var group_1 = canvas.append("g").attr("transform", "translate(30,0)");
                     var group_2 = canvas.append("g").attr("transform", "translate(30,0)");
 					var group_3 = canvas.append("g").attr("transform", "translate(30,0)");
-					var labels_group = canvas.append("g").attr("transform", "translate(32,0)");
+					var labels_group = canvas.append("g").attr("transform", "translate(33,0)");
+					var labels_group2 = canvas.append("g").attr("transform", "translate(33,0)");
 					var logo_group = canvas.append("g").attr("transform", "translate(0,-1)");
 					var legend_group = canvas.append("g").attr("class", "legend");
+					var btn_group = canvas.append("g").attr("class", "buttons");
 					
                     var bars1 = group_1.selectAll("rect") //Create bars: lizenzspieleretat
                             .data(dataSet)
@@ -107,16 +109,16 @@
 							.duration(500)
 							.ease("cubic-in-out")
 							.delay(1000)
-		                    .attr("width", function(d) { return widthScale3(d.lizenzspieleretat / d.punkte); });
+		                    .attr("width", function(d) { return width - widthScale3(d.lizenzspieleretat / d.punkte); });
 							
-				/*	var pointLabels = labels_group.selectAll("text") //Create Labels Punkte neben bars2
+					/* var pointLabels = labels_group.selectAll("text") //Create Labels Punkte neben bars2
 			                .data(dataSet)
 			                .enter()
 							.append("text")
 							.text(function(d){ return (d.punkte); })
 							.attr("y", function(d, i) { return i*35 + 15; })
-							.attr("x", function(d) { return widthScale2(d.punkte); })
-							.attr("class", "labels")
+							.attr("x", width)
+							.attr("class", "pointlabels")
 							.attr("opacity", 0.0); 
 							
 					pointLabels
@@ -124,7 +126,24 @@
 							.duration(500)
 							.ease("cubic-in-out")
 							.delay(1000)
-							.attr("opacity", 1.0);	*/	
+							.attr("opacity", 1.0);
+							
+					var etatLabels = labels_group2.selectAll("text") //Create Labels Punkte neben bars3
+					                .data(dataSet)
+					                .enter()
+									.append("text")
+									.text(function(d){ return (d.lizenzspieleretat); })
+									.attr("y", function(d, i) { return i*35 + 23; })
+									.attr("x", width)
+									.attr("class", "etatlabels")
+									.attr("opacity", 0.0); 
+							
+					etatLabels
+									.transition()
+									.duration(500)
+									.ease("cubic-in-out")
+									.delay(1000)
+									.attr("opacity", 1.0);	*/
 							
 					var logos = logo_group.selectAll("image")
 							.data(dataSet)
@@ -169,6 +188,9 @@
 							.attr("class", "axis")
 							.call(xAxis)
 							.attr("transform", "translate(30,-30)");
+							
+					
+					var SortBtn = d3.select("canvas.svg").append("button").text("Sort").on("click", function(){ sortBars();});
 							
 					
 							

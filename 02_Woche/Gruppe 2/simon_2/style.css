@@ -22,11 +22,18 @@ root {
 	fill: #999999;
 }
 
-.labels {
+.pointlabels {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 9px;
 	font-weight: 400;
 	fill: #999999;
+}
+
+.etatlabels {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 9px;
+	font-weight: 400;
+	fill: #FF3200;
 }
 
 .legend {

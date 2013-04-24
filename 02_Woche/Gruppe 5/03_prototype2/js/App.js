@@ -131,7 +131,12 @@ chart.setup = function(options) {
         console.log(chart.teams[i]);
         
         for(var j = 0; j < chart.teams[i].scores.length; j++) {
-            console.log(chart.teams[i].scores[j]);
+            // console.log(chart.teams[i].scores[j]);
+            /*
+             * 
+             *  MORE MAGIC PLEASE!
+             * 
+             */
         }
     }
     
@@ -166,8 +171,24 @@ chart.setup = function(options) {
         .domain([0, d3.max(layers0.concat(layers1), function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); })])
         .range([height, 0]);
 
+    /*
     var color = d3.scale.linear()
         .range(["#aad", "#556"]);
+    */
+   
+   var teamColors = [];
+   var teamNames = [];
+   
+   for(var i = 0; i < chart.teams.length; i++) {
+       teamColors.push(chart.teams[i].color);
+       teamNames.push(chart.teams[i].name);
+   }
+   
+   console.log(teamColors);
+   console.log(teamNames);
+   
+   var color = d3.scale.ordinal()
+           .range(teamColors);
 
     var area = d3.svg.area()
         .x(function(d) { return x(d.x); })
@@ -182,7 +203,8 @@ chart.setup = function(options) {
         .data(layers0)
       .enter().append("path")
         .attr("d", area)
-        .style("fill", function() { return color(); });
+        .attr("fill", function(d, i) { return color(i); });
+     // .style("fill", function() { return color(); });
 
     function transition() {
       d3.selectAll("path")

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>line</title>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+</head> 
+<body>   
+    <div id="D3line"></div>
+
+    <script type="text/javascript">
+
+var lineGraph = d3.select("#D3line")
+    .append("svg:svg")
+    .attr("width", 600)   
+    .attr("height", 600); 
+    var myLine = lineGraph.append("svg:line")
+    .attr("x1", 40)
+    .attr("y1", 50)
+    .attr("x2", 250)
+    .attr("y2", 500)
+    .style("stroke", "rgb(6,120,155)");
+    myLine.style("stroke-width", 24);
+    myLine.style("stroke-opacity", 0.6);
+    myLine.style("stroke-linecap", "round");
+
+
+</script>
+
+
+</body>
+</html>

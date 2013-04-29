@@ -1,7 +1,4 @@
-{
-  "id": "1816125962", 
-  "friends": {
-    "data": [
+[
       {
         "gender": "female", 
         "id": "10227783"
@@ -1065,9 +1062,4 @@
         "gender": "male", 
         "id": "100004858568064"
       }
-    ], 
-    "paging": {
-      "next": "https://graph.facebook.com/1816125962/friends?fields=gender&limit=5000&offset=5000&__after_id=100004858568064"
-    }
-  }
-}
+    ]

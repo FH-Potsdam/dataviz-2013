@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Facebook-Daten</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="../../lib/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="../../lib/d3.v3.js"></script>
+	</head>
+	<body>
+		
+        <script type="text/javascript">
+
+
+            d3.json("data/friends.json", function(data) {
+                    console.log(data);
+
+                    var dataSet = data;
+                    var width = 800;
+                    var height = 600;
+					
+                    var canvas = d3.select("body") //Create SVG element
+                            .append("svg")
+                            .attr("width", width)
+                            .attr("height",height)
+							.attr("class", "canvas");
+							
+					
+		           	canvas.selectAll("rect")
+		                    .data(dataSet)
+		                    .enter()
+		                    .append("rect")
+		                    .attr("height", 2)
+							.attr("width", 2)
+		                    .attr("y", function(d, i) { return i*3; });
+		                            
+					
+							
+					
+					
+					
+				});
+
+        </script>
+	</body>
+</html>

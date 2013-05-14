@@ -2,10 +2,11 @@ var allData = allData || {};
 var groupData = groupData || {};
 jQuery(document).ready(function() { 
   
+  allData.meteors = new L.LayerGroup();
   var map = L.map('map', {
     center : [52.52, 13.4],
     zoom : 2,
-    layers: meteors
+    layers: allData.meteors
   });
 
   L.tileLayer('http://a.tiles.mapbox.com/v3/kennstenicht.map-yqa8hmw1/{z}/{x}/{y}.png').addTo(map);
@@ -228,7 +229,7 @@ var draw = function() {
     }
 }
 
-var meteors = null;
+//var meteors = null;
 
 var click = function(d,i) {
   
@@ -238,9 +239,9 @@ var click = function(d,i) {
   })
   
   
-  if (meteors) {
-    meteors.clearLayers();
-  }
+  //if (meteors) {
+    allData.meteors.clearLayers();
+    //}
   
   // console.log(positionJSON);
   
@@ -256,12 +257,13 @@ var click = function(d,i) {
   });
 
   // console.log(positionJSON);
-  var markerList = [];
+  //var markerList = [];
   for(i=0;i<positionJSON.length;i++){
-  	markerList.push(L.marker([positionJSON[i].lon,positionJSON[i].lat]));
+  	//markerList.push(L.marker([positionJSON[i].lon,positionJSON[i].lat]));
+    L.marker([positionJSON[i].lon,positionJSON[i].lat]).addTo(allData.meteors);
   }
   
-  meteors = L.layerGroup(markerList).addTo(map);
+  //meteors = L.layerGroup(markerList).addTo(map);
 }
 
 var over = function(d,i) {

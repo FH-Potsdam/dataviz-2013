@@ -1,20 +1,28 @@
 var allData = allData || {};
 var groupData = groupData || {};
+var leafletData = leafletData || {};
 
 jQuery(document).ready(function() { 
   $(window).resize(function() {
     draw();
   });
   
-  allData.meteors = new L.LayerGroup();
-  var map = L.map('map', {
-    center : [52.52, 13.4],
-    zoom : 3,
-    layers: allData.meteors
+  leafletData.mapBox = new L.TileLayer('http://a.tiles.mapbox.com/v3/kennstenicht.map-yqa8hmw1/{z}/{x}/{y}.png');
+  leafletData.gmr = new L.Google("ROADMAP");
+  leafletData.gms = new L.Google("SATELLITE");
+  leafletData.gmh = new L.Google("HYBRID");
+  
+  leafletData.markersList = [];
+  leafletData.markers = new L.MarkerClusterGroup({ animateAddingMarkers : true });
+  
+  leafletData.map = L.map('map', {
+    center : [14.43468, 18.797607],
+    zoom : 2
   });
 
+  leafletData.map.addLayer(leafletData.mapBox);
 
-  L.tileLayer('http://a.tiles.mapbox.com/v3/kennstenicht.map-yqa8hmw1/{z}/{x}/{y}.png').addTo(map);
+  leafletData.map.addControl(new L.Control.Layers({'default':leafletData.mapBox, 'Google-Hybrid':leafletData.gmh, 'Google-Satellite':leafletData.gms, 'Google-Roadmap':leafletData.gmr}));
   
   d3.json("data/allData.json", function(data) {
     setup({
@@ -35,8 +43,10 @@ var setup = function(options) {
 
 var draw = function() {
   var windowWidth = $(window).width();
+  var boxWidth = $("#site-title").width();
   $("#map").width(windowWidth);
   $("#container").width(windowWidth);
+  $("#site-title").css("left", (windowWidth-boxWidth)/2);
   
   //max Werte für die Scale funktion berechnen
   var maxCount = 0;
@@ -205,16 +215,21 @@ var draw = function() {
 
 
 var click = function(d,i) {
-  var positionJSON = new Array();
-  d.records.forEach(function(array, index) {
-    positionJSON.push({ 'lon': array["Coordinate 1"], 'lat': array["Coordinates 2"]})
-  })
-  
-  allData.meteors.clearLayers();
-  
-  for(i=0;i<positionJSON.length;i++){
-    L.marker([positionJSON[i].lon,positionJSON[i].lat]).addTo(allData.meteors);
+  for(var i = 0; i < leafletData.markersList.length; i++) {
+    leafletData.markers.removeLayer(leafletData.markersList[i]);
   }
+   
+  leafletData.markersList = [];
+  
+  d.records.forEach(function(array, index) {
+    var m = L.marker([array["Coordinate 1"],array["Coordinates 2"]]);
+    m.bindPopup(
+      "<h3>Lon: "+array['Coordinate 1']+" Lat: "+array["Coordinates 2"]+"</h3><p><b>Mass: </b>"+array['Mass, g']+"g</p><p><b>Place: </b>"+array['Place']+"</p><p><b>Type of meteorite: </b>"+array['Type of meteorite']+"</p><p><b>Price: </b>"+array['price']+"$</p><p><a href='"+array['Database']+"'><b>Database</b></a></p>");
+    leafletData.markersList.push(m);
+    leafletData.markers.addLayer(m);
+  });
+  
+  leafletData.map.addLayer(leafletData.markers);
 }
 
 var over = function(d,i) {

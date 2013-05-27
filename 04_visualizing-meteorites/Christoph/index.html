@@ -15,6 +15,8 @@
     <script type="text/javascript" src="js/underscore-min.js"></script>	
     <script type="text/javascript" src="js/leaflet/leaflet.js"></script>
     <script type="text/javascript" src="js/leaflet-marker/leaflet.markercluster.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
+    <script type="text/javascript" src="https://raw.github.com/gist/2197042/2b90c41b39b7d5b3a851d8f256de2ebd3fe1fb74/leaflet-google.js"></script>
     
     <link rel="stylesheet" href="js/leaflet/leaflet.css" />
      <!--[if lte IE 8]>
@@ -30,7 +32,14 @@
 	</head>
 	<body>
     <div id="map"></div>
-    <div id="site-title">Meteors</div>
-    <div id="container"></div>
+    <div id="site-title"><h1>Meteorite</h1></div>
+    <div id="container">
+      <div id="legende">
+        <div id="typ" class="legItem">typ of meteor</div>
+        <div id="anzahl" class="legItem">number of founds</div>
+        <div id="gewicht" class="legItem">overall mass</div>
+        <div id="wert" class="legItem">total value</div>
+      </div>
+    </div>
 	</body>
 </html>

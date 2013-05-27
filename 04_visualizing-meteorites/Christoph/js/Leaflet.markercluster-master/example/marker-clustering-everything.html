@@ -26,7 +26,7 @@
 
 		var map = new L.Map('map', {center: [50.5, 30.51], zoom: 15, layers: [cloudmade]});
 
-		var markers = new L.MarkerClusterGroup({ animateAddingMarkers : true });
+		var markers = new L.MarkerClusterGroup();
 		var markersList = [];
 
 		function populate() {
@@ -53,26 +53,26 @@
 
     
     function addMarker() {
-  		for (var i = 0; i < markersList.length; i++) {
-  			markers.addLayer(markersList[i]);
-  		}
+      for (var i = 0; i < markersList.length; i++) {
+        markers.addLayer(markersList[i]);
+      }
     }
-		addMarker();
+    addMarker();
 
-		//Ugly add/remove code
-		L.DomUtil.get('populate').onclick = function () {
-			var m = new L.Marker(getRandomLatLng(map));
-			markersList.push(m);
-			
-			addMarker();
-		};
-		L.DomUtil.get('remove').onclick = function () {
+    //Ugly add/remove code
+    L.DomUtil.get('populate').onclick = function () {
+      var m = new L.Marker(getRandomLatLng(map));
+      markersList.push(m);
+      addMarker();
+    };
+    
+    L.DomUtil.get('remove').onclick = function () {
       for (var i = 0; i < 100; i++) {
         markers.removeLayer(markersList[i]);
       }
       markersList = [];
       console.log(markersList);
-		};
+    };
 	</script>
 </body>
 </html>

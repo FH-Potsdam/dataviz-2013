@@ -1,6 +1,6 @@
-# coffescript template
+# coffeescript template
 
-Compile the coffescript by running:
+Compile the coffeescript by running:
 
     coffee --bare -c app.coffee
 

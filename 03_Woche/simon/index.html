@@ -17,8 +17,8 @@
                     console.log(data);
 
                     var dataSet = data;
-                    var width = 800;
-                    var height = 600;
+                    var width = innerWidth;
+                    var height = 50;
 					
                     var canvas = d3.select("body") //Create SVG element
                             .append("svg")
@@ -27,13 +27,27 @@
 							.attr("class", "canvas");
 							
 					
-		           	canvas.selectAll("rect")
-		                    .data(dataSet)
-		                    .enter()
-		                    .append("rect")
-		                    .attr("height", 2)
-							.attr("width", 2)
-		                    .attr("y", function(d, i) { return i*3; });
+					
+						
+						canvas.selectAll("rect")
+			                    .data(dataSet)
+			                    .enter()
+			                    .append("rect")
+								.attr("class", "rects")
+			                    .attr("height", (width / dataSet.length) - 1)
+								.attr("width", (width / dataSet.length) - 1)
+			                    .attr("x", function(d, i) { return i*(width / dataSet.length) + 1; })
+								.attr("fill", function(d) {
+            							if (d.gender == "female") {return "hotpink"}
+            							else    { return "lightblue" }
+									
+									});
+								
+							
+						
+					
+										
+		           	
 		                            
 					
 							

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaflet debug page</title>
+
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.css" />
+	<!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.ie.css" /><![endif]-->
+	<script src="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="screen.css" />
+
+	<link rel="stylesheet" href="../dist/MarkerCluster.css" />
+	<link rel="stylesheet" href="../dist/MarkerCluster.Default.css" />
+	<!--[if lte IE 8]><link rel="stylesheet" href="../dist/MarkerCluster.Default.ie.css" /><![endif]-->
+	<script src="../dist/leaflet.markercluster-src.js"></script>
+</head>
+<body>
+
+	<div id="map"></div>
+	<button id="populate">Populate 1 marker</button>
+	<button id="remove">Remove 1 marker</button>
+	<span>Mouse over a cluster to see the bounds of its children and click a cluster to zoom to those bounds</span>
+	<script type="text/javascript">
+
+		var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png')
+
+		var map = new L.Map('map', {center: [50.5, 30.51], zoom: 15, layers: [cloudmade]});
+
+		var markers = new L.MarkerClusterGroup();
+		var markersList = [];
+
+		function populate() {
+			for (var i = 0; i < 100; i++) {
+				var m = new L.Marker(getRandomLatLng(map));
+				markersList.push(m);
+			}
+			return false;
+		}
+		function getRandomLatLng(map) {
+			var bounds = map.getBounds(),
+				southWest = bounds.getSouthWest(),
+				northEast = bounds.getNorthEast(),
+				lngSpan = northEast.lng - southWest.lng,
+				latSpan = northEast.lat - southWest.lat;
+
+			return new L.LatLng(
+					southWest.lat + latSpan * Math.random(),
+					southWest.lng + lngSpan * Math.random());
+		}
+
+		populate();
+		map.addLayer(markers);
+
+    
+    function addMarker() {
+      for (var i = 0; i < markersList.length; i++) {
+        markers.addLayer(markersList[i]);
+      }
+    }
+    addMarker();
+
+    //Ugly add/remove code
+    L.DomUtil.get('populate').onclick = function () {
+      var m = new L.Marker(getRandomLatLng(map));
+      markersList.push(m);
+      addMarker();
+    };
+    
+    L.DomUtil.get('remove').onclick = function () {
+      for (var i = 0; i < 100; i++) {
+        markers.removeLayer(markersList[i]);
+      }
+      markersList = [];
+      console.log(markersList);
+    };
+	</script>
+</body>
+</html>

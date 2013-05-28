@@ -37,7 +37,7 @@ h2 {
 }
 
 #container {
-  height: 355px;
+  height: 1255px;
   z-index: 999;
 }
 
@@ -50,10 +50,14 @@ h2 {
   color: #fff;
 }
 
+<<<<<<< Local Changes
 .game span{
   pointer-events: none;
+  
 }
 
+=======
+>>>>>>> External Changes
 #legende {
   position: absolute;
   top: 435px;

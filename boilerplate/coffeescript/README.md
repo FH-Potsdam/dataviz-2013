@@ -1,4 +1,4 @@
-# coffescript template
+# coffeescript template
 
 Compile the coffescript by running:
 

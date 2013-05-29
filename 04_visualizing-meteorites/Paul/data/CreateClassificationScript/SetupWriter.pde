@@ -1,7 +1,7 @@
 
 void setupWriter() {
   // Create a new file in the sketch directory
-  output = createWriter("classification.js"); 
+  output = createWriter("classification.coffee"); 
   println("--> Create File Ready");
 
   // Write data to the file

@@ -9,6 +9,9 @@ void setupTable() {
     String recclass = table.getString(i, "recclass");
     //println("["+i+"] recclass = " + recclass);
     
-    objectItems[0].classificationChecker(recclass, i);
+    for(int j=0; j<objectItems.length; j++) {
+      objectItems[j].classificationChecker(recclass, i);
+    }
+    
   }
 }

@@ -5,5 +5,5 @@ void writeObjectItem(PrintWriter o, ObjectItem i) {
   o.println("    desc: '" + i.desc + "'");
   o.println("    class: '" + i.classification + "'");
   o.println("    total: " + i.total);
-  o.println("    ids: " + i.ids);
+  o.println("    rows: [" + i.rows + "]");
 }

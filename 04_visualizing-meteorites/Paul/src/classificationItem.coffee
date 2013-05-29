@@ -27,6 +27,7 @@ RECT_COLOR_FOUND = '#298299'
 classificationItemDivHeadline = (obj, id) ->
   # console.log 'name  = ' + obj.name
   # console.log 'desc  = ' + obj.desc
+  # console.log 'class = ' + obj.class
   # console.log 'total = ' + obj.total
   # console.log 'ids   = ' + obj.ids
 
@@ -62,13 +63,7 @@ classificationItemDivHeadline = (obj, id) ->
 
 
 
-  # d3.select('#t'+id)
-  #   .append('p')
-  #   .text(obj.desc)
-
-
-
-classificationItemSvg = (obj, id, color) ->
+classificationItemSvg = (obj, id) ->
   # calculate the svg size
   tmpSvgWidth = RECT_SIZE_WITH_MARGIN*TOTAL_RECTS_ROW
   tmpSvgHeight = RECT_SIZE_WITH_MARGIN
@@ -78,17 +73,6 @@ classificationItemSvg = (obj, id, color) ->
 
   # create the svg object
   tmpSvg = d3.select('#'+id)
-
-             # MODAL TEST
-             # .append('div')
-             # .attr('id', 'openModal')
-             # .attr('class', 'modalDialog')
-             # .append('div')
-             # .append('a')
-             # .attr('href', '#close')
-             # .attr('title', 'close')
-             # .attr('class', 'close')
-             # .text('X')
 
              .append('a')
              .attr('href', '#openModal')

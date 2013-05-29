@@ -30,34 +30,6 @@ d3.csv(METEORITES_DATAPATH, (error, data)->
     #console.log METEORITES_DATA
     
 
-
-    ##
-    # Small helper for the classification object
-    ##
-
-    # classCounter = (str) ->
-    #   tmpCount = 0
-    #   tmpIds = []
-
-    #   classificationHelper = (i) ->
-    #     #if METEORITES_DATA[i].recclass.indexOf(str) isnt -1
-    #     if METEORITES_DATA[i].recclass == str
-    #       tmpCount++
-    #       tmpIds.push(i)
-    #     'classificationHelper'
-
-    #   classificationHelper(_i) for name in METEORITES_DATA
-
-    #   console.log 'NAME: ' + str
-    #   console.log 'tmpCount = ' + tmpCount
-    #   console.log 'tmpIds = ' + tmpIds
-
-
-    # classCounter('CK6')
-
-
-
-
     # Run the viz.
     viz()
 

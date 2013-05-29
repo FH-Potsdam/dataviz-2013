@@ -298,7 +298,9 @@ classification =
     ids: [804,11738,14554,16162,26668,26673,28274,28615,29048,29197,29648,29747,29887,30149,33322,36444,38028,38333,38443,39380,39385,40272,42333,45071,45694]
   
 
-# loop the classification object
+
+# Loop the classification object
+# Used for debugging stuff...
 # for i of classification
 #   o = classification[i]
 #   console.log 'name: ' + o.name

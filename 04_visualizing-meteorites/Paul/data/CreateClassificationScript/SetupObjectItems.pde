@@ -172,7 +172,7 @@ void setupObjectItems() {
                                                    "CH Group",
                                                    "The high-metal (CH) chemical group of carbonaceous chondrites, similar to Allan Hills 85085; CH chondrites have tiny chondrules and refractory inclusions (~0.02 mm), abundant metal (~20 vol%), no fine-grained matrix except as xenolithic clasts, and rare sulfides consistent with overall low volatile element contents.  It is uncertain whether members of the group are true chondrites, as they may have formed slightly later in solar system history.",
                                                    CLASS_CARBONACEOUS_CHONDRITES,
-                                                   new String[]{"Iron", "test"});
+                                                   new String[]{"CH"});
   objectItemsCounter++;
 
   objectItems[objectItemsCounter] = new ObjectItem("chondrite",

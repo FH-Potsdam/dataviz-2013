@@ -1,9 +1,9 @@
 
-void writeObjectItem(PrintWriter o, String itemName, String n, String d, String c, int t, String i) {
-  o.println("  " + itemName);
-  o.println("    name: " + n);
-  o.println("    desc: " + d);
-  o.println("    class: " + c);
-  o.println("    total: " + t);
-  o.println("    ids: " + i);
+void writeObjectItem(PrintWriter o, ObjectItem i) {
+  o.println("  " + i.itemName);
+  o.println("    name: '" + i.name + "'");
+  o.println("    desc: '" + i.desc + "'");
+  o.println("    class: '" + i.classification + "'");
+  o.println("    total: " + i.total);
+  o.println("    ids: " + i.ids);
 }

@@ -28,7 +28,6 @@ class ObjectItem {
       }
       // ...else check if the string starts with the search string.
       else if(in.startsWith(searchItems[i])) {
-        print(id + ",");
         total++;
         rows += id+",";
       }

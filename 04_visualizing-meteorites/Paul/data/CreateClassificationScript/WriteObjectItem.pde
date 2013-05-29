@@ -13,4 +13,7 @@ void writeObjectItem(PrintWriter o, ObjectItem i) {
   }
   
   o.println("    rows: [" + tmpRows + "]");
+  
+  println("Name    = " + i.name);
+  println("- total = " + i.total);
 }

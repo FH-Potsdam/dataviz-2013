@@ -2,6 +2,7 @@
 void setupTable() {
   // You need to copy the csv file to the data directory.
   table = loadTable("meteorites.csv", "header");
+  println("--> CSV File Loaded");
   //println("--> Total Rows: " + table.getRowCount());
   
   // Loop the csv file

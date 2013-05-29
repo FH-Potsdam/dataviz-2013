@@ -14,8 +14,6 @@ void setup() {
   setupTable();
   setupWriter();
   
-  //println(objectItems[0].total);
-
   // Stops the program
   exit();
 }

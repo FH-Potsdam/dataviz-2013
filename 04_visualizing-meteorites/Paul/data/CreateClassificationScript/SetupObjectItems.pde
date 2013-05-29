@@ -95,7 +95,7 @@ void setupObjectItems() {
                                                    "L Group",
                                                    "The low-iron (L) chemical group of ordinary chondrites, distinguished by their relatively low siderophile element content, moderate sized chondrules (~0.7 mm), and oxygen isotope compositions that intermediate between H and LL group ordinary chondrites.",
                                                    CLASS_ORDINARY_CHONDRITES,
-                                                   new String[]{"Iron"});
+                                                   new String[]{"Iron", "test"});
   objectItemsCounter++;
   
   objectItems[objectItemsCounter] = new ObjectItem("h_group",

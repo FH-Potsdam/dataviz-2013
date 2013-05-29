@@ -9,15 +9,13 @@ Table table;
 PrintWriter output;
 
 
-
 void setup() {
   setupObjectItems();
-
   setupTable();
-
   setupWriter();
+  
+  //println(objectItems[0].total);
 
   // Stops the program
   exit();
 }
-

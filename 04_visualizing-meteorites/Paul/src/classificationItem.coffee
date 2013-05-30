@@ -91,21 +91,50 @@ classificationItemSvg = (obj, id) ->
          .attr('y', tmpRectY)
          .attr('width', RECT_SIZE)
          .attr('height', RECT_SIZE)
-         .attr('fill', RECT_COLOR_FELL)
+         .attr('class', 'fell')
     else
       tmpSvg.append('rect')
          .attr('x', tmpRectX)
          .attr('y', tmpRectY)
          .attr('width', RECT_SIZE)
          .attr('height', RECT_SIZE)
-         .attr('fill', RECT_COLOR_FOUND)
+         .attr('class', 'found')
 
     i++
     tmpRectsCount++
 
 
+
+
+divHelper = d3.select('#modalDialog-tooltip-space')
+
+
 mouseoverHelper = (obj) ->
-  console.log obj.name
+  console.log 'mouse over'
+  divHelper.text('Fall = '+obj.fall+', Mass = '+obj.mass+', Name = '+obj.name+', Year = '+obj.year)
+           # .style("left", (d3.event.pageX - 34) + "px")
+           # .style("top", (d3.event.pageY - 12) + "px");
+  
+
+mousemovedHelper = (obj) ->
+  console.log 'mouse moved'
+  divHelper.text('Fall = '+obj.fall+', Mass = '+obj.mass+', Name = '+obj.name+', Year = '+obj.year)
+           # .style("left", (d3.event.pageX - 34) + "px")
+           # .style("top", (d3.event.pageY - 12) + "px");
+
+mouseoutHelper = (obj) ->
+  console.log 'mouse out'
+  # d3.select('#modalDialog-tooltip-space')
+  #   .remove()
+
+mousedownHelper = (obj) ->
+  console.log 'mouse down'
+  console.log obj
+  # Link to the database
+  # http://www.lpi.usra.edu/meteor/metbull.php?code=
+  window.open('http://www.lpi.usra.edu/meteor/metbull.php?code='+obj.id, '_blank');
+
+
 
 classificationItemSvgBig = (id) ->
   console.log 'draw classificationItemSvgBig() = '+id
@@ -115,10 +144,13 @@ classificationItemSvgBig = (id) ->
   for j of classification
     if classification[j].name == id
       tmpIdValue = j
-      console.log 'TREFFER!!! -  ' + tmpIdValue
-      console.log classification[j]
+      #console.log 'TREFFER!!! -  ' + tmpIdValue
+      #console.log classification[j]
+
       d3.select('#modal-classification')
-        .text(id + ' -- ' + classification[j].total)
+        .text(id + ' (' + classification[j].total + ')')
+      d3.select('#modal-classification-desc')
+        .text(classification[j].desc)
       
 
   tmpRectsRow = 50
@@ -132,6 +164,9 @@ classificationItemSvgBig = (id) ->
 
   k = 0
   while k < classification[tmpIdValue].total
+    #tmpId = classification[tmpIdValue].rows[k]
+    #console.log tmpId
+
     tmpRectPosX +=tmpRectSize+1
     if tmpRectCnt == tmpRectsRow
       tmpRectPosX = 0+tmpRectSize+1
@@ -144,18 +179,41 @@ classificationItemSvgBig = (id) ->
             .attr('y', tmpRectPosY)
             .attr('width', tmpRectSize)
             .attr('height', tmpRectSize)
-            .attr('fill', RECT_COLOR_FELL)
-            # .on('mouseover', ->
-            #   mouseoverHelper(METEORITES_DATA[classification[tmpIdValue].ids[k]]) )
+            .attr('class', 'fell')
+            .attr('id', classification[tmpIdValue].rows[k])
+            .on("mouseover", ->
+              mouseoverHelper(METEORITES_DATA[ this.id ])
+              )
+            .on("mousemove", ->
+              mousemovedHelper(METEORITES_DATA[ this.id ])
+              )
+            .on("mouseout", ->
+              mouseoutHelper(METEORITES_DATA[ this.id ])
+              )
+            .on('mousedown', ->
+              mousedownHelper(METEORITES_DATA[ this.id ])
+              )
+
     else
       tmpSvg.append('rect')
             .attr('x', tmpRectPosX)
             .attr('y', tmpRectPosY)
             .attr('width', tmpRectSize)
             .attr('height', tmpRectSize)
-            .attr('fill', RECT_COLOR_FOUND)
-            # .on('mouseover', ->
-            #   mouseoverHelper(METEORITES_DATA[classification[tmpIdValue].ids[k]]) )
+            .attr('class', 'found')
+            .attr('id', classification[tmpIdValue].rows[k])
+            .on("mouseover", ->
+              mouseoverHelper(METEORITES_DATA[ this.id ])
+              )
+            .on("mousemove", ->
+              mousemovedHelper(METEORITES_DATA[ this.id ])
+              )
+            .on("mouseout", ->
+              mouseoutHelper(METEORITES_DATA[ this.id ])
+              )
+            .on('mousedown', ->
+              mousedownHelper(METEORITES_DATA[ this.id ])
+              )
 
 
     k++

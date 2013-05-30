@@ -111,16 +111,12 @@ svg {
   position: relative;
   left: -2px;
 }
-
-/*rect {
-  fill: #163A70;
-}*/
-/*#rect_found {
-  fill: #163A70;
+.fell {
+  fill: #b8e305;
 }
-#rect_fell {
+.found {
   fill: #298299;
-}*/
+}
 
 
 

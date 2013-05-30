@@ -6,110 +6,147 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="./assets/style.css">
     <script type="text/javascript" src="../../lib/d3.v3.js"></script>
+    <script type="text/javascript" src="../../lib/jquery-1.9.1.min.js"></script>
   </head>
   <body>
+    <div id="container">
+      
+      <h1 id="headline">Meteorites Classification Count</h1>
+
+      <div id="intro">
+        <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do em.</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div> <!-- End #intro -->
 
 
-<!-- <a href="#openModal">Open Modal</a> -->
+      <!-- The detail view -->
+      <div id="openModal" class="modalDialog">
+        <div>
+          <a href="#close" title="Close" class="close" onclick="console.log('removeeeeeee');d3.select('#modal-svg g').remove();">X</a>
 
-<div id="openModal" class="modalDialog">
-  <div>
-    <a href="#close" title="Close" class="close" onclick="console.log('removeeeeeee');d3.select('#modal-svg g').remove();">X</a>
+          <h2 id="modal-classification">Classification</h2>
+          <div>
+            <!-- <svg id="modal-svg" style="visibility: hidden"></svg> -->
+            <svg id="modal-svg"></svg>
+          </div>
+        </div>
+      </div>
 
-    <h2 id="modal-classification">Classification</h2>
-    <div>
-      <!-- <svg id="modal-svg" style="visibility: hidden"></svg> -->
-      <svg id="modal-svg"></svg>
-    </div>
-  </div>
-</div>
+    </div> <!-- End #container -->
+    
 
 
     <div id="content">
-      <h1 id="headline">Visualizing Meteorites -- Classification Count</h1>
-
-      <table >
-        <tr>
-          <td width="50%">
-            <span class="classification1" id="undiferentiated">Undifferentiated</span>
-            <hr />
-          </td>
-          <td width="50%">
-            <span class="classification1" id="diferentiated">Differentiated</span>
-            <hr />
-          </td>
-        </tr>
-      </table>
-
-
+      
       <table>
         <tr>
-          <td width="50%">
-            <span class="classification2">Chondrites</span>
+          <td colspan="3" align="center">
+            <span class="classification1" id="diferentiated">Differentiated</span>
           </td>
-          <td width="16.6%">
+          <td colspan="3" align="center">
+            <span class="classification1" id="undiferentiated">Undifferentiated</span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3"><hr /></td>
+          <td colspan="3"><hr /></td>
+        </tr>
+
+        <tr>
+          <td>
             <span class="classification2">Achondrites</span>
           </td>
-          <td width="16.6%">
+          <td>
             <span class="classification2">Iron</span>
           </td>
-          <td width="16.6%">
+          <td>
             <span class="classification2">Stony-Iron</span>
           </td>
-        </tr>
-      </table>
-
-
-      <table>
-        <tr>
-          <td id="chondites" width="50%">
-
-            <table>
-              <tr>
-                <td><p class="classification3" id="carbonaceous-chondrites">Carbonaceous<br>Chondrites</p></td>
-                <td><p class="classification3" id="ordinary-chondrites">Ordinary<br>Chondrites</p></td>
-                <!-- <td><p class="classification3" id="rumuruti-chondrites">Rumuruti<br>Chondrites</p></td> -->
-                <td><p class="classification3" id="enstatite-chondrites">Enstatite<br>Chondrites</p></td>
-              </tr>
-            </table>
-
+          <td colspan="3" align="center">
+            <span class="classification2">Chondrites</span>
           </td>
+        </tr>
+        <tr>
+          <td><hr /></td>
+          <td><hr /></td>
+          <td><hr /></td>
+          <td colspan="3"><hr /></td>
+        </tr>
 
-          <td width="16%">
+
+
+        <tr>
+          <td rowspan="3">
             <div id="achondrites"></div>
           </td>
-          <td width="16%">
+          <td rowspan="3">
             <div id="iron"></div>
           </td>
-          <td width="16%">
+          <td rowspan="3">
             <div id="stony-iron"></div>
           </td>
-        </tr>
-      </table>
-            
 
-      <table >
+          <td>
+            <span class="classification3">Carbonaceous<br>Chondrites</span>
+          </td>
+          <td>
+            <span class="classification3">Ordinary<br>Chondrites</span>
+          </td>
+          <td>
+            <span class="classification3">Enstatite<br>Chondrites</span>
+          </td>
+        </tr>
+
+
         <tr>
-          <td width="50%">
+          <td><hr /></td>
+          <td><hr /></td>
+          <td><hr /></td>
+        </tr>
+        <tr>
+          <td rowspan="4">
+            <div id="carbonaceous-chondrites"></div>
+          </td>
+          <td rowspan="4">
+            <div id="ordinary-chondrites"></div>
+          </td>
+          <td rowspan="4">
+            <div id="enstatite-chondrites"></div>
+          </td>
+        </tr>
+            
+        <tr>
+          <td colspan="3" align="center">
             <span class="classification1">Ungrouped</span>
-            <hr />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3"><hr /></td>
+        </tr>
+        <tr>
+          <td>
             <div id="unknown"></div>
           </td>
-          <td width="50%">
-          </td>
+          <td></td>
+          <td></td>
         </tr>
+
       </table>
-      
+    
+
+    </div> <!-- End #content -->
 
 
-      <!-- Here we draw our SVG -->
+    
+    <div id="#footer">
+      <div id="project-description">
+        <h4>About the Data</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div> <!-- End #project-description -->
+
+      <p>This Project is designed and developed by Paul Vollmer</br>FH-Potsdam</p>
     </div>
-    <footer>
-      <p>
-        This Project is designed and developed by Paul Vollmer</br>
-        FH-Potsdam
-      </p>
-    </footer>
+
     <script type="text/javascript" src="./assets/viz.js"></script>
   </body>
 </html>

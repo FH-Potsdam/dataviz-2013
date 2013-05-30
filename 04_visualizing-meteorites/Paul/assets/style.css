@@ -1,14 +1,38 @@
 /* The Main Stylesheet */
 
 body {
-  background-color: #FFF;
-  color: #000;
+  background-color: #0c1621;
+  color: #FFF;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-footer {
-  margin-top: 200px;
+#headline {
+  color: #374554;
+  font-size: 25px;
 }
+
+#intro {
+  margin-bottom: 400px;
+}
+#intro h1 {
+  padding-top: 200px;
+  text-align: center;
+}
+#intro p {
+  text-align: center;
+}
+
+#content {
+  margin-bottom: 200px;
+}
+
+#footer {
+  visibility: hidden;
+}
+
+
+
+
 
 table {
   width: 100%;
@@ -18,60 +42,60 @@ td {
 }
 
 hr {
-  background: #000;
+  color: #374554;
+  background-color: #374554;
+  border: 0; 
+  height: 1px;
 }
 
 
-#headline {
-  color: #333;
-  font-size: 25px;
+.classification1-div {
+  width: 650px;
+  background-color: #bbb;
+  display:inline-block;
+  margin: 5px;
 }
-
 
 .classification1 {
-  color: #000;
-  font-size: 20px;
-  font-weight: bold;
+  color: #FFF;
+  font-size: 26px;
 }
 .classification2 {
-  color: #000;
-  font-size: 18px;
-  font-weight: bold;
+  color: #FFF;
+  font-size: 22px;
 }
 .classification3 {
-  color: #000;
-  font-size: 16px;
-  font-weight: bold;
+  color: #FFF;
+  font-size: 18px;
 }
 
 
 .classification-label {
-  margin-top: 5px;
+  margin-bottom: 10px;
 }
 .classification-label-text {
-  color: #000;
+  color: #FFF;
   display: inline;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
 }
 .classification-label-count {
-  color: #000;
+  color: #FFF;
   display: inline;
   padding: -1px;
-  padding-left: 5px;
+  padding-left: 2px;
   padding-right: 5px;
   font-size: 12px;
-  font-weight: normal;
+  font-style: italic;
 
   position: relative;
-  top: -6px;
-  background-color: #CCC;
-  border-radius: 8px;
+  top: -11px;
 }
 
 
 /* SVG STUFF*/
 svg {
+  margin-top: 6px;
   position: relative;
   left: -2px;
 }
@@ -139,7 +163,7 @@ a.tooltip:hover span{
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(255,255,255,0.8);
+    background: rgba(0,0,0,0.5);
     z-index: 99999;
     opacity:0;
     -webkit-transition: opacity 200ms ease-in;
@@ -160,15 +184,15 @@ a.tooltip:hover span{
     margin: 10% auto;
     /*padding: 5px 20px 13px 20px;*/
     /*border-radius: 10px;*/
-    background: #fff;
+    background: #000;
     /*background: -moz-linear-gradient(#fff, #999);
     background: -webkit-linear-gradient(#fff, #999);
     background: -o-linear-gradient(#fff, #999);*/
   }
 
   .close {
-    background: #FFF;
-    color: #000;
+    background: #000;
+    color: #FFF;
     line-height: 25px;
     position: absolute;
     right: -12px;

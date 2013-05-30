@@ -9,9 +9,20 @@
 
 
 ##
-# Constant variables
+# Variables
 ##
-ID_CONTENT = '#content'
+timer = 2000
+timerSteps = 500
+
+
+
+$(ID_CONTENT).hide(0)
+$(ID_FOOTER).hide(0)
+
+# Run the intro
+intro()
+
+
 
 ##
 # Loading dataset
@@ -29,9 +40,14 @@ d3.csv(METEORITES_DATAPATH, (error, data)->
     #console.log 'JSON Data Loaded:'
     #console.log METEORITES_DATA
     
-
+    
     # Run the viz.
     viz()
+    # or with timeout...
+    #window.setTimeout ( ->
+    #  viz()
+    #), timer
+
 
     'loading ready'  
 )

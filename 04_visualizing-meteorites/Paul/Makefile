@@ -1,4 +1,5 @@
 SRC=src/header.coffee \
+src/constants.coffee \
 src/classification.coffee \
 src/classificationItem.coffee \
 src/viz.coffee src/index.coffee

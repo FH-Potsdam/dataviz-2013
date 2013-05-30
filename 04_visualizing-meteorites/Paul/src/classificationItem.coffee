@@ -12,18 +12,6 @@ document.getElementById('modal-svg').style.display='show';
 classificationItemSvgBig(this.id);"
 
 
-
-##
-# Constant variables
-##
-RECT_SIZE = 2
-RECT_SIZE_WITH_MARGIN = RECT_SIZE + 1
-TOTAL_RECTS_ROW = 65
-
-RECT_COLOR_FELL = '#FF0000'
-RECT_COLOR_FOUND = '#298299'
-
-
 classificationItemDivHeadline = (obj, id) ->
   # console.log 'name  = ' + obj.name
   # console.log 'desc  = ' + obj.desc

@@ -8,6 +8,10 @@
 
 
 intro = ->
+	$(ID_CONTENT).hide(0)
+	$(ID_FOOTER).hide(0)
+
+
 	##
 	# Fade in the intro div
 	##
@@ -24,6 +28,8 @@ intro = ->
 	  $("html,body").animate
 	    scrollTop: $(ID_CONTENT).offset().top
 	  , "slow"
+
+	  $(ID_FOOTER).show()
 	  
 	), timer
 	timer += 5000

@@ -16,9 +16,6 @@ timerSteps = 500
 
 
 
-$(ID_CONTENT).hide(0)
-$(ID_FOOTER).hide(0)
-
 # Run the intro
 intro()
 

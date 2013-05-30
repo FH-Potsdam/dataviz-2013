@@ -29,7 +29,7 @@ classificationItemDivHeadline = (obj, id) ->
   # console.log 'desc  = ' + obj.desc
   # console.log 'class = ' + obj.class
   # console.log 'total = ' + obj.total
-  # console.log 'ids   = ' + obj.ids
+  # console.log 'rows  = ' + obj.rows
 
   # create a div
   d3.select('#'+obj.class)
@@ -97,7 +97,7 @@ classificationItemSvg = (obj, id) ->
       tmpRectsCount = 0
 
     
-    if METEORITES_DATA[obj.ids[i]].fall == 'Fell'
+    if METEORITES_DATA[obj.rows[i]].fall == 'Fell'
       tmpSvg.append('rect')
          .attr('x', tmpRectX)
          .attr('y', tmpRectY)
@@ -150,7 +150,7 @@ classificationItemSvgBig = (id) ->
       tmpRectPosY += tmpRectSize+1
       tmpRectCnt = 0
 
-    if METEORITES_DATA[classification[tmpIdValue].ids[k]].fall == 'Fell'
+    if METEORITES_DATA[classification[tmpIdValue].rows[k]].fall == 'Fell'
       tmpSvg.append('rect')
             .attr('x', tmpRectPosX)
             .attr('y', tmpRectPosY)

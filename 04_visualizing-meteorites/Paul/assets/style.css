@@ -127,9 +127,10 @@ svg {
 
 /* Detail tooltip */
 #modalDialog-tooltip-space {
+  z-index: 99999;
   position: absolute;
-  width: 100px;
-  height: 20px;
+  /*width: 100px;
+  height: 20px;*/
   background: #ddd;
   border-radius: 8px;
 }
@@ -179,14 +180,34 @@ a.tooltip:hover span{
 
 /* MODAL STUFF */
 
+#modal-classification {
+  font-size: 22px;
+}
+#modal-classification-desc-container {
+  width: 200px;
+  position: absolute;
+  left: 930px;
+}
+#modal-classification-desc-container > h5 {
+  margin-top: 0px;
+}
+
+#modal-classification-desc {
+  font-size: 14px;
+}
+#modal-svg {
+  width: 930px;
+  margin-left: -20px;
+}
+
 .modalDialog {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0,0,0,0.7);
-    z-index: 99999;
+    background: rgba(0,0,0,0.9);
+    z-index: 99990;
     opacity:0;
     -webkit-transition: opacity 200ms ease-in;
     -moz-transition: opacity 200ms ease-in;
@@ -206,7 +227,7 @@ a.tooltip:hover span{
     margin: 5% auto;
     /*padding: 5px 20px 13px 20px;*/
     /*border-radius: 10px;*/
-    background: #000;
+    /*background: #000;*/
     /*background: -moz-linear-gradient(#fff, #999);
     background: -webkit-linear-gradient(#fff, #999);
     background: -o-linear-gradient(#fff, #999);*/
@@ -222,7 +243,7 @@ a.tooltip:hover span{
     top: -10px;
     width: 24px;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 14px;
     /*-webkit-border-radius: 12px;
     -moz-border-radius: 12px;
     border-radius: 12px;

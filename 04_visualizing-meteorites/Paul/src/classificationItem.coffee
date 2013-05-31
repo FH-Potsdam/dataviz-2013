@@ -29,22 +29,25 @@ classificationItemDivHeadline = (obj, id) ->
   d3.select('#'+id)
     .append('a')
     .attr('href' ,'#openModal')
-    .attr('class', 'classification-label-text')
-    #.attr('id', id+"__a")
+    .attr('class', 'classification-label-text tooltip')
+    #.attr('class', 'classification-label-count tooltip')
     .attr('id', obj.name)
     .attr('onclick', modalHelper)
     .text(obj.name+' ')
+    # the tooltip content
+    .append('span')
+    .text(obj.desc)
 
 
   # the count
   d3.select('#'+id)
     .append('a')
     .attr('href' ,'#')
-    .attr('class', 'classification-label-count tooltip')
+    .attr('class', 'classification-label-count')
     .text(obj.total)
     # the tooltip content
-    .append('span')
-    .text(obj.desc)
+    #.append('span')
+    #.text(obj.desc)
 
   d3.select('#'+id)
     .append('br')
@@ -66,11 +69,11 @@ classificationItemSvg = (obj, id) ->
              .attr('href', '#openModal')
              .attr('id', obj.name)
              .attr('onclick', modalHelper)
-
+             
              .append('svg')
              .attr('width', tmpSvgWidth)
              .attr('height', tmpSvgHeight)
-
+             
 
 
   tmpRectX = 0

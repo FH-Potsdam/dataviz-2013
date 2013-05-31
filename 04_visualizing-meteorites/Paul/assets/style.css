@@ -95,7 +95,6 @@ hr {
   color: #FFF;
   display: inline;
   font-size: 14px;
-  font-weight: normal;
 }
 .classification-label-count {
   color: #FFF;
@@ -141,18 +140,20 @@ svg {
 a {
   outline: none;
   text-decoration: none;
+  font-size: 14px;
 }
 
-a.tooltip {
+.tooltip {
   outline: none;
+  /*font-style: italic;*/
 }
-a.tooltip strong {
+.tooltip strong {
   line-height: 30px;
 }
-a.tooltip:hover {
+.tooltip:hover {
   text-decoration: none;
 } 
-a.tooltip span {
+.tooltip span {
   z-index: 10;
   display: none;
   padding: 4px;
@@ -161,7 +162,7 @@ a.tooltip span {
   width: 240px;
   line-height: 16px;
 }
-a.tooltip:hover span{
+.tooltip:hover span{
     display: inline;
     position: absolute;
     color: #111;

@@ -124,17 +124,6 @@ svg {
 }
 
 
-/* Detail tooltip */
-#modalDialog-tooltip-space {
-  z-index: 99999;
-  position: absolute;
-  /*width: 100px;
-  height: 20px;*/
-  background: #ddd;
-  border-radius: 8px;
-}
-
-
 /* TOOLTIP STUFF */
 
 a {
@@ -183,6 +172,14 @@ a {
 
 #modal-classification {
   font-size: 22px;
+  display: inline;
+}
+#modal-classification-total {
+  margin-top: -6px;
+  margin-left: 6px;
+  display: inline;
+  font-size: 16px;
+  font-style: italic;
 }
 #modal-classification-desc-container {
   width: 200px;
@@ -190,7 +187,7 @@ a {
   left: 930px;
 }
 #modal-classification-desc-container > h5 {
-  margin-top: 0px;
+  margin-top: 17px;
 }
 
 #modal-classification-desc {
@@ -199,8 +196,19 @@ a {
 #modal-svg {
   width: 930px;
   margin-left: -20px;
+  margin-top: 20px;
   padding-bottom: 30px;
 }
+/* Detail tooltip */
+#modalDialog-tooltip-space {
+  z-index: 99999;
+  position: absolute;
+  /*width: 100px;
+  height: 20px;*/
+  background: #ddd;
+  border-radius: 8px;
+}
+
 
 .modalDialog {
     position: fixed;

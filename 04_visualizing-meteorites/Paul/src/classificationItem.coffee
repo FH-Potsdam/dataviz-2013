@@ -127,6 +127,7 @@ mousemovedHelper = (obj) ->
 
 mouseoutHelper = (obj) ->
   console.log 'mouse out'
+  divHelper.text('')
   # d3.select('#modalDialog-tooltip-space')
   #   .remove()
 
@@ -151,14 +152,18 @@ classificationItemSvgBig = (id) ->
       #console.log classification[j]
 
       d3.select('#modal-classification')
-        .text(id + ' (' + classification[j].total + ')')
+        .text(id)
+
+      d3.select('#modal-classification-total')
+        .text(classification[j].total)
+
       d3.select('#modal-classification-desc')
         .text(classification[j].desc)
       
 
   tmpRectsRow = 100
   tmpRectWidth = 9
-  tmpRectHeight = 4
+  tmpRectHeight = 9
   #tmpRectSize = 20
   tmpRectPosX = 0
   tmpRectPosY = 0

@@ -260,8 +260,8 @@ modalHelper = "javascript:document.getElementById('modal-svg').style.display='sh
 
 classificationItemDivHeadline = function(obj, id) {
   d3.select('#' + obj["class"]).append('div').attr('class', 'classification-label').attr('id', id);
-  d3.select('#' + id).append('a').attr('href', '#openModal').attr('class', 'classification-label-text').attr('id', obj.name).attr('onclick', modalHelper).text(obj.name + ' ');
-  d3.select('#' + id).append('a').attr('href', '#').attr('class', 'classification-label-count tooltip').text(obj.total).append('span').text(obj.desc);
+  d3.select('#' + id).append('a').attr('href', '#openModal').attr('class', 'classification-label-text tooltip').attr('id', obj.name).attr('onclick', modalHelper).text(obj.name + ' ').append('span').text(obj.desc);
+  d3.select('#' + id).append('a').attr('href', '#').attr('class', 'classification-label-count').text(obj.total);
   return d3.select('#' + id).append('br');
 };
 
@@ -319,7 +319,7 @@ mousedownHelper = function(obj) {
 };
 
 classificationItemSvgBig = function(id) {
-  var j, k, tmpIdValue, tmpRectCnt, tmpRectHeight, tmpRectPosX, tmpRectPosY, tmpRectWidth, tmpRectsRow, tmpSvg, _results;
+  var j, k, tmpIdValue, tmpRectCnt, tmpRectHeight, tmpRectPosX, tmpRectPosY, tmpRectWidth, tmpRectsRow, tmpSvg, tmpSvgHeight, tmpSvgWidth, _results;
 
   console.log('draw classificationItemSvgBig() = ' + id);
   tmpIdValue = 0;
@@ -336,7 +336,9 @@ classificationItemSvgBig = function(id) {
   tmpRectPosX = 0;
   tmpRectPosY = 0;
   tmpRectCnt = 0;
-  tmpSvg = d3.select('#modal-svg').append('g');
+  tmpSvgWidth = tmpRectsRow * (tmpRectWidth + 1);
+  tmpSvgHeight = (tmpRectHeight + 1) * (classification[tmpIdValue].total / tmpRectsRow);
+  tmpSvg = d3.select('#modal-svg').attr('width', tmpSvgWidth).attr('height', tmpSvgHeight).append('g');
   k = 0;
   _results = [];
   while (k < classification[tmpIdValue].total) {

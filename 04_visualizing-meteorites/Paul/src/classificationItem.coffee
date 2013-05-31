@@ -128,8 +128,8 @@ mouseoutHelper = (obj) ->
   #   .remove()
 
 mousedownHelper = (obj) ->
-  console.log 'mouse down'
-  console.log obj
+  #console.log 'mouse down'
+  #console.log obj
   # Link to the database
   # _newtab only works for chrome and firefox...
   window.open('http://www.lpi.usra.edu/meteor/metbull.php?code='+Math.floor(obj.id), '_newtab');
@@ -153,8 +153,10 @@ classificationItemSvgBig = (id) ->
         .text(classification[j].desc)
       
 
-  tmpRectsRow = 50
-  tmpRectSize = 20
+  tmpRectsRow = 100
+  tmpRectWidth = 9
+  tmpRectHeight = 4
+  #tmpRectSize = 20
   tmpRectPosX = 0
   tmpRectPosY = 0
   tmpRectCnt = 0
@@ -167,18 +169,18 @@ classificationItemSvgBig = (id) ->
     #tmpId = classification[tmpIdValue].rows[k]
     #console.log tmpId
 
-    tmpRectPosX +=tmpRectSize+1
+    tmpRectPosX +=tmpRectWidth+1
     if tmpRectCnt == tmpRectsRow
-      tmpRectPosX = 0+tmpRectSize+1
-      tmpRectPosY += tmpRectSize+1
+      tmpRectPosX = 0+tmpRectWidth+1
+      tmpRectPosY += tmpRectHeight+1
       tmpRectCnt = 0
 
     if METEORITES_DATA[classification[tmpIdValue].rows[k]].fall == 'Fell'
       tmpSvg.append('rect')
             .attr('x', tmpRectPosX)
             .attr('y', tmpRectPosY)
-            .attr('width', tmpRectSize)
-            .attr('height', tmpRectSize)
+            .attr('width', tmpRectWidth)
+            .attr('height', tmpRectHeight)
             .attr('class', 'fell')
             .attr('id', classification[tmpIdValue].rows[k])
             .on("mouseover", ->
@@ -198,8 +200,8 @@ classificationItemSvgBig = (id) ->
       tmpSvg.append('rect')
             .attr('x', tmpRectPosX)
             .attr('y', tmpRectPosY)
-            .attr('width', tmpRectSize)
-            .attr('height', tmpRectSize)
+            .attr('width', tmpRectWidth)
+            .attr('height', tmpRectHeight)
             .attr('class', 'found')
             .attr('id', classification[tmpIdValue].rows[k])
             .on("mouseover", ->

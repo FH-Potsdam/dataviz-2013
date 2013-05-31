@@ -108,7 +108,7 @@ void setupObjectItems() {
   objectItems[objectItemsCounter] = new ObjectItem("ck_group",
                                                    "CK Group",
                                                    "The Karoonda (CK) chemical group of carbonaceous chondrites, distinguished by abundant fine-grained matrix (~75 vol%), mm-sized chondrules that lack igneous rims,  relatively few refractory inclusions, and a high degree of oxidation; most CK chondrites have been metamorphosed to type 4 or higher.",
-                                                   CLASS_ORDINARY_CHONDRITES,
+                                                   CLASS_CARBONACEOUS_CHONDRITES,
                                                    new String[]{"CK"});
   objectItemsCounter++;
 

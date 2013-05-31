@@ -131,8 +131,8 @@ mousedownHelper = (obj) ->
   console.log 'mouse down'
   console.log obj
   # Link to the database
-  # http://www.lpi.usra.edu/meteor/metbull.php?code=
-  window.open('http://www.lpi.usra.edu/meteor/metbull.php?code='+obj.id, '_blank');
+  # _newtab only works for chrome and firefox...
+  window.open('http://www.lpi.usra.edu/meteor/metbull.php?code='+Math.floor(obj.id), '_newtab');
 
 
 

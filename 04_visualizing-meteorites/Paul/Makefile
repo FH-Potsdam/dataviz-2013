@@ -1,9 +1,9 @@
 SRC=src/header.coffee \
 src/constants.coffee \
 src/classification.coffee \
-src/classificationItem.coffee \
+src/overview.coffee \
+src/detail.coffee \
 src/intro.coffee \
-src/viz.coffee \
 src/index.coffee
 
 OUTPUT=assets/viz.js

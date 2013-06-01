@@ -13,7 +13,7 @@
 Dataviz Challanges,
 FH-Potsdam, University of Applied Sciences
 
-@version 0.0.2
-@date    2013-05-31
+@version 0.0.2a
+@date    2013-06-01
 @author  Paul Vollmer <paul.vollmer@fh-potsdam.de>
 ###

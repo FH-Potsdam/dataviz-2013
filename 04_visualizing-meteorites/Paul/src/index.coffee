@@ -20,7 +20,6 @@ timerSteps = 500
 intro()
 
 
-
 ##
 # Loading dataset
 # The dataset was converted to JSON with Mr. Data Converter.
@@ -36,15 +35,17 @@ d3.csv(METEORITES_DATAPATH, (error, data)->
     METEORITES_DATA = data
     #console.log 'JSON Data Loaded:'
     #console.log METEORITES_DATA
+
+    # Print out one object from the dataset.
+    # Used for debugging stuff
+    #console.log METEORITES_DATA[0]
     
-    
-    # Run the viz.
-    viz()
+    # Draw the Visualisation
+    overview(classification)
     # or with timeout...
     #window.setTimeout ( ->
-    #  viz()
+    #  overview(classification)
     #), timer
-
 
     'loading ready'  
 )

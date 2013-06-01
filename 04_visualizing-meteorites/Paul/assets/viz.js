@@ -311,7 +311,8 @@ mousemovedHelper = function(obj) {
 };
 
 mouseoutHelper = function(obj) {
-  return console.log('mouse out');
+  console.log('mouse out');
+  return divHelper.text('');
 };
 
 mousedownHelper = function(obj) {
@@ -326,13 +327,14 @@ classificationItemSvgBig = function(id) {
   for (j in classification) {
     if (classification[j].name === id) {
       tmpIdValue = j;
-      d3.select('#modal-classification').text(id + ' (' + classification[j].total + ')');
+      d3.select('#modal-classification').text(id);
+      d3.select('#modal-classification-total').text(classification[j].total);
       d3.select('#modal-classification-desc').text(classification[j].desc);
     }
   }
   tmpRectsRow = 100;
   tmpRectWidth = 9;
-  tmpRectHeight = 4;
+  tmpRectHeight = 9;
   tmpRectPosX = 0;
   tmpRectPosY = 0;
   tmpRectCnt = 0;

@@ -1,0 +1,103 @@
+//
+// Modal Stuff
+//
+#modal-classification {
+  font-size: 22px;
+  display: inline;
+}
+
+#modal-classification-total {
+  margin-top: -6px;
+  margin-left: 6px;
+  display: inline;
+  font-size: 16px;
+  font-style: italic;
+}
+
+#modal-classification-total-fell {
+  margin-left: 4px;
+  color: #b8e305;
+  font-size: 16px;
+  font-style: italic;
+}
+
+#modal-classification-total-found {
+  margin-left: -2px;
+  color: #298299;
+  font-size: 16px;
+  font-style: italic;
+}
+
+
+#modal-classification-desc-container {
+  width: 200px;
+  position: absolute;
+  left: 930px;
+}
+
+#modal-classification-desc-container > h5 {
+  margin-top: 17px;
+}
+
+#modal-classification-desc {
+  font-size: 14px;
+}
+
+#modal-svg {
+  width: 930px;
+  margin-left: -20px;
+  margin-top: 20px;
+  padding-bottom: 30px;
+}
+// Detail tooltip
+#modalDialog-tooltip-space {
+  z-index: 99999;
+  position: absolute;
+  background: #ddd;
+  border-radius: 8px;
+}
+
+.modalDialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 99990;
+  opacity:0;
+  -webkit-transition: opacity 200ms ease-in;
+  -moz-transition: opacity 200ms ease-in;
+  transition: opacity 200ms ease-in;
+  pointer-events: none;
+}
+
+.modalDialog:target {
+  opacity:1;
+  pointer-events: auto;
+}
+
+.modalDialog > div {
+  width: 90%;
+  height: 85%;
+  position: relative;
+  margin: 5% auto;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.close {
+  background: #000;
+  color: #FFF;
+  line-height: 25px;
+  position: absolute;
+  right: 16px;
+  top: -2px;
+  width: 24px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+//.close:hover {
+//  background: #00d9ff;
+//}

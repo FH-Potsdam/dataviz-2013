@@ -181,6 +181,19 @@ a {
   font-size: 16px;
   font-style: italic;
 }
+#modal-classification-total-fell {
+  margin-left: 4px;
+  color: #b8e305;
+  font-size: 16px;
+  font-style: italic;
+}
+#modal-classification-total-found {
+  margin-left: -2px;
+  color: #298299;
+  font-size: 16px;
+  font-style: italic;
+}
+
 #modal-classification-desc-container {
   width: 200px;
   position: absolute;

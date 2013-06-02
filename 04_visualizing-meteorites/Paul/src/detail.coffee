@@ -54,7 +54,11 @@ classificationItemSvgBig = (id) ->
         .text(id)
 
       d3.select('#modal-classification-total')
-        .text(classification[j].total)
+        .text('Total: '+classification[j].total)
+      d3.select('#modal-classification-total-fell')
+        .text('Fell: '+classification[j].totalFell)
+      d3.select('#modal-classification-total-found')
+        .text('Found: '+classification[j].totalFound)
 
       d3.select('#modal-classification-desc')
         .text(classification[j].desc)

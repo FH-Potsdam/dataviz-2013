@@ -9,12 +9,19 @@ src/index.coffee
 OUTPUT=assets/viz.js
 
 
-.PHONY: build buildwatch
+.PHONY: build less coffeewatch
 
 build:
 	@echo "Compile CoffeeScript..."
 	@coffee -cj ${OUTPUT} ${SRC}
+	@echo "Compile Less..."
+	@recess --compile style/main.less > assets/style.css
 
-buildwatch:
+less:
+	@echo "Compile Less..."
+	@recess --compile style/main.less > assets/style.css
+
+coffeewatch:
 	@echo "Compile CoffeeScript and watch files for changes..."
 	@coffee --watch --bare --lint -cj ${OUTPUT} ${SRC}
+	@recess --compile style/*.less --watch > assets/style.css

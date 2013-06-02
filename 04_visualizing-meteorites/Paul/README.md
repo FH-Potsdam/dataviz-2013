@@ -14,4 +14,4 @@ Use the Makefile to compile coffeescript:
 
     # or
     
-    make buildwatch
+    make coffeewatch

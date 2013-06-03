@@ -78,9 +78,11 @@ classificationItemSvgBig = (id) ->
   tmpSvgHeight = (tmpRectHeight+1)*(classification[tmpIdValue].total/tmpRectsRow)
 
 
-  tmpSvg = d3.select('#modal-svg')
+  tmpSvg = d3.select('#modal-svg-container')
+             .append('svg')
              .attr('width', tmpSvgWidth)
              .attr('height', tmpSvgHeight)
+             .attr('id', 'modal-svg')
              .append('g')
 
   k = 0

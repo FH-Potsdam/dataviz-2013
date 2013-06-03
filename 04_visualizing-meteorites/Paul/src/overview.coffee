@@ -21,9 +21,8 @@ overview = ->
 
 
 
-modalHelper = "javascript:
-document.getElementById('modal-svg').style.display='show';
-classificationItemSvgBig(this.id);"
+# modalHelper = "javascript:
+modalHelper = "javascript:classificationItemSvgBig(this.id);"
 
 
 

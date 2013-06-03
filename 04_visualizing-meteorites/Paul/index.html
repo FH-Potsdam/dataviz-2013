@@ -22,7 +22,7 @@
       <!-- The detail view -->
       <div id="openModal" class="modalDialog">
         <div>
-          <a href="#close" title="Close" class="close" onclick="console.log('removeeeeeee');d3.select('#modal-svg g').remove();">close</a>
+          <a href="#close" title="Close" class="close" onclick="d3.select('#modal-svg').remove();">close</a>
 
           <span id="modal-classification">Classification</span>
           <span id="modal-classification-total">0</span>
@@ -34,9 +34,7 @@
           </div>
           <div>
             <div id="modalDialog-tooltip-space"></div>
-
-            <!-- <svg id="modal-svg" style="visibility: hidden"></svg> -->
-            <svg id="modal-svg"></svg>
+            <div id="modal-svg-container"></div>
           </div>
         </div>
       </div>

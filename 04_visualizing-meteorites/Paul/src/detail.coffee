@@ -57,21 +57,43 @@ detailViewSvg = (id, curId) ->
 
   mouseoverHelper = (obj) ->
     console.log 'mouse over'
-    divHelper.text('Fall = '+obj.fall+', Mass = '+obj.mass+', Name = '+obj.name+', Year = '+obj.year)
-             # .style("left", (d3.event.pageX - 34) + "px")
-             # .style("top", (d3.event.pageY - 12) + "px");
     
-  mousemovedHelper = (obj) ->
-    console.log 'mouse moved'
-    divHelper.text('Fall = '+obj.fall+', Mass = '+obj.mass+', Name = '+obj.name+', Year = '+obj.year)
-             # .style("left", (d3.event.pageX - 34) + "px")
-             # .style("top", (d3.event.pageY - 12) + "px");
 
-  mouseoutHelper = (obj) ->
-    console.log 'mouse out'
-    divHelper.text('')
-    # d3.select('#modalDialog-tooltip-space')
-    #   .remove()
+    offset = $('#modal-svg-container').offset()
+    divHelper.style("left", (d3.event.pageX-offset.left+20) + "px")
+             .style("top", (d3.event.pageY-offset.top+40) + "px");
+
+    # remove the old info tag
+    divHelper.select('#current_info')
+             .remove()
+
+    divHelper.append('div')
+             .attr('id', 'current_info')
+
+    d3.select('#current_info')
+      .append('span')
+      .text('Name: ')
+      .append('span')
+      .attr('id', 'current_info_name')
+      .text(obj.name)
+      .append('br')
+
+    d3.select('#current_info')
+      .append('span')
+      .text('Mass: ')
+      .append('span')
+      .attr('id', 'current_info_mass')
+      .text(Math.floor(obj.mass)+'g')
+      .append('br')
+
+    d3.select('#current_info')
+      .append('span')
+      .text('Year: ')
+      .append('span')
+      .attr('id', 'current_info_year')
+      .text(Math.floor(obj.year))
+      .append('br')
+    
 
   mousedownHelper = (obj) ->
     #console.log 'mouse down'
@@ -124,12 +146,6 @@ detailViewSvg = (id, curId) ->
             .on("mouseover", ->
               mouseoverHelper(METEORITES_DATA[ this.id ])
               )
-            .on("mousemove", ->
-              mousemovedHelper(METEORITES_DATA[ this.id ])
-              )
-            .on("mouseout", ->
-              mouseoutHelper(METEORITES_DATA[ this.id ])
-              )
             .on('mousedown', ->
               mousedownHelper(METEORITES_DATA[ this.id ])
               )
@@ -143,12 +159,6 @@ detailViewSvg = (id, curId) ->
             .attr('id', classification[curId].rows[k])
             .on("mouseover", ->
               mouseoverHelper(METEORITES_DATA[ this.id ])
-              )
-            .on("mousemove", ->
-              mousemovedHelper(METEORITES_DATA[ this.id ])
-              )
-            .on("mouseout", ->
-              mouseoutHelper(METEORITES_DATA[ this.id ])
               )
             .on('mousedown', ->
               mousedownHelper(METEORITES_DATA[ this.id ])

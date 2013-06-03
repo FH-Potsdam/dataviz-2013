@@ -8,7 +8,7 @@ FH-Potsdam, University of Applied Sciences
 @author  Paul Vollmer <paul.vollmer@fh-potsdam.de>
 */
 
-var ID_CONTENT, ID_FOOTER, ID_INTRO, METEORITES_DATA, METEORITES_DATAPATH, RECT_SIZE, RECT_SIZE_WITH_MARGIN, TOTAL_RECTS_ROW, classification, classificationItemDivHeadline, classificationItemSvg, classificationItemSvgBig, divHelper, intro, modalHelper, mousedownHelper, mousemovedHelper, mouseoutHelper, mouseoverHelper, overview, timer, timerSteps;
+var ID_CONTENT, ID_FOOTER, ID_INTRO, METEORITES_DATA, METEORITES_DATAPATH, RECT_SIZE, RECT_SIZE_WITH_MARGIN, TOTAL_RECTS_ROW, classification, classificationItemDivHeadline, classificationItemSvg, detailView, detailViewSvg, detailViewUpdateInfos, intro, modalHelper, overview, timer, timerSteps;
 
 ID_INTRO = '#intro';
 
@@ -333,7 +333,7 @@ overview = function() {
   return _results;
 };
 
-modalHelper = "javascript:classificationItemSvgBig(this.id);";
+modalHelper = "javascript:detailView(this.id);";
 
 classificationItemDivHeadline = function(obj, id) {
   d3.select('#' + obj["class"]).append('div').attr('class', 'classification-label').attr('id', id);
@@ -375,42 +375,49 @@ classificationItemSvg = function(obj, id) {
   return _results;
 };
 
-divHelper = d3.select('#modalDialog-tooltip-space');
+detailView = function(id) {
+  var currentId, j;
 
-mouseoverHelper = function(obj) {
-  console.log('mouse over');
-  return divHelper.text('Fall = ' + obj.fall + ', Mass = ' + obj.mass + ', Name = ' + obj.name + ', Year = ' + obj.year);
-};
-
-mousemovedHelper = function(obj) {
-  console.log('mouse moved');
-  return divHelper.text('Fall = ' + obj.fall + ', Mass = ' + obj.mass + ', Name = ' + obj.name + ', Year = ' + obj.year);
-};
-
-mouseoutHelper = function(obj) {
-  console.log('mouse out');
-  return divHelper.text('');
-};
-
-mousedownHelper = function(obj) {
-  return window.open('http://www.lpi.usra.edu/meteor/metbull.php?code=' + Math.floor(obj.id), '_newtab');
-};
-
-classificationItemSvgBig = function(id) {
-  var j, k, tmpIdValue, tmpRectCnt, tmpRectHeight, tmpRectPosX, tmpRectPosY, tmpRectWidth, tmpRectsRow, tmpSvg, tmpSvgHeight, tmpSvgWidth, _results;
-
-  console.log('draw classificationItemSvgBig() = ' + id);
-  tmpIdValue = 0;
+  console.log('detailView id = ' + id);
+  currentId = 0;
   for (j in classification) {
     if (classification[j].name === id) {
-      tmpIdValue = j;
-      d3.select('#modal-classification').text(id);
-      d3.select('#modal-classification-total').text('Total: ' + classification[j].total);
-      d3.select('#modal-classification-total-fell').text('Fell: ' + classification[j].totalFell);
-      d3.select('#modal-classification-total-found').text('Found: ' + classification[j].totalFound);
-      d3.select('#modal-classification-desc').text(classification[j].desc);
+      currentId = j;
+      console.log('TREFFER!!! -  ' + currentId);
+      console.log(classification[j]);
     }
   }
+  detailViewUpdateInfos(id, currentId);
+  return detailViewSvg(id, currentId);
+};
+
+detailViewUpdateInfos = function(id, curId) {
+  d3.select('#modal-classification').text(id);
+  d3.select('#modal-classification-total').text('Total: ' + classification[curId].total);
+  d3.select('#modal-classification-total-fell').text('Fell: ' + classification[curId].totalFell);
+  d3.select('#modal-classification-total-found').text('Found: ' + classification[curId].totalFound);
+  return d3.select('#modal-classification-desc').text(classification[curId].desc);
+};
+
+detailViewSvg = function(id, curId) {
+  var divHelper, k, mousedownHelper, mouseoverHelper, tmpRectCnt, tmpRectHeight, tmpRectPosX, tmpRectPosY, tmpRectWidth, tmpRectsRow, tmpSvg, tmpSvgHeight, tmpSvgWidth, _results;
+
+  divHelper = d3.select('#modalDialog-tooltip-space');
+  mouseoverHelper = function(obj) {
+    var offset;
+
+    console.log('mouse over');
+    offset = $('#modal-svg-container').offset();
+    divHelper.style("left", (d3.event.pageX - offset.left + 20) + "px").style("top", (d3.event.pageY - offset.top + 40) + "px");
+    divHelper.select('#current_info').remove();
+    divHelper.append('div').attr('id', 'current_info');
+    d3.select('#current_info').append('span').text('Name: ').append('span').attr('id', 'current_info_name').text(obj.name).append('br');
+    d3.select('#current_info').append('span').text('Mass: ').append('span').attr('id', 'current_info_mass').text(Math.floor(obj.mass) + 'g').append('br');
+    return d3.select('#current_info').append('span').text('Year: ').append('span').attr('id', 'current_info_year').text(Math.floor(obj.year)).append('br');
+  };
+  mousedownHelper = function(obj) {
+    return window.open('http://www.lpi.usra.edu/meteor/metbull.php?code=' + Math.floor(obj.id), '_newtab');
+  };
   tmpRectsRow = 100;
   tmpRectWidth = 9;
   tmpRectHeight = 9;
@@ -418,34 +425,26 @@ classificationItemSvgBig = function(id) {
   tmpRectPosY = 0;
   tmpRectCnt = 0;
   tmpSvgWidth = tmpRectsRow * (tmpRectWidth + 1);
-  tmpSvgHeight = (tmpRectHeight + 1) * (classification[tmpIdValue].total / tmpRectsRow);
+  tmpSvgHeight = (tmpRectHeight + 1) * (classification[curId].total / tmpRectsRow);
   tmpSvg = d3.select('#modal-svg-container').append('svg').attr('width', tmpSvgWidth).attr('height', tmpSvgHeight).attr('id', 'modal-svg');
   k = 0;
   _results = [];
-  while (k < classification[tmpIdValue].total) {
+  while (k < classification[curId].total) {
     tmpRectPosX += tmpRectWidth + 1;
     if (tmpRectCnt === tmpRectsRow) {
       tmpRectPosX = 0 + tmpRectWidth + 1;
       tmpRectPosY += tmpRectHeight + 1;
       tmpRectCnt = 0;
     }
-    if (METEORITES_DATA[classification[tmpIdValue].rows[k]].fall === 'Fell') {
-      tmpSvg.append('rect').attr('x', tmpRectPosX).attr('y', tmpRectPosY).attr('width', tmpRectWidth).attr('height', tmpRectHeight).attr('class', 'fell-big').attr('id', classification[tmpIdValue].rows[k]).on("mouseover", function() {
+    if (METEORITES_DATA[classification[curId].rows[k]].fall === 'Fell') {
+      tmpSvg.append('rect').attr('x', tmpRectPosX).attr('y', tmpRectPosY).attr('width', tmpRectWidth).attr('height', tmpRectHeight).attr('class', 'fell-big').attr('id', classification[curId].rows[k]).on("mouseover", function() {
         return mouseoverHelper(METEORITES_DATA[this.id]);
-      }).on("mousemove", function() {
-        return mousemovedHelper(METEORITES_DATA[this.id]);
-      }).on("mouseout", function() {
-        return mouseoutHelper(METEORITES_DATA[this.id]);
       }).on('mousedown', function() {
         return mousedownHelper(METEORITES_DATA[this.id]);
       });
     } else {
-      tmpSvg.append('rect').attr('x', tmpRectPosX).attr('y', tmpRectPosY).attr('width', tmpRectWidth).attr('height', tmpRectHeight).attr('class', 'found-big').attr('id', classification[tmpIdValue].rows[k]).on("mouseover", function() {
+      tmpSvg.append('rect').attr('x', tmpRectPosX).attr('y', tmpRectPosY).attr('width', tmpRectWidth).attr('height', tmpRectHeight).attr('class', 'found-big').attr('id', classification[curId].rows[k]).on("mouseover", function() {
         return mouseoverHelper(METEORITES_DATA[this.id]);
-      }).on("mousemove", function() {
-        return mousemovedHelper(METEORITES_DATA[this.id]);
-      }).on("mouseout", function() {
-        return mouseoutHelper(METEORITES_DATA[this.id]);
       }).on('mousedown', function() {
         return mousedownHelper(METEORITES_DATA[this.id]);
       });

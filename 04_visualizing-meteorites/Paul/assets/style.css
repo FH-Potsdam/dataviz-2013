@@ -209,8 +209,24 @@ a {
 #modalDialog-tooltip-space {
   position: absolute;
   z-index: 99999;
-  background: rgba(0, 0, 0, 0.9);
+}
+
+#current_info {
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 3px;
+}
+
+#current_info_name {
+  padding: 10px;
+}
+
+#current_info_mass {
+  padding: 15px;
+}
+
+#current_info_year {
+  padding: 19px;
 }
 
 .modalDialog {
@@ -221,7 +237,7 @@ a {
   left: 0;
   z-index: 99990;
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.8);
   opacity: 0;
   -webkit-transition: opacity 200ms ease-in;
      -moz-transition: opacity 200ms ease-in;
@@ -273,6 +289,7 @@ svg {
 }
 
 .fell-big:hover {
+  cursor: none;
   fill: #e2fc78;
 }
 
@@ -281,6 +298,7 @@ svg {
 }
 
 .found-big:hover {
+  cursor: none;
   fill: #4eb4cf;
 }
 

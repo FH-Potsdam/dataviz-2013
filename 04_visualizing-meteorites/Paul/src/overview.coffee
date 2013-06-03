@@ -13,7 +13,7 @@
 # Draw all classification items (Div's and SVG's)
 ##
 overview = ->
-	console.log 'Run overview()'
+	#console.log 'Run overview()'
 
 	for i of classification
     classificationItemDivHeadline(classification[i], i)
@@ -21,9 +21,7 @@ overview = ->
 
 
 
-# modalHelper = "javascript:
 modalHelper = "javascript:classificationItemSvgBig(this.id);"
-
 
 
 ##

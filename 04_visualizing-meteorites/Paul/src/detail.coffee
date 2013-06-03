@@ -83,7 +83,6 @@ classificationItemSvgBig = (id) ->
              .attr('width', tmpSvgWidth)
              .attr('height', tmpSvgHeight)
              .attr('id', 'modal-svg')
-             .append('g')
 
   k = 0
   while k < classification[tmpIdValue].total
@@ -102,7 +101,7 @@ classificationItemSvgBig = (id) ->
             .attr('y', tmpRectPosY)
             .attr('width', tmpRectWidth)
             .attr('height', tmpRectHeight)
-            .attr('class', 'fell')
+            .attr('class', 'fell-big')
             .attr('id', classification[tmpIdValue].rows[k])
             .on("mouseover", ->
               mouseoverHelper(METEORITES_DATA[ this.id ])
@@ -123,7 +122,7 @@ classificationItemSvgBig = (id) ->
             .attr('y', tmpRectPosY)
             .attr('width', tmpRectWidth)
             .attr('height', tmpRectHeight)
-            .attr('class', 'found')
+            .attr('class', 'found-big')
             .attr('id', classification[tmpIdValue].rows[k])
             .on("mouseover", ->
               mouseoverHelper(METEORITES_DATA[ this.id ])

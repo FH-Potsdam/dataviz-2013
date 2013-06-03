@@ -325,7 +325,6 @@ classification = {
 overview = function() {
   var i, _results;
 
-  console.log('Run overview()');
   _results = [];
   for (i in classification) {
     classificationItemDivHeadline(classification[i], i);
@@ -420,7 +419,7 @@ classificationItemSvgBig = function(id) {
   tmpRectCnt = 0;
   tmpSvgWidth = tmpRectsRow * (tmpRectWidth + 1);
   tmpSvgHeight = (tmpRectHeight + 1) * (classification[tmpIdValue].total / tmpRectsRow);
-  tmpSvg = d3.select('#modal-svg-container').append('svg').attr('width', tmpSvgWidth).attr('height', tmpSvgHeight).attr('id', 'modal-svg').append('g');
+  tmpSvg = d3.select('#modal-svg-container').append('svg').attr('width', tmpSvgWidth).attr('height', tmpSvgHeight).attr('id', 'modal-svg');
   k = 0;
   _results = [];
   while (k < classification[tmpIdValue].total) {
@@ -431,7 +430,7 @@ classificationItemSvgBig = function(id) {
       tmpRectCnt = 0;
     }
     if (METEORITES_DATA[classification[tmpIdValue].rows[k]].fall === 'Fell') {
-      tmpSvg.append('rect').attr('x', tmpRectPosX).attr('y', tmpRectPosY).attr('width', tmpRectWidth).attr('height', tmpRectHeight).attr('class', 'fell').attr('id', classification[tmpIdValue].rows[k]).on("mouseover", function() {
+      tmpSvg.append('rect').attr('x', tmpRectPosX).attr('y', tmpRectPosY).attr('width', tmpRectWidth).attr('height', tmpRectHeight).attr('class', 'fell-big').attr('id', classification[tmpIdValue].rows[k]).on("mouseover", function() {
         return mouseoverHelper(METEORITES_DATA[this.id]);
       }).on("mousemove", function() {
         return mousemovedHelper(METEORITES_DATA[this.id]);
@@ -441,7 +440,7 @@ classificationItemSvgBig = function(id) {
         return mousedownHelper(METEORITES_DATA[this.id]);
       });
     } else {
-      tmpSvg.append('rect').attr('x', tmpRectPosX).attr('y', tmpRectPosY).attr('width', tmpRectWidth).attr('height', tmpRectHeight).attr('class', 'found').attr('id', classification[tmpIdValue].rows[k]).on("mouseover", function() {
+      tmpSvg.append('rect').attr('x', tmpRectPosX).attr('y', tmpRectPosY).attr('width', tmpRectWidth).attr('height', tmpRectHeight).attr('class', 'found-big').attr('id', classification[tmpIdValue].rows[k]).on("mouseover", function() {
         return mouseoverHelper(METEORITES_DATA[this.id]);
       }).on("mousemove", function() {
         return mousemovedHelper(METEORITES_DATA[this.id]);

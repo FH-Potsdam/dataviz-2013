@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Visualizing Meteorites</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./assets/style.css">
+    <script type="text/javascript" src="../../lib/d3.v3.js"></script>
+    <script type="text/javascript" src="../../lib/jquery-1.9.1.min.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-38828121-2', 'wrongentertainment.github.io');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      
+      <!-- <h1 class="headline"><a href="http://www.visualizing.org/contests/visualizing-meteorites/">Visualizing Meteorites</a></h1> -->
+      
+      <div class="intro">
+        <h1>Classifying 45.715 <span class="color-fell">fallen</span> and <span class="color-found">found</span> meteoroids.</h1>
+      </div> <!-- End #intro -->
+
+
+      <!-- The detail view -->
+      <div id="openModal" class="modalDialog">
+        <div>
+          <a href="#close" title="Close" class="close" onclick="d3.select('#modal-svg').remove();">close</a>
+
+          <span id="modal-classification">Classification</span>
+          <span id="modal-classification-total">0</span>
+          <span id="modal-classification-total-fell">0</span>
+          <span id="modal-classification-total-found"></span>
+          <div id="modal-classification-desc-container">
+            <h5>Classification Description:</h5>
+            <p id="modal-classification-desc">Description</p>
+          </div>
+          <div>
+            <div id="modalDialog-tooltip-space"></div>
+            <div id="modal-svg-container"></div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- End #container -->
+    
+
+
+    <div id="content">
+      
+      <table>
+        <tr>
+          <td colspan="3" align="center">
+            <span class="classification1" id="diferentiated">Differentiated</span>
+          </td>
+          <td colspan="3" align="center">
+            <span class="classification1" id="undiferentiated">Undifferentiated</span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <svg class="svg-hr" width="611" height="10">
+              <rect width="611" height="2"/>
+              <rect width="2" height="7"/>
+              <rect x="609" width="2" height="7"/>
+            </svg>
+          </td>
+          <td colspan="3">
+            <svg class="svg-hr" width="611" height="10">
+              <rect width="611" height="2"/>
+              <rect width="2" height="7"/>
+              <rect x="609" width="2" height="7"/>
+            </svg>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <span class="classification2">Achondrites</span>
+          </td>
+          <td>
+            <span class="classification2">Iron</span>
+          </td>
+          <td>
+            <span class="classification2">Stony-Iron</span>
+          </td>
+          <td colspan="3" align="center">
+            <span class="classification2">Chondrites</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <svg class="svg-hr" width="201" height="10">
+              <rect width="201" height="2"/>
+              <rect width="2" height="7"/>
+              <rect x="199" width="2" height="7"/>
+            </svg>
+          </td>
+          <td>
+            <svg class="svg-hr" width="201" height="10">
+              <rect width="201" height="2"/>
+              <rect width="2" height="7"/>
+              <rect x="199" width="2" height="7"/>
+            </svg>
+          </td>
+          <td>
+            <svg class="svg-hr" width="201" height="10">
+              <rect width="201" height="2"/>
+              <rect width="2" height="7"/>
+              <rect x="199" width="2" height="7"/>
+            </svg>
+          </td>
+          <td colspan="3">
+            <svg class="svg-hr" width="611" height="10">
+              <rect width="611" height="2"/>
+              <rect width="2" height="7"/>
+              <rect x="609" width="2" height="7"/>
+            </svg>
+          </td>
+        </tr>
+
+
+
+        <tr>
+          <td rowspan="3">
+            <div id="achondrites"></div>
+          </td>
+          <td rowspan="3">
+            <div id="iron"></div>
+          </td>
+          <td rowspan="3">
+            <div id="stony-iron"></div>
+          </td>
+
+          <td>
+            <span class="classification3">Carbonaceous<br>Chondrites</span>
+          </td>
+          <td>
+            <span class="classification3">Ordinary<br>Chondrites</span>
+          </td>
+          <td>
+            <span class="classification3">Enstatite<br>Chondrites</span>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>
+            <svg class="svg-hr" width="201" height="10">
+              <rect width="201" height="2"/>
+              <rect width="2" height="7"/>
+              <rect x="199" width="2" height="7"/>
+            </svg>
+          </td>
+          <td>
+            <svg class="svg-hr" width="201" height="10">
+              <rect width="201" height="2"/>
+              <rect width="2" height="7"/>
+              <rect x="199" width="2" height="7"/>
+            </svg>
+          </td>
+          <td>
+            <svg class="svg-hr" width="201" height="10">
+              <rect width="201" height="2"/>
+              <rect width="2" height="7"/>
+              <rect x="199" width="2" height="7"/>
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="4">
+            <div id="carbonaceous-chondrites"></div>
+          </td>
+          <td rowspan="4">
+            <div id="ordinary-chondrites"></div>
+          </td>
+          <td rowspan="4">
+            <div id="enstatite-chondrites"></div>
+          </td>
+        </tr>
+            
+        <tr>
+          <td colspan="3" align="center">
+            <span class="classification1">Ungrouped</span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <svg class="svg-hr" width="611" height="10">
+              <rect width="611" height="2"/>
+              <rect width="2" height="7"/>
+              <rect x="609" width="2" height="7"/>
+            </svg>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="unknown"></div>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+
+      </table>
+    
+
+    </div> <!-- End #content -->
+
+
+    
+    <div id="footer">
+      <div id="footer-content">
+        <div>
+          <h4>About the Project</h4>
+          <p>
+            The visualization shows an usual classification of meteorites, which is based on the origin of the meteorites parent body.<br />
+            A distinction is made between differentiated and undifferentiated meteorites.These two groups are separated into further subgroups.
+            At the same time the visualization demonstrates, how many meteors have been observed while they were falling down and how many were found as objects.<br />
+          </p>
+          <p>
+            Names and other dates of single meteors are taken from the <a href="http://www.lpi.usra.edu/meteor/metbull.php">The Meteoritical Society</a> database.
+          </p>
+        </div>
+
+        <div id="project-imprint">
+          <p>This Project is designed and developed by Paul Vollmer.<br> <a class="color-found" href="http://design.fh-potsdam.de/">FH-Potsdam, University of Applied Sciences</a></p>
+        </div> <!-- End #project-imprint -->
+      </div>
+    </div>
+
+    <script type="text/javascript" src="./assets/viz.js"></script>
+  </body>
+</html>

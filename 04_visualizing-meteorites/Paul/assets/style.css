@@ -134,7 +134,7 @@ a {
 }
 
 .tooltip span {
-  z-index: 10;
+  z-index: 99999;
   display: none;
   width: 240px;
   padding: 4px;
@@ -146,9 +146,8 @@ a {
 .tooltip:hover span {
   position: absolute;
   display: inline;
-  color: #111;
-  background: #D4D4D4;
-  border: 1px solid #DCA;
+  color: #FFF;
+  background: rgba(0, 0, 0, 0.9);
 }
 
 .callout {
@@ -210,8 +209,8 @@ a {
 #modalDialog-tooltip-space {
   position: absolute;
   z-index: 99999;
-  background: #ddd;
-  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 3px;
 }
 
 .modalDialog {

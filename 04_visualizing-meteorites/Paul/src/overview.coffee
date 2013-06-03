@@ -21,7 +21,7 @@ overview = ->
 
 
 
-modalHelper = "javascript:classificationItemSvgBig(this.id);"
+modalHelper = "javascript:detailView(this.id);"
 
 
 ##

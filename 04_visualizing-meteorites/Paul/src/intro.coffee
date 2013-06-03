@@ -16,7 +16,7 @@ intro = ->
 	# Fade in the intro div
 	##
 	$(ID_INTRO).hide(0).delay(timer).fadeIn(1500)
-	timer += 3000
+	timer += 6000
 
 	##
 	# scroll to the viz

@@ -10,7 +10,7 @@ FH-Potsdam, University of Applied Sciences
 
 var ID_CONTENT, ID_FOOTER, ID_INTRO, METEORITES_DATA, METEORITES_DATAPATH, RECT_SIZE, RECT_SIZE_WITH_MARGIN, TOTAL_RECTS_ROW, classification, classificationItemDivHeadline, classificationItemSvg, detailView, detailViewSvg, detailViewUpdateInfos, intro, modalHelper, overview, timer, timerSteps;
 
-ID_INTRO = '#intro';
+ID_INTRO = '.intro';
 
 ID_CONTENT = '#content';
 
@@ -412,7 +412,7 @@ detailViewSvg = function(id, curId) {
     divHelper.select('#current_info').remove();
     divHelper.append('div').attr('id', 'current_info');
     d3.select('#current_info').append('span').text('Name: ').append('span').attr('id', 'current_info_name').text(obj.name).append('br');
-    d3.select('#current_info').append('span').text('Mass: ').append('span').attr('id', 'current_info_mass').text(Math.floor(obj.mass) + 'g').append('br');
+    d3.select('#current_info').append('span').text('Mass: ').append('span').attr('id', 'current_info_mass').text(obj.mass + 'g').append('br');
     return d3.select('#current_info').append('span').text('Year: ').append('span').attr('id', 'current_info_year').text(Math.floor(obj.year)).append('br');
   };
   mousedownHelper = function(obj) {
@@ -459,7 +459,7 @@ intro = function() {
   $(ID_CONTENT).hide(0);
   $(ID_FOOTER).hide(0);
   $(ID_INTRO).hide(0).delay(timer).fadeIn(1500);
-  timer += 3000;
+  timer += 6000;
   window.setTimeout((function() {
     $(ID_CONTENT).show();
     $("html,body").animate({

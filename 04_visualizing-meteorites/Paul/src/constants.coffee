@@ -11,7 +11,7 @@
 ##
 # HTML classes, ids etc.
 ##
-ID_INTRO = '#intro'
+ID_INTRO = '.intro'
 ID_CONTENT = '#content'
 ID_FOOTER = '#footer'
 

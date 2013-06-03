@@ -83,7 +83,7 @@ detailViewSvg = (id, curId) ->
       .text('Mass: ')
       .append('span')
       .attr('id', 'current_info_mass')
-      .text(Math.floor(obj.mass)+'g')
+      .text(obj.mass+'g')
       .append('br')
 
     d3.select('#current_info')

@@ -1,0 +1,19 @@
+.widget {
+	background: #ededed;
+	border-radius: 8px;
+	box-sizing: border-box;
+	padding: 16px;
+	iframe {
+		width: 100%;
+		border: none;
+		maring: 0 10px;
+	}
+}
+
+body.widget {
+	background: #ededed;
+}
+
+.row {
+	background: #dadada;
+}

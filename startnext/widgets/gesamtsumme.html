@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- 
+	Startnext Infographics Project
+	Widget: Gesamtsumme
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Startnext Infographics</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="gesamtsumme.css">
+		<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="../js/d3.v3.min.js"></script>
+	</head>
+
+	<body class="widget">
+		<div id="summe"></div>
+
+		<script type="text/javascript">
+
+			var startnext = startnext || {};
+
+			startnext.gesamtsumme = function() {
+
+				var data = null;
+				var summe = 0;
+
+				var formatdots = function(number) {
+					var regex = /(\d+)(\d{3})/;
+
+					return String(number).replace(/^\d+/,
+							function(w) {
+								while (regex.test(w)) {
+									w = w.replace(regex, '$1.$2');
+								}
+								return w;
+							});
+				}
+
+				return {
+					setup: function(callback) {
+						summe = 0;
+						d3.csv("../data/startnext-successful.csv", function(csv) {
+							data = csv;
+							data.forEach(function(el) {
+								summe += parseInt(el.summe);
+							});
+							console.log(summe);
+							if (callback)
+								callback();
+						});
+					},
+					draw: function() {
+						//$("#summe").html(formatdots(summe) + " Euro");
+						d3.select("#summe").text("0 Euro").transition().delay(500).duration(1500).tween("text", function() {
+							var i = d3.interpolateString(this.textContent, summe);
+							return function(t) {
+								this.textContent = formatdots(parseInt(i(t), 10)) + " Euro";
+							};
+						});
+					},
+					getData: function() {
+						return data;
+					}
+
+				}
+			}();
+
+			startnext.gesamtsumme.setup(startnext.gesamtsumme.draw);
+
+
+		</script>
+
+	</body>
+</html>

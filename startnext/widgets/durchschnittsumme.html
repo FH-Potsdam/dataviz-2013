@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- 
+	Startnext Infographics Project
+	Widget: Gesamtsumme
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Startnext Infographics</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="durchschnittsumme.css">
+		<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="../js/d3.v3.min.js"></script>	
+	</head>
+
+	<body>
+		<div id="averagesumme">
+			<div id="averageproject">
+			</div>
+			<div id="averagesupporter">
+			</div>
+		</div>
+
+		<script type="text/javascript">
+
+		var startnext = startnext || {};
+
+		startnext.durchschnittsumme = function () {
+
+			var data = null;
+			var summe = 0;
+			var projects = 0;
+			var supporter = 0;
+			
+			return {
+				setup : function (callback) {
+					summe = 0;
+					d3.csv("../data/startnext-successful.csv", function (csv) {
+						data = csv;
+						data.forEach(function (el) {
+							summe += parseInt(el.summe);
+							supporter += parseInt(el.supporter);
+						});
+						projects = csv.length;
+						if(callback) callback();
+					});
+				},
+				draw : function () {
+						$("#averageproject").html("<span class='size3 green_light'>" + Math.round(summe/projects) + " &euro; </span><br /><span class='size4 gray_light'>Projekt-Funding Durchschnitt</span>");
+						$("#averagesupporter").html("<span class='size3 green_light'>" + Math.round(summe/supporter) + " &euro; </span><br /><span class='size4 gray_light'>Durchschnittliche Supporthöhe</span>");
+				},
+				getData : function () {
+					return data;
+				}
+
+			}
+		}();
+
+		startnext.durchschnittsumme.setup(startnext.durchschnittsumme.draw);
+
+
+		</script>
+
+	</body>
+</html>

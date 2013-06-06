@@ -11,6 +11,24 @@ request = require 'request'
 express = require 'express'
 app = express()
 
+# CORS middleware
+app.use express.methodOverride()
+
+# see: http://stackoverflow.com/questions/7067966/how-to-allow-cors-in-express-nodejs
+allowCrossDomain = (req, res, next) ->
+  res.header "Access-Control-Allow-Origin", "*"
+  res.header "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE"
+  res.header "Access-Control-Allow-Headers", "Content-Type, Authorization"
+  
+  # intercept OPTIONS method
+  if "OPTIONS" is req.method
+    res.send 200
+  else
+    next()
+
+app.use allowCrossDomain
+
+
 # The Startnext module 
 startnext = require './startnext'
 # Print out the API resources (debugging stuff)
@@ -25,8 +43,6 @@ startnext = require './startnext'
 
 getHelperText = (res, data) ->
   body = data
-  res.header 'Access-Control-Allow-Origin', '*'
-  res.header 'Access-Control-Allow-Headers', 'X-Requested-With'
   res.setHeader 'Content-Type', 'text/plain'
   res.setHeader 'Content-Length', body.length
   res.end body

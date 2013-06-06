@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "dependencies": {
   	"coffee-script": "1.1.2",
-    "express": "3.1.x"
+    "express": "3.1.x",
+    "request": "*"
   },
   "engines": {
     "node": "0.10.x",

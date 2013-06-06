@@ -3,5 +3,14 @@ body {
 }
 #averagesumme div {
 	float: left;
-	width: 50%;
+	width: 110px;
+}
+
+#averageproject{
+	border-right: 2px solid #9e9a99;
+	padding: 0 0 0 20px;	
+}
+
+#averagesupporter {
+	padding: 0 0 0 20px;
 }

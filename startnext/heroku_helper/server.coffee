@@ -25,6 +25,8 @@ startnext = require './startnext'
 
 getHelperText = (res, data) ->
   body = data
+  res.header 'Access-Control-Allow-Origin', '*'
+  res.header 'Access-Control-Allow-Headers', 'X-Requested-With'
   res.setHeader 'Content-Type', 'text/plain'
   res.setHeader 'Content-Length', body.length
   res.end body

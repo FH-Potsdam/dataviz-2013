@@ -1,0 +1,7 @@
+body {
+	background: none;
+}
+#averagesumme div {
+	float: left;
+	width: 50%;
+}

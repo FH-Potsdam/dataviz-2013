@@ -1,6 +1,6 @@
 var allData = allData || {};
 var variable = variable || {};
-
+var projectData;
 jQuery(document).ready(function() {   
   allData.project_id = 6170;
   // allData.project_id = 7594;
@@ -90,15 +90,15 @@ var draw_timeline = function() {
       }
       return diff_curr*(box_width+box_gap);
     })
-    .attr("y", function(d,i) { return timeline_null-d.pos_y })
+    .attr("y", function(d,i) { return timeline_null-d.pos_y; })
     .attr("width", box_width)
     .attr("height", box_height);
   
     console.log(allData.updates.contents.data);
   timeline.append("g").selectAll("rect").data(allData.updates.contents.data).enter()
     .append("rect")
-    .attr("fill", "#00ffff")
-    .attr("x", function(d,i) { 
+    .attr("fill", "#0000ff")
+    .attr("x", function(d) { 
       var curr_date = new Date(d.created*1000);
       var diff_curr = parseInt((curr_date-start_date)/100000000);
       if(pos_y2[diff_curr]) {
@@ -110,7 +110,7 @@ var draw_timeline = function() {
       }
       return diff_curr*(box_width+box_gap);
     })
-    .attr("y", function(d,i) { return timeline_null+d.pos_y})
+    .attr("y", function(d) { return timeline_null+d.pos_y; })
     .attr("width", box_width)
     .attr("height", box_height);
   
@@ -125,20 +125,20 @@ var draw_timeline = function() {
     .attr("id", "funding_curr")
     .attr("fill", "#ff00ff")
     .attr("width", 4)
-    .attr("height", function() { return scale_funding(projectData.funding_status) })
+    .attr("height", function() { return scale_funding(projectData.funding_status); })
     .attr("x", ((today-start_date)/100000000)*(box_width+box_gap))
-    .attr("y", function() { return timeline_null-scale_funding(projectData.funding_status) });
+    .attr("y", function() { return timeline_null-scale_funding(projectData.funding_status); });
     
   timeline.append("text")
     .attr("fill", "red")
     .attr("x", ((today-start_date)/100000000)*(box_width+box_gap)+10)
-    .attr("y", function() { return timeline_null-scale_funding(projectData.funding_status)+10 })
+    .attr("y", function() { return timeline_null-scale_funding(projectData.funding_status)+10; })
     .text(projectData.funding_status+"€");
     
   timeline.append("text")
     .attr("fill", "red")
     .attr("x", ((today-start_date)/100000000)*(box_width+box_gap)+10)
-    .attr("y", function() { return timeline_null-scale_funding(projectData.funding_target)+10 })
+    .attr("y", function() { return timeline_null-scale_funding(projectData.funding_target)+10; })
     .text(projectData.funding_target+"€");
 
 }

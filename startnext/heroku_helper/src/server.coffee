@@ -60,6 +60,11 @@ startnext.init()
 app.get '/data.json', (req, res) ->
   responseJSON(res, JSON.stringify(startnext.data))
 
+# Update the Startnext data.
+app.get '/update', (req, res) ->
+  responseText(res, 'Updating data now...')
+  startnext.updateData()
+
 
 # Start listen express.js
 port = process.env.PORT or 5000

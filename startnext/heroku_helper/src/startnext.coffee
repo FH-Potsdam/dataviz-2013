@@ -79,20 +79,27 @@ exports.init = init = () ->
   log2 'API search projects url            = ' , api.url.search_projects
   log2 'API search projects category url   = ' , api.url.search_projects_category
 
-  updateData()
+  updateData(true)
 
 
-# Update if the data is too old.
 # Call the API for new data.
-exports.updateData = updateData = () ->
-  curTime = new Date()
-  if curTime.getFullYear() is data.last_update.year and
-  curTime.getMonth() is data.last_update.month and
-  curTime.getDay() is data.last_update.day and
-  curTime.getHours() is data.last_update.hour
-    log2 'updateData -> ', 'Data up to date'
+# @param timeCheck
+#        true  = Check the time. if the data is too old, update.
+#        false = Update data directly. 
+exports.updateData = updateData = (timeCheck) ->
+  if timeCheck is true
+    curTime = new Date()
+    if curTime.getFullYear() is data.last_update.year and
+    curTime.getMonth() is data.last_update.month and
+    curTime.getDay() is data.last_update.day and
+    curTime.getHours() is data.last_update.hour
+      log2 'updateData -> ', 'Data up to date'
+    else
+      log2 'updateData -> ', 'We need new data. Call the API...'
+      requestCategoriesActive()
+      saveDate()
+      
   else
-    log2 'updateData -> ', 'We need new data. Call the API...'
     requestCategoriesActive()
     saveDate()
 

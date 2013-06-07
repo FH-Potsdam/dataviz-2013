@@ -4420,7 +4420,8 @@ body.widget {
   font-weight: 200; }
 
 .green_light {
-  color: #93c21e; }
+  color: #93c21e;
+  fill: #93c21e; }
 
 .green_dark {
   color: #6e852b; }

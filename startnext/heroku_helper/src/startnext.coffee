@@ -29,38 +29,46 @@ exports.api = api =
     search: API_BASE_URL+'search'
     search_projects: API_BASE_URL+'search/projects/'
     search_projects_category: API_BASE_URL+'search/projects/?category='
+    search_projects_status: API_BASE_URL+'search/projects/?status='
 
 
 # The data object to store our data.
 # This we use to create the json.
 exports.data = data =
   last_update: 
-    year: 0
-    month: 0
-    day: 0
-    hour: 0
-    minute: 0
-    second: 0
+    year: null
+    month: null
+    day: null
+    hour: null
+    minute: null
+    second: null
+  projects:
+    total: null
+    status_active: null
+    status_started: null
+    #status_finished: null
+    #status_succesful: null
+    #status_unsuccesful: null
   # Categories object grabbed from API resource: https://api.startnext.de/v1/categories
   categories_active:
-    total: 0
-    art: 0
-    audio_drama: 0
-    cultural_education: 0
-    comic: 0
-    design: 0
-    event: 0
-    fashion: 0
-    games: 0
-    information: 0
-    invention: 0
-    journalism: 0
-    literature: 0
-    movie: 0
-    music: 0
-    photography: 0
-    technology: 0
-    theater: 0
+    total: null
+    art: null
+    audio_drama: null
+    cultural_education: null
+    comic: null
+    design: null
+    event: null
+    fashion: null
+    games: null
+    information: null
+    invention: null
+    journalism: null
+    literature: null
+    movie: null
+    music: null
+    photography: null
+    technology: null
+    theater: null
   categories_all:
     total: 'TODO: implement this. (crawl all projects to get this data)'
 
@@ -71,13 +79,13 @@ exports.init = init = () ->
   log1 'Initialize Startnext Module v'+version
 
   # Print out the API resources (debugging stuff)
-  log2 'API version                        = ' , API_VERSION
-  log2 'API base url                       = ' , api.url.base
-  log2 'API project url                    = ' , api.url.projects
-  log2 'API categories url                 = ' , api.url.categories
-  log2 'API search url                     = ' , api.url.search
-  log2 'API search projects url            = ' , api.url.search_projects
-  log2 'API search projects category url   = ' , api.url.search_projects_category
+  # log2 'API version                        = ' , API_VERSION
+  # log2 'API base url                       = ' , api.url.base
+  # log2 'API project url                    = ' , api.url.projects
+  # log2 'API categories url                 = ' , api.url.categories
+  # log2 'API search url                     = ' , api.url.search
+  # log2 'API search projects url            = ' , api.url.search_projects
+  # log2 'API search projects category url   = ' , api.url.search_projects_category
 
   updateData(true)
 
@@ -96,12 +104,18 @@ exports.updateData = updateData = (timeCheck) ->
       log2 'updateData -> ', 'Data up to date'
     else
       log2 'updateData -> ', 'We need new data. Call the API...'
-      requestCategoriesActive()
-      saveDate()
-      
+      callAllRequests()
+
   else
-    requestCategoriesActive()
-    saveDate()
+    callAllRequests()
+
+
+# Call all requests we have defined.
+# This function is a small helper for the updateData function.
+callAllRequests = () ->
+  requestProjectsData()
+  requestCategoriesActive()
+  saveDate()
 
 
 # Totally WIP
@@ -218,6 +232,28 @@ exports.requestCategoriesActive = requestCategoriesActive = () ->
       log2 'requestCategoriesActive() -> ', 'theater Ready'
 
 
+# API: http://api.startnext.de/v1/search/projects/?status=active
+# Docs: http://doc.startnext.de/doku.php?id=cf_api_v1.1#projektstatus 
+exports.requestProjectsData = requestProjectsData = () ->
+
+  # Get the total number of projects
+  request api.url.search_projects, (error, response, body) ->
+    if not error and response.statusCode is 200
+      json = JSON.parse(body)
+      data.projects.total = json.count
+      log2 'requestProjectsData() -> ', 'total Ready'
+
+  request api.url.search_projects_status+'active', (error, response, body) ->
+    if not error and response.statusCode is 200
+      json = JSON.parse(body)
+      data.projects.status_active = json.count
+      log2 'requestProjectsData() -> ', 'status_active Ready'
+
+  request api.url.search_projects_status+'started', (error, response, body) ->
+    if not error and response.statusCode is 200
+      json = JSON.parse(body)
+      data.projects.status_started = json.count
+      log2 'requestProjectsData() -> ', 'status_started Ready'
 
 
 

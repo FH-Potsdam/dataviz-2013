@@ -25,6 +25,7 @@ exports.api = api =
   url:
     base: API_BASE_URL
     categories: API_BASE_URL+'categories/'
+    cities: API_BASE_URL+'cities/'
     projects: API_BASE_URL+'projects/'
     search: API_BASE_URL+'search'
     search_projects: API_BASE_URL+'search/projects/'
@@ -42,6 +43,7 @@ exports.data = data =
     hour: null
     minute: null
     second: null
+  cities: null
   projects:
     total: null
     status_active: null
@@ -113,6 +115,7 @@ exports.updateData = updateData = (timeCheck) ->
 # Call all requests we have defined.
 # This function is a small helper for the updateData function.
 callAllRequests = () ->
+  requestCitiesData()
   requestProjectsData()
   requestCategoriesActive()
   saveDate()
@@ -255,6 +258,15 @@ exports.requestProjectsData = requestProjectsData = () ->
       data.projects.status_started = json.count
       log2 'requestProjectsData() -> ', 'status_started Ready'
 
+
+# Get a list of all cities 
+exports.requestCitiesData = requestCitiesData = () ->
+
+  request api.url.cities, (error, response, body) ->
+    if not error and response.statusCode is 200
+      json = JSON.parse(body)
+      data.cities = json.data
+      log2 'requestCitiesData() -> ', 'cities Ready'
 
 
 # Private module functions

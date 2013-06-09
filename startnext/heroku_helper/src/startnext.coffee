@@ -7,30 +7,10 @@ Startnext module used to store some API parameter.
 # Module dependencies.
 request = require 'request'
 clc = require 'cli-color'
-
+api = require './startnext_api_constants'
 
 # Module version
 exports.version = version = '0.0.1b'
-
-
-# API version
-exports.API_VERSION = API_VERSION = 'v1'
-
-# API base url
-exports.API_BASE_URL = API_BASE_URL = 'http://api.startnext.de/' + API_VERSION + '/'
-
-# API object contains API version and url resources
-exports.api = api =
-  version: API_VERSION
-  url:
-    base: API_BASE_URL
-    categories: API_BASE_URL+'categories/'
-    cities: API_BASE_URL+'cities/'
-    projects: API_BASE_URL+'projects/'
-    search: API_BASE_URL+'search'
-    search_projects: API_BASE_URL+'search/projects/'
-    search_projects_category: API_BASE_URL+'search/projects/?category='
-    search_projects_status: API_BASE_URL+'search/projects/?status='
 
 
 # The data object to store our data.

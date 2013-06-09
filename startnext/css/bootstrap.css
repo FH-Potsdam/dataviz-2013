@@ -4397,6 +4397,10 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
     width: 100%;
     border: none; }
 
+.dark {
+  background: #b3b1b2!important;
+}
+
 body.widget {
   background: #ededed; }
 

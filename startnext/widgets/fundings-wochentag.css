@@ -1,0 +1,20 @@
+.x-axis path, .y-axis path {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+	stroke-width: 2px;
+}
+
+.x-axis, .y-axis {
+	font-size: 10px;
+}
+
+.line {
+	stroke-width: 3px;
+	fill: none;
+	stroke: #000000;
+}
+
+#gesamtsumme-graph {
+	width: 490px;
+}

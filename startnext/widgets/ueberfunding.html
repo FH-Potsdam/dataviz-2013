@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <!-- 
 	Startnext Infographics Project
-	Widget: Gesamtsumme
+	Widget: Größtes Überfunding
 -->
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>Startnext Infographics</title>
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="durchschnittsumme.css">
+		<link rel="stylesheet" type="text/css" href="ueberfunding.css">
 		<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
 		<script type="text/javascript" src="../js/d3.v3.min.js"></script>	
 	</head>
 
-	<body class="widget">
-		<div class="size3">Größtes Überfunding</div>
-		<div id="project_name" class='size3 green_light'>>Projektname</div>
+	<body class="widget gray-background">
+		<h1 class="size3 dark-gray2">Größtes Überfunding</h1>
+		<p id="project_name" class="size35 lightest-gray">Projektname</p>
 		<!--<p id="project_creator">Projekt Ersteller</p>--> <!-- nicht in der csv vorhanden-->
-		<div>
+		<div id="container_left">
 			<div id="euro_icons"></div>
-			<p id="overplus"></p>
+			<p id="overplus" class="lightest-gray size36"></p>
 		</div>
 		<div>
-			<p id="budget_text">Ziel-Summe:</p>
-			<p id="budget"></p>
+			<p id="budget_text" class="middle_gray size4">Ziel-Summe:</p>
+			<p id="budget" class="lightest-gray size36"></p>
 		</div>
 
 		<script type="text/javascript">
@@ -69,10 +69,8 @@
 							if(diff > biggestOverplus){
 								biggestOverplus = diff;
 								biggestOverplusIndex = i;
-								console.log("Größter Überschuss hat gewechselt: " + diff + ", Projekt Name: " + data[i].titel);
 							}
 							biggestOverplusTitel = data[biggestOverplusIndex].titel;
-							//biggestOverplusCreator = data[biggestOverplusIndex].creator;
 							biggestOverplusBudget = data[biggestOverplusIndex].budget;
 							biggestOverplusPercent = getPercent(biggestOverplus, biggestOverplusBudget);
 						}
@@ -80,14 +78,16 @@
 					})	;
 				},
 				draw : function () {
-						/*
-						$("#averageproject").html("<span class='size3 green_light'>" + Math.round(summe/projects) + " &euro; </span><br /><span class='size4 gray_light'>Projekt-Funding Durchschnitt</span>");
-						$("#averagesupporter").html("<span class='size3 green_light'>" + Math.round(summe/supporter) + " &euro; </span><br /><span class='size4 gray_light'>Durchschnittliche Supporthöhe</span>");
-						*/
 						$("#project_name").text(biggestOverplusTitel);
 						$("#budget").text(toEU(biggestOverplusBudget));
-						$("#overplus").text(biggestOverplusPercent + " % " + toEU(biggestOverplus));
-						//$("#project_creator").text(biggestOverplusCreator);
+						$("#overplus").text(biggestOverplusPercent + " % (" + toEU(biggestOverplus) + ")");
+
+						var nImages = Math.floor(biggestOverplus / 10000); // anzahl an bildern, die gezeichnet werden sollen
+						$("#euro_icons").append("<ul></ul>");
+						var ul = $("#euro_icons ul");
+						for(var i=0; i<nImages; i++){
+							ul.append('<li><img src="../img/euro_white_gray.png"></img></li>');
+						}
 				},
 				getData : function () {
 					return data;

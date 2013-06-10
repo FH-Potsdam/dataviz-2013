@@ -1,16 +1,25 @@
-#supports {
-	font-size: 48px;
-	font-weight: bold;
-	color: #94c11f;
-	line-height: 48px;
+.x-axis path, .y-axis path {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+	stroke-width: 2px;
 }
 
-#supports_entwicklung {
-	font-size: 36px;
-	font-weight: bold;
-	color: #353535;
-	line-height: 36px;
+.x-axis, .y-axis {
+	font-size: 10px;
 }
+
+.line {
+	stroke-width: 2px;
+	fill: none;
+	shape-rendering: crispEdges;
+	stroke: #383838;
+}
+
+#supports-graph {
+	width: 490px;
+}
+
 
 
 

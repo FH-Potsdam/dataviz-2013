@@ -58,12 +58,12 @@ startnext.init()
 
 # Response the Startnext data as json.
 app.get '/data.json', (req, res) ->
-  responseJSON(res, JSON.stringify(startnext.data))
+  responseJSON(res, JSON.stringify(startnext.getData()))
 
 # Update the Startnext data.
 app.get '/update', (req, res) ->
   responseText(res, 'Updating data now...')
-  startnext.updateData()
+  startnext.updateData(true)
 
 
 # Start listen express.js

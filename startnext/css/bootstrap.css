@@ -4400,6 +4400,9 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
 body.widget {
   background: #ededed; }
 
+.space .widget {
+  margin-top: 20px; }
+
 .row {
   background: #dadada; }
 

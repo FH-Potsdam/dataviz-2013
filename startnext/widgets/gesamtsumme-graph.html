@@ -18,7 +18,6 @@
 			<div class="size3">Funding Gesamtsummer</div>
 			<div class="size4">Alle über die Plattform eingezahlten Fundings</div>
 		</div>
-		
 		<script type="text/javascript">
 
 			var startnext = startnext || {};
@@ -27,11 +26,12 @@
 
 				var data = null;
 				var date = d3.time.format("%d.%m.%Y").parse;
+				var date2 = d3.time.format("%m.%Y");
 				var summe = 0;
 				var svg, x, y, xAxis, yAxis, margin, height, width;
 				var ellipse;
 				var subtotal_label;
-				
+
 				return {
 					setup: function(callback) {
 						d3.csv("../data/startnext-successful.csv", function(csv) {
@@ -41,9 +41,11 @@
 								el.summe = +el.summe;
 								summe += parseInt(el.summe);
 							});
+							
 							data.sort(function(a, b) {
 								return a.enddatum - b.enddatum;
 							});
+							
 							console.log(summe);
 							if (callback)
 								callback();

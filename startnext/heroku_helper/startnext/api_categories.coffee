@@ -31,8 +31,7 @@ exports.data = data =
   photography: null
   technology: null
   theater: null
-  #categories_all: 'TODO: implement this. (crawl all projects to get this data)'
-
+  
 
 # Request the active categories data
 exports.callApi = callApi = () ->
@@ -144,3 +143,27 @@ exports.callApi = callApi = () ->
       json = JSON.parse(body)
       data.theater = json.count
       utils.log2 'requestCategoriesActive() -> ', 'theater Ready'
+
+  # Count the requested categories data.
+  # This is only used for console output
+  setTimeout (->
+    totalCount = data.art
+    totalCount += data.audio_drama
+    totalCount += data.cultural_education
+    totalCount += data.comic
+    totalCount += data.design
+    totalCount += data.event
+    totalCount += data.fashion
+    totalCount += data.games
+    totalCount += data.information
+    totalCount += data.invention
+    totalCount += data.journalism
+    totalCount += data.literature
+    totalCount += data.movie
+    totalCount += data.music
+    totalCount += data.photography
+    totalCount += data.technology
+    totalCount += data.theater
+    
+    utils.log2 'Calculated categories total = ', totalCount
+  ), 10000

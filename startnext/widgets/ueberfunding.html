@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- 
+	Startnext Infographics Project
+	Widget: Gesamtsumme
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Startnext Infographics</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="durchschnittsumme.css">
+		<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="../js/d3.v3.min.js"></script>	
+	</head>
+
+	<body class="widget">
+		<div class="size3">Größtes Überfunding</div>
+		<div id="project_name" class='size3 green_light'>>Projektname</div>
+		<!--<p id="project_creator">Projekt Ersteller</p>--> <!-- nicht in der csv vorhanden-->
+		<div>
+			<div id="euro_icons"></div>
+			<p id="overplus"></p>
+		</div>
+		<div>
+			<p id="budget_text">Ziel-Summe:</p>
+			<p id="budget"></p>
+		</div>
+
+		<script type="text/javascript">
+
+		function toEU(number)
+		{
+			var numberStr = parseFloat(number).toFixed(2).toString();
+			var numFormatDec = numberStr.slice(-2); /*decimal 00*/
+			numberStr = numberStr.substring(0, numberStr.length-3); /*cut last 3 strings*/
+			var numFormat = new Array;
+			while (numberStr.length > 3) {
+				numFormat.unshift(numberStr.slice(-3));
+				numberStr = numberStr.substring(0, numberStr.length-3);
+			}
+			numFormat.unshift(numberStr);
+			return numFormat.join('.')+" €"; /*format 000.000.000,00 */
+		}
+
+		function getPercent(val, base){
+			return Math.round(val / base * 100);
+		}
+
+		var startnext = startnext || {};
+
+		startnext.groesster_ueberschuss = function () {
+
+			var data = null;
+			var biggestOverplus = -1; // biggest overplus (overall - budget)
+			var biggestOverplusIndex = -1; // index within the data array
+			var biggestOverplusBudget = -1; // Budget
+			var biggestOverplusCreator = ""; // creator of the project
+			var biggestOverplusTitel = ""; // project title
+			var biggestOverplusPercent = -1;
+
+			
+			return {
+				setup : function (callback) {
+					d3.csv("../data/startnext-successful.csv", function (csv) {
+						data = csv;
+						for (var i=0; i<data.length; i++){
+							var entry = data[i];
+							var diff = parseInt(entry.summe) - parseInt(entry.budget);
+							if(diff > biggestOverplus){
+								biggestOverplus = diff;
+								biggestOverplusIndex = i;
+								console.log("Größter Überschuss hat gewechselt: " + diff + ", Projekt Name: " + data[i].titel);
+							}
+							biggestOverplusTitel = data[biggestOverplusIndex].titel;
+							//biggestOverplusCreator = data[biggestOverplusIndex].creator;
+							biggestOverplusBudget = data[biggestOverplusIndex].budget;
+							biggestOverplusPercent = getPercent(biggestOverplus, biggestOverplusBudget);
+						}
+						if(callback) callback();
+					})	;
+				},
+				draw : function () {
+						/*
+						$("#averageproject").html("<span class='size3 green_light'>" + Math.round(summe/projects) + " &euro; </span><br /><span class='size4 gray_light'>Projekt-Funding Durchschnitt</span>");
+						$("#averagesupporter").html("<span class='size3 green_light'>" + Math.round(summe/supporter) + " &euro; </span><br /><span class='size4 gray_light'>Durchschnittliche Supporthöhe</span>");
+						*/
+						$("#project_name").text(biggestOverplusTitel);
+						$("#budget").text(toEU(biggestOverplusBudget));
+						$("#overplus").text(biggestOverplusPercent + " % " + toEU(biggestOverplus));
+						//$("#project_creator").text(biggestOverplusCreator);
+				},
+				getData : function () {
+					return data;
+				}
+
+			}
+		}();
+
+		startnext.groesster_ueberschuss.setup(startnext.groesster_ueberschuss.draw);
+
+
+		</script>
+
+	</body>
+</html>

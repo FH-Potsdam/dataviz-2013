@@ -119,15 +119,14 @@
 
 				return {
 					setup: function(callback) {
-						d3.json("http://startnext-viz.herokuapp.com/categories_active", function(json) {
+						d3.json("http://startnext-viz.herokuapp.com/data.json", function(json) {
 							data = json;
-    		 			console.log(json)
+    		 			//console.log(json)
     		 			if (callback)
 								callback();
 						});
 					},
 					draw: function() {
-						console.log('hello');
 
 						// last update
 						lastUpdateString = data.last_update.year + ".";
@@ -154,92 +153,92 @@
 						d3.select('#cat_art')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.art)
+						  .text(data.categories.art)
 
 						d3.select('#cat_audio_drama')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.audio_drama)
+						  .text(data.categories.audio_drama)
 						
 						d3.select('#cat_comic')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.comic)
+						  .text(data.categories.comic)
 						
 						d3.select('#cat_cultural_education')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.cultural_education)
+						  .text(data.categories.cultural_education)
 						
 						d3.select('#cat_design')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.design)
+						  .text(data.categories.design)
 						
 						d3.select('#cat_event')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.event)
+						  .text(data.categories.event)
 						
 						d3.select('#cat_fashion')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.fashion)
+						  .text(data.categories.fashion)
 						
 						d3.select('#cat_games')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.games)
+						  .text(data.categories.games)
 						
 						d3.select('#cat_information')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.information)
+						  .text(data.categories.information)
 						
 						d3.select('#cat_invention')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.invention)
+						  .text(data.categories.invention)
 
 						d3.select('#cat_journalism')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.journalism)
+						  .text(data.categories.journalism)
 						
 						d3.select('#cat_literature')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.literature)
+						  .text(data.categories.literature)
 						
 						d3.select('#cat_movie')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.movie)
+						  .text(data.categories.movie)
 						
 						d3.select('#cat_music')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.music)
+						  .text(data.categories.music)
 						
 						d3.select('#cat_photography')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.photography)
+						  .text(data.categories.photography)
 						
 						d3.select('#cat_technology')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.technology)
+						  .text(data.categories.technology)
 						
 						d3.select('#cat_theater')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.theater)
+						  .text(data.categories.theater)
 						
 						d3.select('#cat_total')
 						  .append('p')
 						  .attr('class', 'green_light')
-						  .text(data.data.total)
+						  .text(data.categories.total)
 
 					},
 					getData: function() {

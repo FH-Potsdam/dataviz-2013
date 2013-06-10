@@ -8,15 +8,14 @@
 		<meta charset="utf-8">
 		<title>Startnext Infographics</title>
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="gesamtsumme-graph.css">
+		<link rel="stylesheet" type="text/css" href="fundings-wochentag.css">
 		<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
 		<script type="text/javascript" src="../js/d3.v3.min.js"></script>
 	</head>
 
 	<body class="widget">
 		<div id="gesamtsumme-graph">
-			<div class="size3">Funding Gesamtsummer</div>
-			<div class="size4">Alle über die Plattform eingezahlten Fundings</div>
+			<div class="size3">Fundings nach Wochentage</div>
 		</div>
 		<script type="text/javascript">
 
@@ -76,11 +75,11 @@
 					},
 					draw: function() {
 						margin = {top: 20, right: 20, bottom: 60, left: 60};
-						width = 490 - margin.left - margin.right;
+						width = 330 - margin.left - margin.right;
 						height = 300 - margin.top - margin.bottom;
 
 
-						x = d3.time.scale()
+						x = d3.scale.linear()
 								.range([0, width]);
 
 						y = d3.scale.linear()
@@ -90,14 +89,14 @@
 								.scale(x)
 								.orient("bottom")
 								.ticks(7);
-								// .tickValues([date("01.01.2010"),date("01.01.2011"),date("01.01.2012"),date("01.01.2013")]);
+								//.tickValues([Montag,Dienstag,Mittwoch, Donnerstag, Freitag, Samstag, Sonntag]);
 								
 
 						yAxis = d3.svg.axis()
 								.scale(y)
 								.orient("left")
-								.ticks(7);
-								//.tickValues([0,200000,400000,600000,800000,100000]);
+								//.ticks(5);
+								.tickValues([200000,400000,600000,800000,1000000]);
 						
 						var oldSumme = 0; 
 						var line = d3.svg.line()
@@ -111,7 +110,7 @@
 								.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-							y.domain(d3.extent(dataDays, function(d) { return d; }));
+							y.domain([0,1000000]);
 							x.domain([0, 6]);
 
 

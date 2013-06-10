@@ -144,7 +144,7 @@ exports.callApi = callApi = () ->
       data.theater = json.count
       utils.log2 'requestCategoriesActive() -> ', 'theater Ready'
 
-  # Count the requested categories data.
+  # Count the requested categories data after one minute.
   # This is only used for console output
   setTimeout (->
     totalCount = data.art
@@ -166,4 +166,4 @@ exports.callApi = callApi = () ->
     totalCount += data.theater
     
     utils.log2 'Calculated categories total = ', totalCount
-  ), 10000
+  ), 100000

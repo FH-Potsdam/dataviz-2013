@@ -32,6 +32,9 @@
 			var data = null;
 			var date = d3.time.format("%d.%m.%Y").parse;
 			var summe = 0;
+			var dataTrash = dataTrash || {};
+			var dataMonth = dataMonth || {};
+			var count = 0;
 
 			var formatdots = function(number) {
 				var regex = /(\d+)(\d{3})/;
@@ -53,11 +56,28 @@
 						data.forEach(function(el) {
 							el.enddatum = date(el.enddatum.substring(0,6)+"20"+el.enddatum.substring(6,8));
 							summe += parseInt(el.supports);
+							
+							if(dataTrash[el.enddatum.getFullYear()] == null){
+							 	dataTrash[el.enddatum.getFullYear()] = {};
+							}
+							
+							if(dataTrash[el.enddatum.getFullYear()][el.enddatum.getMonth()] == null){
+								dataTrash[el.enddatum.getFullYear()][el.enddatum.getMonth()] = 0;
+							} else {
+								dataTrash[el.enddatum.getFullYear()][el.enddatum.getMonth()] += parseInt(el.supports);
+							}
 						});
-						data.sort(function(a, b) {
-							return a.enddatum - b.enddatum;
-						});
-						console.log(summe);
+						
+						for(var year in dataTrash) {
+							for(var month in dataTrash[year]){
+								count++;
+								dataMonth[count] = {};
+								dataMonth[count].enddatum = date("1."+month+"."+year);
+								dataMonth[count].supports = dataTrash[year][month];
+							};
+						};
+						console.log(dataMonth);
+						
 						if (callback)
 							callback();
 					});
@@ -102,7 +122,7 @@
 					  .append("g")
 					    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-					  x.domain(d3.extent(data, function(d) { return d.enddatum; }));
+					  x.domain(d3.extent(dataMonth, function(d) { return d.enddatum; }));
 					  //y.domain(d3.extent(data, function(d) { return d.supports; }));
 					  y.domain([0,5000]);
 
@@ -124,11 +144,9 @@
 						  .attr("class","size4 green_light");
 
 					  svg.append("path")
-					      .datum(data)
+					      .datum(dataMonth)
 					      .attr("class", "line")
 					      .attr("d", line);
-					
-					
 				},
 				getData: function() {
 					return data;

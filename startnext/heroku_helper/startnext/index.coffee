@@ -17,7 +17,7 @@ exports.version = version = '0.0.1b'
 
 
 # The data object to store some data.
-exports.data = data =
+data =
   last_update: 
     year: null
     month: null
@@ -76,6 +76,7 @@ callAllRequests = () ->
 # This can be used to create a json file.
 exports.getData = getData = () ->
   tmpData =
+    last_update: data.last_update
     #cities: cities.data
     projects: projects.data
     categories: categories.data

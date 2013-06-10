@@ -33,7 +33,7 @@
 			var date = d3.time.format("%d.%m.%Y").parse;
 			var summe = 0;
 			var dataTrash = dataTrash || {};
-			var dataMonth = dataMonth || {};
+			var dataMonth = [];
 			var count = 0;
 
 			var formatdots = function(number) {
@@ -70,13 +70,12 @@
 						
 						for(var year in dataTrash) {
 							for(var month in dataTrash[year]){
-								count++;
 								dataMonth[count] = {};
 								dataMonth[count].enddatum = date("1."+month+"."+year);
 								dataMonth[count].supports = dataTrash[year][month];
+								count++;
 							};
 						};
-						console.log(dataMonth);
 						
 						if (callback)
 							callback();
@@ -106,14 +105,14 @@
 					var xAxis = d3.svg.axis()
 					    .scale(x)
 					    .orient("bottom")
-						.ticks(50);
+							.ticks(50);
 
 					var yAxis = d3.svg.axis()
 					    .scale(y)
 					    .orient("left");
 
 					var line = d3.svg.line()
-					    .x(function(d) { return x(d.enddatum); })
+					    .x(function(d) { console.log(d); return x(d.enddatum); })
 					    .y(function(d) { return y(d.supports); });
 
 					var svg = d3.select("#supports-graph").append("svg")
@@ -122,7 +121,7 @@
 					  .append("g")
 					    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-					  x.domain(d3.extent(dataMonth, function(d) { return d.enddatum; }));
+					  x.domain(d3.extent(dataMonth, function(d) { console.log(d); return d.enddatum; }));
 					  //y.domain(d3.extent(data, function(d) { return d.supports; }));
 					  y.domain([0,5000]);
 

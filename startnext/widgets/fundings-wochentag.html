@@ -31,7 +31,7 @@
 				var ellipse;
 				var subtotal_label;
 				var newData = newData || {};
-				var dataTrash = dataTrash || {};
+				var dataDays = [];
 				var dataMonth = dataMonth || {};
 				var count = 0;
 				// var dataMonth = [];
@@ -40,46 +40,32 @@
 					setup: function(callback) {
 						d3.csv("../data/startnext-successful.csv", function(csv) {
 							data = csv;
-							newData.days = {};
-							newData.month = {};
 							data.forEach(function(el , index) {
 								el.enddatum = date(el.enddatum.substring(0,6)+"20"+el.enddatum.substring(6,8));
 								el.summe = +el.summe;
 								summe += parseInt(el.summe);
 								
-								if(newData.days[el.enddatum.getDay()] == null){
-									newData.days[el.enddatum.getDay()] = 0;
+								if(dataDays[el.enddatum.getDay()] == null){
+									dataDays[el.enddatum.getDay()] = parseInt(el.summe);
 								} else {
-									newData.days[el.enddatum.getDay()] += parseInt(el.supports);
+									dataDays[el.enddatum.getDay()] += parseInt(el.summe);
 								}
 								
-								if(newData.month[el.enddatum.getMonth()] == null){
-									newData.month[el.enddatum.getMonth()] = 0;
-								} else {
-									newData.month[el.enddatum.getMonth()] += parseInt(el.supports);
-								}
-								
-								if(dataTrash[el.enddatum.getFullYear()] == null){
-								 	dataTrash[el.enddatum.getFullYear()] = {};
-								}
-								
-								if(dataTrash[el.enddatum.getFullYear()][el.enddatum.getMonth()] == null){
-									dataTrash[el.enddatum.getFullYear()][el.enddatum.getMonth()] = 0;
-								} else {
-									dataTrash[el.enddatum.getFullYear()][el.enddatum.getMonth()] += parseInt(el.supports);
-								}
+								// if(dataDays.month[el.enddatum.getMonth()] == null){
+								// 	dataDays.month[el.enddatum.getMonth()] = 0;
+								// } else {
+								// 	dataDays.month[el.enddatum.getMonth()] += parseInt(el.supports);
+								// }
 							});
 								
-							for(var year in dataTrash) {
-								for(var month in dataTrash[year]){
-									count++;
-									dataMonth[count] = {};
-									dataMonth[count].date = date("1."+month+"."+year);
-									dataMonth[count].supports = dataTrash[year][month];
-								};
-							};
+							// for(var day in dataDays) {
+							// 	dataMonth[count] = {};
+							// 	dataMonth[count].date = date("1."+month+"."+year);
+							// 	dataMonth[count].supports = dataDays[year][month];
+							// };
 							
-							console.log(dataMonth);
+							console.log(dataDays);
+							
 							data.sort(function(a, b) {
 								return a.enddatum - b.enddatum;
 							});
@@ -103,20 +89,20 @@
 						xAxis = d3.svg.axis()
 								.scale(x)
 								.orient("bottom")
-								.ticks(20);
+								.ticks(7);
 								// .tickValues([date("01.01.2010"),date("01.01.2011"),date("01.01.2012"),date("01.01.2013")]);
 								
 
 						yAxis = d3.svg.axis()
 								.scale(y)
 								.orient("left")
-								.ticks(20);
-								// .tickValues([1000000,2000000,3000000,3500000]);
+								.ticks(7);
+								//.tickValues([0,200000,400000,600000,800000,100000]);
 						
 						var oldSumme = 0; 
 						var line = d3.svg.line()
-								.x(function(d) { return x(d.date); })
-								.y(function(d) { return y(d.supports); });
+								.x(function(d,i) { return x(i); })
+								.y(function(d) { return y(d); });
 
 						svg = d3.select("#gesamtsumme-graph").append("svg")
 								.attr("width", width + margin.left + margin.right)
@@ -125,8 +111,8 @@
 								.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-							y.domain(d3.extent(dataMonth, function(d) { return d.supports; }));
-							x.domain(d3.extent(dataMonth, function(d) { return d.date; }));
+							y.domain(d3.extent(dataDays, function(d) { return d; }));
+							x.domain([0, 6]);
 
 
 						  svg.append("g")
@@ -144,7 +130,7 @@
 									.call(yAxis);
 
 						  svg.append("path")
-									.datum(dataMonth)
+									.datum(dataDays)
 									.attr("class", "line")
 									.attr("d", line);
 

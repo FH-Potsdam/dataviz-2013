@@ -20,10 +20,10 @@ exports.callApi = callApi = () ->
     if not error and response.statusCode is 200
       json = JSON.parse(body)
 
-      i = 0
-      while i < json.data.length-10
-        tmp = json.data[i]
-        console.log tmp
+      # i = 0
+      # while i < json.data.length-10
+      #   tmp = json.data[i]
+      #   console.log tmp
 
       data.list = json.data
       utils.log2 'requestCitiesData() -> ', 'cities Ready'

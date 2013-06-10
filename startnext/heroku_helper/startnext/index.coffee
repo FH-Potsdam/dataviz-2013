@@ -16,6 +16,17 @@ projects = require './api_projects'
 exports.version = version = '0.0.1b'
 
 
+# The data object to store some data.
+exports.data = data =
+  last_update: 
+    year: null
+    month: null
+    day: null
+    hour: null
+    minute: null
+    second: null
+
+
 # Initialize the module.
 # If the server is started we start grabbing the data first time.
 exports.init = init = () ->

@@ -33,14 +33,14 @@ app.use allowCrossDomain
 
 responseText = (res, data) ->
   body = data
-  res.setHeader 'Content-Type', 'text/plain'
+  res.setHeader 'Content-Type', 'text/plain;charset=utf-8'
   # Buggy: setting the length of content
   #res.setHeader 'Content-Length', body.length
   res.send body
 
 responseJSON = (res, data) ->
   body = data
-  res.setHeader 'Content-Type', 'application/json'
+  res.setHeader 'Content-Type', 'application/json;charset=utf-8'
   # Buggy: setting the length of content
   #res.setHeader 'Content-Length', body.length
   res.send body

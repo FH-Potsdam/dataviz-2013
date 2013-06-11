@@ -12,7 +12,6 @@
 .line {
 	stroke-width: 2px;
 	fill: none;
-	shape-rendering: crispEdges;
 	stroke: #383838;
 }
 

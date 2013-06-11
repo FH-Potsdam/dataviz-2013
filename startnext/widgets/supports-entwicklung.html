@@ -109,7 +109,8 @@
 
 					var yAxis = d3.svg.axis()
 					    .scale(y)
-					    .orient("left");
+					    .orient("left")
+						.tickValues([1000,2000,3000,4000,5000,6000,7000,8000,9000]);
 
 					var line = d3.svg.line()
 					    .x(function(d) { console.log(d); return x(d.enddatum); })
@@ -123,7 +124,7 @@
 
 					  x.domain(d3.extent(dataMonth, function(d) { console.log(d); return d.enddatum; }));
 					  //y.domain(d3.extent(data, function(d) { return d.supports; }));
-					  y.domain([0,5000]);
+					  y.domain([0,9000]);
 
 					  svg.append("g")
 							.attr("class", "x-axis")
@@ -146,9 +147,61 @@
 					      .datum(dataMonth)
 					      .attr("class", "line")
 					      .attr("d", line);
+						  
+						ellipse = svg.append("ellipse").attr("id", "marker-over");
+						subtotal_summe_label = svg.append("text").attr("id", "label-over");
+						subtotal_date_label = svg.append("text")
+								.attr("id", "label-over")
+								.attr("transform", "rotate(90)");
 				},
 				getData: function() {
 					return data;
+				},
+				over: function(d, i) {
+					// d3.select("#marker-over").remove();
+					var subtotal = 0;
+					var monthNames = [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ];
+							
+					data.forEach(function(el , index) {
+						if(el.enddatum < d) {
+							subtotal += parseInt(el.supports);
+						}
+					});
+					
+					d3.selectAll(".tick").transition().duration(500).style("opacity", "0.1");
+					
+					ellipse.transition()
+							.duration(100)
+							.attr("cy", y(subtotal))
+							.attr("cx", x(d))
+							.attr("rx", 5)
+							.attr("ry", 5)
+							.style("opacity", "1")
+							.attr("class", "green_light");
+					
+					subtotal_summe_label.transition()
+							.duration(100)
+							.attr("x", "-10px")
+							.attr("class", "x-axis green_light")
+							.attr("y", y(subtotal))
+							.style("opacity", "1")
+							.style("text-anchor", "end")
+							.text(subtotal);
+							
+					subtotal_date_label.transition()
+							.duration(100)
+							.attr("x", height+8)
+							.attr("class", "y-axis green_light")
+							.attr("y", -x(d))
+							.style("opacity", "1")
+							.style("text-anchor", "start")
+							.text(monthNames[d.getMonth()]);
+				},
+				out: function() {
+					d3.selectAll(".tick").transition().delay(1000).duration(500).style("opacity", "1");
+					ellipse.transition().delay(1000).duration(500).style("opacity", "0");
+					subtotal_summe_label.transition().delay(1000).duration(500).style("text-anchor", "end").style("opacity", "0");
+					subtotal_date_label.transition().delay(1000).duration(500).style("text-anchor", "start").style("opacity", "0");
 				}
 
 			}

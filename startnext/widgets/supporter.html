@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- 
+	Startnext Infographics Project
+	Widget: 
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Startnext Infographics</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="supporter.css">
+		<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="../js/d3.v3.min.js"></script>
+	</head>
+
+	<body class="widget dark">
+		<div id="mostSupports">
+			<h1 class="size3 dark-gray2" id="title">Meisten Supporter</h1>
+			<a id="name" href="" class="size35 lightest-gray">Title</a>
+			<p id="fullname">name</p>
+			<div class="heads">
+				<div id="heads"></div>
+				<p class="size35 lightest-gray">
+					<span id="supporter">1999</span><span> Supporter</span>
+				</p>
+			</div>
+			<p class="target">
+				<span class="middle_gray size4">Ziel-Summe:</span>
+				<span id="targetSum">100.000 €</span>
+			</p>
+		</div>
+
+		<script type="text/javascript">
+
+			var startnext = startnext || {};
+
+			startnext.supporter = function() {
+
+				var data = null;
+
+
+				return {
+					setup: function(callback) {
+						d3.csv("../data/startnext-successful.csv", function(csv) {
+							data = csv;
+							data.sort(function(a, b) {
+							    return b.supporter - a.supporter;
+							});
+							console.log(data);
+							d3.json("https://api.startnext.de/v1/projects/"+data[0].id, function(json){
+								data.[0].project = json;
+								if (callback)
+								callback();
+							});
+							
+						});
+					},
+					draw: function() {
+						var d = data[0];
+						$('#name').text(d.titel).attr('href',d.URL);
+						$('#fullname').text(d.project.initiator.name);
+						$('#supporter').text(d.supporter);
+						$('#targetSum').text(d.targetSum);
+						$('#user').text();
+
+						var ul = $("#euro_icons ul");
+						for(var i=0; i<Math.floor(d.supporter / 130); i++){
+							$('#heads').append('<img src="../img/head.png"></img>');
+						}
+
+					},
+					getData: function() {
+						return data;
+					}
+
+				}
+			}();
+
+			startnext.supporter.setup(startnext.supporter.draw);
+
+
+		</script>
+
+	</body>
+</html>

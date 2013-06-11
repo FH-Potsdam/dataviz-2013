@@ -1,0 +1,64 @@
+#mostSupports {
+	width: 380px;
+	
+    float: left;
+}
+
+
+#title {
+
+}
+#name {
+	width: 100%;
+	float: left;
+
+}
+.dark-gray2{
+	color: #343233;
+}
+
+.lightest-gray{
+	color: #fdfbfc;
+}
+
+.middle-gray{
+	color: #5b595a;
+}
+
+.size35{
+	font-size: 18px;
+	font-weight: 200; }
+}
+
+.size36{
+	font-size: 18px;
+	font-weight: 500; }
+}
+#fullname {
+	width: 100%;
+	float: left;
+	font-size: 30px;
+	color: #5e5c5d;
+	font-size: 18px;
+}
+.heads {
+	width:250px;
+	float: left;
+}
+#supporter {
+	color: #f0f0f0;
+}
+.target {
+	float: left;
+	width: 120px;
+}
+#heads {
+	height: 30px;
+	float: left;
+	width: 100%;
+	height: 56px;
+}
+#targetSum {
+	color: #f0f0f0;
+	font-size: 14px;
+}

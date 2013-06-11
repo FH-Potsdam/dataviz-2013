@@ -12,9 +12,13 @@
 .line {
 	stroke-width: 2px;
 	fill: none;
-	stroke: #000000;
+	stroke: #383838;
 }
 
-#gesamtsumme-graph {
+#supports-graph {
 	width: 490px;
 }
+
+
+
+

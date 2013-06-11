@@ -4397,8 +4397,15 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
     width: 100%;
     border: none; }
 
+.dark {
+  background: #b3b1b2!important;
+}
+
 body.widget {
   background: #ededed; }
+
+body.widget.gray-background {
+  background-color: #b4b1b2; }
 
 .space .widget {
   margin-top: 20px; }
@@ -4434,3 +4441,6 @@ body.widget {
 
 .gray_dark {
   color: #383838; }
+
+.gray-background {
+  background-color: #b4b1b2; }  

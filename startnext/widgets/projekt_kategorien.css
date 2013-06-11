@@ -1,0 +1,12 @@
+body {
+	margin-left: -12px;
+}
+
+.cat_row {
+	display: block;
+}
+
+.cat_item {
+	float: left;
+	margin-right: 13px;
+}

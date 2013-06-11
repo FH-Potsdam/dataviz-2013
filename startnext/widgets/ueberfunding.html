@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- 
+	Startnext Infographics Project
+	Widget: Größtes Überfunding
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Startnext Infographics</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="ueberfunding.css">
+		<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="../js/d3.v3.min.js"></script>	
+	</head>
+
+	<body class="widget gray-background">
+		<h1 class="size3 dark-gray2">Größtes Überfunding</h1>
+		<a id="project_name" class="size35 lightest-gray">Projektname</a>
+		<!--<p id="project_creator">Projekt Ersteller</p>--> <!-- nicht in der csv vorhanden-->
+		<div id="container_left">
+			<div id="euro_icons"></div>
+			<p id="overplus" class="lightest-gray size36"></p>
+		</div>
+		<div>
+			<p id="budget_text" class="middle_gray size4">Ziel-Summe:</p>
+			<p id="budget" class="lightest-gray size36"></p>
+		</div>
+
+		<script type="text/javascript">
+
+		function toEU(number)
+		{
+			var numberStr = parseFloat(number).toFixed(2).toString();
+			var numFormatDec = numberStr.slice(-2); /*decimal 00*/
+			numberStr = numberStr.substring(0, numberStr.length-3); /*cut last 3 strings*/
+			var numFormat = new Array;
+			while (numberStr.length > 3) {
+				numFormat.unshift(numberStr.slice(-3));
+				numberStr = numberStr.substring(0, numberStr.length-3);
+			}
+			numFormat.unshift(numberStr);
+			return numFormat.join('.')+" €"; /*format 000.000.000,00 */
+		}
+
+		function getPercent(val, base){
+			return Math.round(val / base * 100);
+		}
+
+		var startnext = startnext || {};
+
+		startnext.groesster_ueberschuss = function () {
+
+			var data = null;
+			var biggestOverplus = -1; // biggest overplus (overall - budget)
+			var biggestOverplusIndex = -1; // index within the data array
+			var biggestOverplusBudget = -1; // Budget
+			var biggestOverplusCreator = ""; // creator of the project
+			var biggestOverplusTitel = ""; // project title
+			var biggestOverplusPercent = -1;
+			var biggestOverplusUrl = "";
+
+			
+			return {
+				setup : function (callback) {
+					d3.csv("../data/startnext-successful.csv", function (csv) {
+						data = csv;
+						for (var i=0; i<data.length; i++){
+							var entry = data[i];
+							var diff = parseInt(entry.summe) - parseInt(entry.budget);
+							if(diff > biggestOverplus){
+								biggestOverplus = diff;
+								biggestOverplusIndex = i;
+							}
+							biggestOverplusTitel = data[biggestOverplusIndex].titel;
+							biggestOverplusBudget = data[biggestOverplusIndex].budget;
+							biggestOverplusPercent = getPercent(biggestOverplus, biggestOverplusBudget);
+							biggestOverplusUrl = data[biggestOverplusIndex].URL;
+						}
+						if(callback) callback();
+					})	;
+				},
+				draw : function () {
+						$("#project_name").text(biggestOverplusTitel).attr("href", biggestOverplusUrl).attr("target", "_blank");
+						$("#budget").text(toEU(biggestOverplusBudget));
+						$("#overplus").text(biggestOverplusPercent + " % (" + toEU(biggestOverplus) + ")");
+
+						var nImages = Math.floor(biggestOverplus / 10000); // anzahl an bildern, die gezeichnet werden sollen
+						$("#euro_icons").append("<ul></ul>");
+						var ul = $("#euro_icons ul");
+						for(var i=0; i<nImages; i++){
+							ul.append('<li><img src="../img/euro_white_gray.png"></img></li>');
+						}
+				},
+				getData : function () {
+					return data;
+				}
+
+			}
+		}();
+
+		startnext.groesster_ueberschuss.setup(startnext.groesster_ueberschuss.draw);
+
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!-- 
+	Startnext Infographics Project
+	Widget: Projekt-Kategorien
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Startnext Infographics</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="projekt_kategorien.css">
+		<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="../js/d3.v3.min.js"></script>
+	</head>
+
+	<body class="widget">
+			<!-- Beispiel um den aktuellen stand der json einzubelnden -->
+			<span>Last update:</span>
+			<p id="last_update"></p>
+
+			<span class="size3">Projekt-Kategorien</span>
+			<p class="size4 gray_light">Projekte können mehrere Kategorien haben</p>
+
+			
+			<div class="cat_item" id="cat_art">
+				<img src="../data/icons/kunst.png" alt="Kunst" title="Kunst">
+				<!-- <p class="size4 gray_light">Kunst<br><br></p> -->
+			</div>
+			<div class="cat_item" id="cat_audio_drama">
+				<img src="../data/icons/hoerspiele.png" alt="Hörspiel / Hörbuch" title="Hörspiel / Hörbuch">
+				<!-- <p class="size4 gray_light">Hörspiel<br>Hörbuch</p> -->
+			</div>
+			<div class="cat_item" id="cat_comic">
+				<img src="../data/icons/comic.png" alt="Comic" title="Comic">
+				<!-- <p class="size4 gray_light">Comic<br><br></p> -->
+			</div>
+			<div class="cat_item" id="cat_cultural_education">
+				<img src="../data/icons/kulturelle_bildung.png" alt="Kulturelle Bildung" title="Kulturelle Bildung">
+				<!-- <p class="size4 gray_light">Kulturelle<br>Bildung</p> -->
+			</div>
+		
+
+		
+			<div class="cat_item" id="cat_design">
+				<img src="../data/icons/design.png" alt="Design" title="Design">
+				<!-- <p class="size4 gray_light">Design<br><br></p> -->
+			</div>
+			<div class="cat_item" id="cat_event">
+				<img src="../data/icons/event.png" alt="Event" title="Event">
+				<!-- <p class="size4 gray_light">Event<br><br></p> -->
+			</div>
+			<div class="cat_item" id="cat_fashion">
+				<img src="../data/icons/mode.png" alt="Mode" title="Mode">
+				<!-- <p class="size4 gray_light">Mode<br><br></p> -->
+			</div>
+			<div class="cat_item" id="cat_games">
+				<img src="../data/icons/games.png" alt="Games" title="Games">
+				<!-- <p class="size4 gray_light">Games<br><br></p> -->
+			</div>
+		
+
+		
+			<div class="cat_item" id="cat_information">
+				<img src="../data/icons/jugendkultur.png" alt="Informationsangebot" title="Informationsangebot">
+				<!-- <p class="size4 gray_light">Informations<br>angebot</p> -->
+			</div>
+			<div class="cat_item" id="cat_invention">
+				<img src="../data/icons/erfindung.png" alt="Erfindung" title="Erfindung">
+				<!-- <p class="size4 gray_light">Erfindung<br><br></p> -->
+			</div>
+			<div class="cat_item" id="cat_journalism">
+				<img src="../data/icons/journalismus.png" alt="Journalismus" title="Journalismus">
+				<!-- <p class="size4 gray_light">Journalism<br><br></p> -->
+			</div>
+			<div class="cat_item" id="cat_literature">
+				<img src="../data/icons/literatur.png" alt="Literatur" title="Literatur">
+				<!-- <p class="size4 gray_light">Literatur<br><br></p> -->
+			</div>
+		
+
+		
+			<div class="cat_item" id="cat_movie">
+				<img src="../data/icons/film_video.png" alt="Film/Video" title="Film/Video">
+				<!-- <p class="size4 gray_light">Film/Video<br><br></p> -->
+			</div>
+			<div class="cat_item" id="cat_music">
+				<img src="../data/icons/musik.png" alt="Musik" title="Musik">
+				<!-- <p class="size4 gray_light">Musik<br><br></p> -->
+			</div>
+			<div class="cat_item" id="cat_photography">
+				<img src="../data/icons/fotografie.png" alt="Fotografie" title="Fotografie">
+				<!-- <p class="size4 gray_light">Fotografie<br><br></p> -->
+			</div>
+			<div class="cat_item" id="cat_technology">
+				<img src="../data/icons/software.png" alt="Technologie" title="Technologie">
+				<!-- <p class="size4 gray_light">Technologie<br><br></p> -->
+			</div>
+		
+
+		
+			<div class="cat_item" id="cat_theater">
+				<img src="../data/icons/theater.png" alt="Theater" title="Theater">
+				<!-- <p class="size4 gray_light">Theater<br><br></p> -->
+			</div>
+			<!-- <div class="cat_item" id="cat_total">
+				<img src="../data/icons/kunst.png">
+				<p class="size4 gray_light">Insgesamt<br><br></p>
+			</div> -->
+			
+
+
+		<script type="text/javascript">
+
+			var startnext = startnext || {};
+
+			startnext.gesamtsumme = function() {
+
+				var data = null;
+
+				return {
+					setup: function(callback) {
+						d3.json("http://startnext-viz.herokuapp.com/data.json", function(json) {
+							data = json;
+    		 			//console.log(json)
+    		 			if (callback)
+								callback();
+						});
+					},
+					draw: function() {
+
+						// last update
+						lastUpdateString = data.last_update.year + ".";
+						
+						if (data.last_update.month <= 9) lastUpdateString += "0"+data.last_update.month+".";
+						else lastUpdateString += data.last_update.month+".";
+
+						if (data.last_update.day <= 9) lastUpdateString += "0"+data.last_update.day+" ";
+						else lastUpdateString += data.last_update.day+" ";
+
+						if (data.last_update.hour <= 9) lastUpdateString += "0"+data.last_update.hour+":";
+						else lastUpdateString += data.last_update.hour+":";
+
+						if (data.last_update.minute <= 9) lastUpdateString += "0"+data.last_update.minute+":";
+						else lastUpdateString += data.last_update.minute+":";
+
+						if (data.last_update.second <= 9) lastUpdateString += "0"+data.last_update.second;
+						else lastUpdateString += data.last_update.second;
+						
+						d3.select("#last_update")
+						  .text(lastUpdateString)
+
+						// categories
+						d3.select('#cat_art')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.art)
+
+						d3.select('#cat_audio_drama')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.audio_drama)
+						
+						d3.select('#cat_comic')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.comic)
+						
+						d3.select('#cat_cultural_education')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.cultural_education)
+						
+						d3.select('#cat_design')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.design)
+						
+						d3.select('#cat_event')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.event)
+						
+						d3.select('#cat_fashion')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.fashion)
+						
+						d3.select('#cat_games')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.games)
+						
+						d3.select('#cat_information')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.information)
+						
+						d3.select('#cat_invention')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.invention)
+
+						d3.select('#cat_journalism')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.journalism)
+						
+						d3.select('#cat_literature')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.literature)
+						
+						d3.select('#cat_movie')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.movie)
+						
+						d3.select('#cat_music')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.music)
+						
+						d3.select('#cat_photography')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.photography)
+						
+						d3.select('#cat_technology')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.technology)
+						
+						d3.select('#cat_theater')
+						  .append('p')
+						  .attr('class', 'green_light')
+						  .text(data.categories.theater)
+						
+						// d3.select('#cat_total')
+						//   .append('p')
+						//   .attr('class', 'green_light')
+						//   .text(data.categories.total)
+
+					},
+					getData: function() {
+						return data;
+					}
+
+				}
+			}();
+
+			startnext.gesamtsumme.setup(startnext.gesamtsumme.draw);
+
+
+		</script>
+
+	</body>
+</html>

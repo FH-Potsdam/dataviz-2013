@@ -1,0 +1,68 @@
+body.widget{
+	padding: 0;
+}
+
+h1{
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 0;
+}
+
+a#project_name{
+	display: block;
+	margin-bottom: 12px;
+}
+
+a#project_name:hover{
+	color: #383838;
+	text-decoration: none;
+}
+
+#euro_icons{}
+
+ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+li{
+	display: inline;
+}
+
+#container_left{
+	padding: 0;
+	width: 70%;
+	float: left;
+	margin-bottom: 8px;
+}
+
+#budget_text{
+	margin-bottom: 0;
+}
+
+#overplus{
+	margin-top: 8px;
+}
+
+.dark-gray2{
+	color: #343233;
+}
+
+.lightest-gray{
+	color: #fdfbfc;
+}
+
+.middle-gray{
+	color: #5b595a;
+}
+
+.size35{
+	font-size: 18px;
+	font-weight: 200; }
+}
+
+.size36{
+	font-size: 18px;
+	font-weight: 500; }
+}

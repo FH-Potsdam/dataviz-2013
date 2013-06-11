@@ -1,5 +1,16 @@
+$widget_background: #ededed;
+$green_light: #93c21e;
+$green_dark: #6e852b;
+$gray_light: #9e9a99;
+$gray_dark: #383838;
+
+$font_size1: 110px;
+$font_size2: 38px;
+$font_size3: 24px;
+$font_size4: 14px;
+
 .widget {
-	background: #eee;
+	background: $widget_background;
 	border-radius: 8px;
 	box-sizing: border-box;
 	padding: 16px;
@@ -9,3 +20,51 @@
 	}
 }
 
+body.widget {
+	background: $widget_background;
+}
+
+.space .widget {
+	margin-top: 20px;
+}
+
+.row {
+	background: #dadada;
+}
+
+.size1 {
+	font-size: $font_size1;
+	font-weight: 500;
+}
+
+.size2 {
+	font-size: $font_size2;
+	font-weight: 500;
+}
+
+.size3 {
+	font-size: $font_size3;
+	font-weight: 500;
+}
+
+.size4 {
+	font-size: $font_size4;
+	font-weight: 200;
+}
+
+.green_light {
+	color: $green_light;
+	fill: $green_light;
+}
+
+.green_dark {
+	color: $green_dark;
+}
+
+.gray_light {
+	color: $gray_light;
+}
+
+.gray_dark {
+	color: $gray_dark;
+}

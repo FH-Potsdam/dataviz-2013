@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- 
+	Startnext Infographics Project
+	Widget: Gesamtsumme
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Startnext Infographics</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="fundings-wochentag.css">
+		<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="../js/d3.v3.min.js"></script>
+	</head>
+
+	<body class="widget">
+		<div id="gesamtsumme-graph">
+			<div class="size3">Fundings nach Wochentage</div>
+		</div>
+		<script type="text/javascript">
+
+			var startnext = startnext || {};
+
+			startnext.gesamtsumme = function() {
+
+				var data = null;
+				var date = d3.time.format("%d.%m.%Y").parse;
+				var summe = 0;
+				var svg, x, y, xAxis, yAxis, margin, height, width;
+				var ellipse;
+				var subtotal_label;
+				var newData = newData || {};
+				var dataDays = [];
+				var dataMonth = dataMonth || {};
+				var count = 0;
+				// var dataMonth = [];
+
+				return {
+					setup: function(callback) {
+						d3.csv("../data/startnext-successful.csv", function(csv) {
+							data = csv;
+							data.forEach(function(el , index) {
+								el.enddatum = date(el.enddatum.substring(0,6)+"20"+el.enddatum.substring(6,8));
+								el.summe = +el.summe;
+								summe += parseInt(el.summe);
+								
+								if(dataDays[el.enddatum.getDay()] == null){
+									dataDays[el.enddatum.getDay()] = parseInt(el.summe);
+								} else {
+									dataDays[el.enddatum.getDay()] += parseInt(el.summe);
+								}
+								
+								// if(dataDays.month[el.enddatum.getMonth()] == null){
+								// 	dataDays.month[el.enddatum.getMonth()] = 0;
+								// } else {
+								// 	dataDays.month[el.enddatum.getMonth()] += parseInt(el.supports);
+								// }
+							});
+								
+							// for(var day in dataDays) {
+							// 	dataMonth[count] = {};
+							// 	dataMonth[count].date = date("1."+month+"."+year);
+							// 	dataMonth[count].supports = dataDays[year][month];
+							// };
+							
+							console.log(dataDays);
+							
+							data.sort(function(a, b) {
+								return a.enddatum - b.enddatum;
+							});
+							console.log(summe);
+							if (callback)
+								callback();
+						});
+					},
+					draw: function() {
+						margin = {top: 20, right: 20, bottom: 60, left: 60};
+						width = 330 - margin.left - margin.right;
+						height = 300 - margin.top - margin.bottom;
+
+
+						x = d3.scale.linear()
+								.range([0, width]);
+
+						y = d3.scale.linear()
+								.range([height, 0]);
+								
+						xAxis = d3.svg.axis()
+								.scale(x)
+								.orient("bottom")
+								.ticks(7);
+								//.tickValues([Montag,Dienstag,Mittwoch, Donnerstag, Freitag, Samstag, Sonntag]);
+								
+
+						yAxis = d3.svg.axis()
+								.scale(y)
+								.orient("left")
+								//.ticks(5);
+								.tickValues([200000,400000,600000,800000,1000000]);
+						
+						var oldSumme = 0; 
+						var line = d3.svg.line()
+								.x(function(d,i) { return x(i); })
+								.y(function(d) { return y(d); });
+
+						svg = d3.select("#gesamtsumme-graph").append("svg")
+								.attr("width", width + margin.left + margin.right)
+								.attr("height", height + margin.top + margin.bottom)
+							.append("g")
+								.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+							y.domain([0,1000000]);
+							x.domain([0, 6]);
+
+
+						  svg.append("g")
+									.attr("class", "x-axis")
+									.attr("transform", "translate(0," + height + ")")
+									.call(xAxis)
+									.selectAll("text")
+									.attr("transform","rotate(90)")
+									.style("text-anchor", "start")
+									.attr("dx", ".71em")
+									.attr("dy", "-.9em");
+
+						  svg.append("g")
+									.attr("class", "y-axis")
+									.call(yAxis);
+
+						  svg.append("path")
+									.datum(dataDays)
+									.attr("class", "line")
+									.attr("d", line);
+
+							ellipse = svg.append("ellipse").attr("id", "marker-over");
+							subtotal_summe_label = svg.append("text").attr("id", "label-over");
+							subtotal_date_label = svg.append("text")
+									.attr("id", "label-over")
+									.attr("transform", "rotate(90)");
+					},
+					getData: function() {
+						return data;
+					},
+					over: function(d, i) {
+						// d3.select("#marker-over").remove();
+						var subtotal = 0;
+						var monthNames = [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ];
+								
+						data.forEach(function(el , index) {
+							if(el.enddatum < d) {
+								subtotal += parseInt(el.summe);
+							}
+						});
+						
+						d3.selectAll(".tick").transition().duration(500).style("opacity", "0.1");
+						
+						ellipse.transition()
+								.duration(100)
+								.attr("cy", y(subtotal))
+								.attr("cx", x(d))
+								.attr("rx", 5)
+								.attr("ry", 5)
+								.style("opacity", "1")
+								.attr("class", "green_light");
+						
+						subtotal_summe_label.transition()
+								.duration(100)
+								.attr("x", "-10px")
+								.attr("class", "x-axis green_light")
+								.attr("y", y(subtotal))
+								.style("opacity", "1")
+								.style("text-anchor", "end")
+								.text(subtotal);
+								
+						subtotal_date_label.transition()
+								.duration(100)
+								.attr("x", height+8)
+								.attr("class", "y-axis green_light")
+								.attr("y", -x(d))
+								.style("opacity", "1")
+								.style("text-anchor", "start")
+								.text(monthNames[d.getMonth()]);
+					},
+					out: function() {
+						d3.selectAll(".tick").transition().delay(1000).duration(500).style("opacity", "1");
+						ellipse.transition().delay(1000).duration(500).style("opacity", "0");
+						subtotal_summe_label.transition().delay(1000).duration(500).style("text-anchor", "end").style("opacity", "0");
+						subtotal_date_label.transition().delay(1000).duration(500).style("text-anchor", "start").style("opacity", "0");
+					}
+
+				}
+			}();
+
+			startnext.gesamtsumme.setup(startnext.gesamtsumme.draw);
+
+
+		</script>
+
+	</body>
+</html>

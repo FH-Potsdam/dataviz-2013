@@ -176,7 +176,7 @@ body {
   font-size: 16px;
   line-height: 23px;
   color: #444444;
-  background-color: white; }
+  background-color: #e5e6e1; }
 
 a {
   color: #0088cc;
@@ -1565,7 +1565,7 @@ table {
   .table tbody + tbody {
     border-top: 2px solid #dddddd; }
   .table .table {
-    background-color: white; }
+    background-color: #e5e6e1; }
 
 .table-condensed th,
 .table-condensed td {
@@ -2695,7 +2695,7 @@ input[type="submit"].btn {
 .nav-tabs > .active > a:hover,
 .nav-tabs > .active > a:focus {
   color: #666666;
-  background-color: white;
+  background-color: #e5e6e1;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
   cursor: default; }
@@ -4389,10 +4389,58 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
   box-sizing: border-box; }
 
 .widget {
-  background: #eee;
+  background: #ededed;
   border-radius: 8px;
   box-sizing: border-box;
   padding: 16px; }
   .widget iframe {
     width: 100%;
     border: none; }
+
+.dark {
+  background: #b3b1b2!important;
+}
+
+body.widget {
+  background: #ededed; }
+
+body.widget.gray-background {
+  background-color: #b4b1b2; }
+
+.space .widget {
+  margin-top: 20px; }
+
+.row {
+  background: #dadada; }
+
+.size1 {
+  font-size: 110px;
+  font-weight: 500; }
+
+.size2 {
+  font-size: 38px;
+  font-weight: 500; }
+
+.size3 {
+  font-size: 24px;
+  font-weight: 500; }
+
+.size4 {
+  font-size: 14px;
+  font-weight: 200; }
+
+.green_light {
+  color: #93c21e;
+  fill: #93c21e; }
+
+.green_dark {
+  color: #6e852b; }
+
+.gray_light {
+  color: #9e9a99; }
+
+.gray_dark {
+  color: #383838; }
+
+.gray-background {
+  background-color: #b4b1b2; }  

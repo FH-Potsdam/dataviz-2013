@@ -8,9 +8,14 @@ h1{
 	padding-top: 0;
 }
 
-#project_name{
-	/*font-size: 22px;
-	font-weight: 500; */
+a#project_name{
+	display: block;
+	margin-bottom: 12px;
+}
+
+a#project_name:hover{
+	color: #383838;
+	text-decoration: none;
 }
 
 #euro_icons{}

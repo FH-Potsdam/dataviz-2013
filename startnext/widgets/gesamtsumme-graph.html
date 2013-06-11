@@ -31,7 +31,7 @@
 				var svg, x, y, xAxis, yAxis, margin, height, width;
 				var ellipse;
 				var subtotal_label;
-
+				
 				return {
 					setup: function(callback) {
 						d3.csv("../data/startnext-successful.csv", function(csv) {
@@ -46,7 +46,6 @@
 								return a.enddatum - b.enddatum;
 							});
 							
-							console.log(data);
 							if (callback)
 								callback();
 						});

@@ -15,7 +15,7 @@
 
 	<body class="widget gray-background">
 		<h1 class="size3 dark-gray2">Größtes Überfunding</h1>
-		<p id="project_name" class="size35 lightest-gray">Projektname</p>
+		<a id="project_name" class="size35 lightest-gray">Projektname</a>
 		<!--<p id="project_creator">Projekt Ersteller</p>--> <!-- nicht in der csv vorhanden-->
 		<div id="container_left">
 			<div id="euro_icons"></div>
@@ -57,6 +57,7 @@
 			var biggestOverplusCreator = ""; // creator of the project
 			var biggestOverplusTitel = ""; // project title
 			var biggestOverplusPercent = -1;
+			var biggestOverplusUrl = "";
 
 			
 			return {
@@ -73,12 +74,13 @@
 							biggestOverplusTitel = data[biggestOverplusIndex].titel;
 							biggestOverplusBudget = data[biggestOverplusIndex].budget;
 							biggestOverplusPercent = getPercent(biggestOverplus, biggestOverplusBudget);
+							biggestOverplusUrl = data[biggestOverplusIndex].URL;
 						}
 						if(callback) callback();
 					})	;
 				},
 				draw : function () {
-						$("#project_name").text(biggestOverplusTitel);
+						$("#project_name").text(biggestOverplusTitel).attr("href", biggestOverplusUrl).attr("target", "_blank");
 						$("#budget").text(toEU(biggestOverplusBudget));
 						$("#overplus").text(biggestOverplusPercent + " % (" + toEU(biggestOverplus) + ")");
 

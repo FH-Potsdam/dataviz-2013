@@ -9,18 +9,37 @@
 
 }
 #name {
-
 	width: 100%;
 	float: left;
-	font-size: 23px;
-	color: #f0f0f0;
-	padding-bottom: 2px;
+
+}
+.dark-gray2{
+	color: #343233;
+}
+
+.lightest-gray{
+	color: #fdfbfc;
+}
+
+.middle-gray{
+	color: #5b595a;
+}
+
+.size35{
+	font-size: 18px;
+	font-weight: 200; }
+}
+
+.size36{
+	font-size: 18px;
+	font-weight: 500; }
 }
 #fullname {
 	width: 100%;
 	float: left;
 	font-size: 30px;
 	color: #5e5c5d;
+	display: none;
 	font-size: 18px;
 }
 .heads {
@@ -38,6 +57,7 @@
 	height: 30px;
 	float: left;
 	width: 100%;
+	height: 90px;
 }
 #targetSum {
 	color: #f0f0f0;

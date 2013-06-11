@@ -77,7 +77,7 @@ callAllRequests = () ->
 exports.getData = getData = () ->
   tmpData =
     last_update: data.last_update
-    #cities: cities.data
+    cities: cities.data
     projects: projects.data
     categories: categories.data
   # Return

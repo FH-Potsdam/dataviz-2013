@@ -19,5 +19,6 @@ exports.url = url =
   search: API_BASE_URL + 'search'
   search_projects: API_BASE_URL + 'search/projects/'
   search_projects_category: API_BASE_URL + 'search/projects/?category='
+  search_projects_city: API_BASE_URL + 'search/projects/?city='
   search_projects_status: API_BASE_URL + 'search/projects/?status='
   search_projects_criterion: API_BASE_URL + 'search/projects/?criterion='

@@ -13,8 +13,8 @@ exports.getCurrentDate = saveDate = () ->
   currentDate = new Date()
   dateObj = 
     year: currentDate.getFullYear()
-    month: currentDate.getMonth()
-    day: currentDate.getDay()
+    month: currentDate.getMonth()+1
+    day: currentDate.getDate()
     hour: currentDate.getHours()
     minute: currentDate.getMinutes()
     second: currentDate.getSeconds()

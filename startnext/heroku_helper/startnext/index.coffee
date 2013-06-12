@@ -48,14 +48,17 @@ exports.init = init = () ->
 #        false = Update data directly. 
 exports.updateData = updateData = (timeCheck) ->
   if timeCheck is true
-    curTime = new Date()
-    if curTime.getFullYear() is data.last_update.year and
-    curTime.getMonth() is data.last_update.month and
-    curTime.getDay() is data.last_update.day and
-    curTime.getHours() is data.last_update.hour
-      utils.log2 'updateData -> ', 'Data up to date'
-    else
-      utils.log2 'updateData -> ', 'We need new data. Call the API...'
+    # curTime = new Date()
+    # if curTime.getFullYear() is data.last_update.year and
+    # curTime.getMonth()+1 is data.last_update.month and
+    # curTime.getDate() is data.last_update.day and
+    # curTime.getHours() is data.last_update.hour
+    #   utils.log2 'updateData -> ', 'Data up to date'
+    # else
+    #   utils.log2 'updateData -> ', 'We need new data. Call the API...'
+    #   callAllRequests()
+
+    if utils.checkDate(data.last_update) isnt true
       callAllRequests()
 
   else
@@ -75,10 +78,12 @@ callAllRequests = () ->
 # Return the data objects.
 # This can be used to create a json file.
 exports.getData = getData = () ->
+  updateData(true)
+  # create the data object
   tmpData =
     last_update: data.last_update
     cities: cities.data
     projects: projects.data
     categories: categories.data
-  # Return
+  # Return the data object
   tmpData

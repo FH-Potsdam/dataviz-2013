@@ -21,6 +21,25 @@ exports.getCurrentDate = saveDate = () ->
   # Return the dateObj
   dateObj
 
+# Check if time is over.
+# @return true  = data up to date
+#         false = need new data
+exports.checkDate = checkDate = (d) ->
+  tmpBoolean = false
+  curTime = new Date()
+  if curTime.getFullYear() is d.year and
+  curTime.getMonth()+1 is d.month and
+  curTime.getDate() is d.day and
+  curTime.getHours() is d.hour
+  #curTime.getMinutes() is d.minute # Check every minute, used for debugging this function
+    tmpBoolean = true
+    log2 'updateData -> ', 'Data up to date'
+  else
+    tmpBoolean = false
+    log2 'updateData -> ', 'We need new data. Call the API...'
+  # Return the boolean
+  tmpBoolean
+
 # Logging with color.
 # The '1' means that we use one color for output
 exports.log1 = log1 = (i) ->

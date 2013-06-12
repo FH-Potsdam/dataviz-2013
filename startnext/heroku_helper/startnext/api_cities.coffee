@@ -6,8 +6,9 @@ Request Startnext cities data.
 
 # Module dependencies.
 request = require 'request'
-api = require './api_constants'
-utils = require './utils'
+api     = require './api_constants'
+utils   = require './utils'
+async   = require 'async'
 
 
 # The data object
@@ -24,7 +25,6 @@ exports.callApi = callApi = () ->
 
       i = 0
       while i < json.data.length
-        console.log '['+i+'] ' + json.data[i]
         data[i] =
           name: json.data[i]
           count: null
@@ -32,16 +32,26 @@ exports.callApi = callApi = () ->
 
       utils.log2 'requestCitiesData() -> ', 'cities Ready'
 
-    # Loop the cities to get more informations
-    # j = 0
-    # tmpRun = 0 # work around to save the current data.name
-    # while j < data.total
-    #   # Search projects from this city
-    #   request api.url.search_projects_city+json.data[j], (error, response, body) ->
-    #     if not error and response.statusCode is 200
-    #       json2 = JSON.parse(body)
-    #       data[tmpRun].count = json2.count
-    #       console.log '['+tmpRun+'] ' + json2.count
-    #       tmpRun++
-    #   j++
 
+    # Loop the cities to get more informations (Search projects with filter city)
+    fetch = (file, cb) ->
+      request.get api.url.search_projects_city+file, (err, response, body) ->
+        if err
+          cb err
+        else
+          utils.log2 'request city -> ', file
+          cb null, body # First param indicates error, null=> no error
+
+    # Async stuff...
+    async.map json.data, fetch, (err, results) ->
+      if err
+        utils.log1 err
+      else
+        r = 0
+        while r < results.length
+          tmpJson = JSON.parse(results[r])
+          data[r].count = tmpJson.count
+          #console.log data[r].name + ' --- ' + data[r].count
+          r++
+
+        

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- 
+	Startnext Infographics Project
+	Widget: Gesamtsumme
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Startnext Infographics</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="./erfolgsquote.css">
+		<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+		<script type="text/javascript" src="../js/d3.v3.min.js"></script>	
+	</head>
+
+<script type="text/javascript">
+
+		var startnext = startnext || {};
+
+		startnext.erfolgsquote = {}; 
+		startnext.erfolgsquote.dataset = [];
+		startnext.erfolgsquote.prozent = 0;
+
+		startnext.erfolgsquote.setup = function() {
+			$.getJSON("http://startnext-viz.herokuapp.com/data.json", function (data) {
+
+								startnext.erfolgsquote.dataset = [
+									{ "label" : "Aktiv", "count" : data.projects.status_active, "color" : "#6e852b"},
+									{ "label" : "Erfolgreich", "count" : data.projects.successful, "color" : "#94c11f"},
+									{ "label" : "Erfolglos", "count" : data.projects.unsuccessful, "color" : "#9e9a99"}
+								];
+
+								console.log(startnext.erfolgsquote.dataset);
+
+							    startnext.erfolgsquote.prozent = (data.projects.successful / (data.projects.total - data.projects.status_active) * 100).toFixed(1);
+
+							    
+							    var vis = d3.select("div#erfolgsquote")
+							        .append("svg:svg")
+							        .data([startnext.erfolgsquote.dataset])
+							        .attr("width", 250)
+							        .attr("height", 210)
+							        .append("svg:g").attr("class", "group")
+							        .attr("id", "chart")
+							        .attr("transform", "translate(" + 125 + "," + 100 + ")");
+
+							    var arc = d3.svg.arc().outerRadius(100);							    
+							    var pie = d3.layout.pie().value(function(d) { return d.count; });
+
+							    var arcs = vis.selectAll("g.slice").
+							    data(pie).
+							    enter().
+							    append("svg:g").
+							    attr("class", "slice");
+
+							    arcs.append("svg:path")
+							    .attr("d", arc)
+							    .attr("fill", function (d, i) { 
+							    	return startnext.erfolgsquote.dataset[i].color 
+							    })
+							    .attr("stroke", "rgb(237, 237, 237)")
+							    .attr("stroke-width", "5");
+
+								arcs.append("svg:text") //add a label to each slice
+								.attr("transform", function(d) { //set the label's origin to the center of the arc
+									d.innerRadius = 25;
+									d.outerRadius = 100;
+									return "translate(" + arc.centroid(d) + ")"; //this gives us a pair of coordinates like [50, 50]
+								})
+								.attr("text-anchor", "middle")
+								.attr("fill", "white") //center the text on it's origin
+								.text(function(d, i) { 
+									return startnext.erfolgsquote.dataset[i].count; 
+								});
+
+							    $("span#prozent").text(startnext.erfolgsquote.prozent + "%");
+		});
+	}
+
+
+		startnext.erfolgsquote.setup();
+
+
+		</script>
+
+	<body class="widget">
+		<div id="erfolgsquote">
+			<p>
+				<span class="size2 green_light" id="prozent"></span> <span class="size3 gray_dark">Erfolgsquote</span>
+			</p>
+		</div>
+
+	</body>
+</html>

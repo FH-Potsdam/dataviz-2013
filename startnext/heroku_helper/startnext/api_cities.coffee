@@ -39,7 +39,7 @@ exports.callApi = callApi = () ->
         if err
           cb err
         else
-          utils.log2 'request city -> ', file
+          #utils.log2 'request city -> ', file
           cb null, body # First param indicates error, null=> no error
 
     # Async stuff...
@@ -53,5 +53,6 @@ exports.callApi = callApi = () ->
           data[r].count = tmpJson.count
           #console.log data[r].name + ' --- ' + data[r].count
           r++
+        utils.log1 'requestCities -> Ready'
 
         

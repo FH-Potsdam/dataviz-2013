@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- 
+	Startnext Infographics Project
+	Widget: Karte
+-->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Startnext Infographics</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="karte.css">
+	<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+	<script type="text/javascript" src="../js/d3.v3.min.js"></script>
+	<script type="text/javascript" src="../js/topojson.js"></script>
+</head>
+
+<body class="widget">
+	
+
+	<script type="text/javascript">
+
+	var startnext = startnext || {};
+
+	startnext.width = 330;
+	startnext.height = 410;
+
+	startnext.svg = d3.select("body").append("svg")
+	.attr("width", startnext.width)
+	.attr("height", startnext.height);	
+
+	d3.json("../data/atde.json", function(error, atde) {
+		var subunits = topojson.feature(atde, atde.objects.subunits);
+
+		var projection = d3.geo.albers()
+		.center([0,50.5])
+		.rotate([-12,0])
+		.parallels([50,60])
+		.scale(2500)
+		.translate([startnext.width/2,startnext.height/2]);
+
+		var path = d3.geo.path()
+		.projection(projection)
+		.pointRadius([1.5]);
+
+		startnext.svg.selectAll(".subunit")
+		.data(topojson.feature(atde, atde.objects.subunits).features)
+		.enter().append("path")
+		.attr("class", function(d) {return "subunit " + d.id;})
+		.attr("d",path);
+
+		startnext.svg.append("path")
+		.datum(topojson.mesh(atde, atde.objects.subunits, function(a,b) { return a !== b;}))
+		.attr("d",path)
+		.attr("class", "subunit-boundary")
+
+		startnext.svg.append("path")
+		.datum(topojson.feature(atde, atde.objects.places))
+		.attr("d", path)
+		.attr("class","place")
+
+		startnext.svg.append("path")
+		.datum(topojson.feature(atde, atde.objects.places_2))
+		.attr("d", path)
+		.attr("class","place")
+
+	});
+	</script>
+</body>
+</html>

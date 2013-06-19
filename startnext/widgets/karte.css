@@ -1,0 +1,18 @@
+.subunit.DEU {
+	fill: #94c11f;
+}
+
+.subunit.AUT {
+	fill: #94c11f;
+}
+
+.subunit-boundary {
+	fill: none;
+	stroke: #000;
+	stroke-dasharray: 2,2;
+	stroke-linejoin: round;
+}
+
+.place {
+	fill: black;
+}

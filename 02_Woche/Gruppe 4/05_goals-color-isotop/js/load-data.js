@@ -17,8 +17,8 @@ jQuery(document).ready(function() {
     chart.setup({
       data : data,
       w: 1000,
-      h: 500,
-      barW: 10,
+      h: 230,
+      barW: 20,
       currDay: 1,
       maxDay: 27
     });
@@ -110,7 +110,7 @@ chart.draw = function() {
     bigGraph: {
         columnWidth: chart.barWidth+(chart.barWidth/10), // size of item
         rowHeight: chart.barWidth+(chart.barWidth/10), // size of item
-        maxRows: 99, // max number of items vertically
+        maxRows: 10, // max number of items vertically
         gutterWidth: { // width of gutter, needs to match getSortData names
           day: 10,
           goals_home: 10,

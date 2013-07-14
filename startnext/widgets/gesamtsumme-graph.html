@@ -16,7 +16,7 @@
 	<body class="widget">
 		<div id="gesamtsumme-graph">
 			<div class="size3">Funding Gesamtsumme</div>
-			<div class="size4">Alle über die Plattform eingezahlten Fundings</div>
+			<div class="size4 gray_light">Alle über die Plattform eingezahlten Fundings</div>
 		</div>
 		<script type="text/javascript">
 
@@ -31,6 +31,9 @@
 				var svg, x, y, xAxis, yAxis, margin, height, width;
 				var ellipse;
 				var subtotal_label;
+				var dataTrash = dataTrash || {};
+				var dataMonth = [];
+				var count = 0;
 				
 				return {
 					setup: function(callback) {
@@ -38,9 +41,29 @@
 							data = csv;
 							data.forEach(function(el , index) {
 								el.enddatum = date(el.enddatum.substring(0,6)+"20"+el.enddatum.substring(6,8));
-								el.summe = +el.summe;
+								//el.summe = +el.summe;
 								summe += parseInt(el.summe);
+								
+								if(dataTrash[el.enddatum.getFullYear()] == null){
+								 	dataTrash[el.enddatum.getFullYear()] = {};
+								}
+							
+								if(dataTrash[el.enddatum.getFullYear()][el.enddatum.getMonth()] == null){
+									dataTrash[el.enddatum.getFullYear()][el.enddatum.getMonth()] = 0;
+								} else {
+									dataTrash[el.enddatum.getFullYear()][el.enddatum.getMonth()] += parseInt(el.summe);
+								}
 							});
+						
+							for(var year in dataTrash) {
+								for(var month in dataTrash[year]){
+									dataMonth[count] = {};
+									dataMonth[count].enddatum = date("1."+month+"."+year);
+									dataMonth[count].summe = dataTrash[year][month];
+									count++;
+								};
+							};
+							
 							
 							data.sort(function(a, b) {
 								return a.enddatum - b.enddatum;
@@ -51,7 +74,7 @@
 						});
 					},
 					draw: function() {
-						margin = {top: 20, right: 20, bottom: 60, left: 60};
+						margin = {top: 20, right: 20, bottom: 80, left: 80};
 						width = 490 - margin.left - margin.right;
 						height = 300 - margin.top - margin.bottom;
 
@@ -65,18 +88,18 @@
 						xAxis = d3.svg.axis()
 							.scale(x)
 								.orient("bottom")
-								.ticks(50);
-								// .tickValues([date("01.01.2010"),date("01.01.2011"),date("01.01.2012"),date("01.01.2013")]);
+								//.ticks(30);
+								.tickValues([date("01.12.2010"),date("01.01.2011"),date("01.02.2011"),date("01.03.2011"),date("01.04.2011"),date("01.05.2011"),date("01.06.2011"),date("01.07.2011"),date("01.08.2011"),date("01.09.2011"),date("01.10.2011"),date("01.11.2011"),date("01.12.2011"),date("01.01.2012"),date("01.02.2012"),date("01.03.2012"),date("01.04.2012"),date("01.05.2012"),date("01.06.2012"),date("01.07.2012"),date("01.08.2012"),date("01.09.2012"),date("01.10.2012"),date("01.11.2012"),date("01.12.2012"),date("01.01.2013"),date("01.02.2013"),date("01.03.2013"),date("01.04.2013"),date("01.05.2013")]);
 								
 
 						yAxis = d3.svg.axis()
 								.scale(y)
 								.orient("left")
-								.tickValues([1000000,2000000,3000000,3500000]);
+								.tickValues([1000000,2000000,3000000,3600000]);
 						
 						var oldSumme = 0; 
 						var line = d3.svg.line()
-								.x(function(d) { return x(d.enddatum); })
+								.x(function(d) { return x(d.enddatum)-12; })
 								.y(function(d) { oldSumme += d.summe; return y(oldSumme); });
 
 						svg = d3.select("#gesamtsumme-graph").append("svg")
@@ -87,30 +110,47 @@
 
 
 							y.domain([0, summe*1.1]);
-							x.domain(d3.extent(data, function(d) { return d.enddatum; }));
+							x.domain(d3.extent(dataMonth, function(d) { return d.enddatum; }));
 
 
 						  svg.append("g")
-									.attr("class", "x-axis")
+									.classed("x-axis", true)
 									.attr("transform", "translate(0," + height + ")")
 									.call(xAxis)
 									.selectAll("text")
 									.attr("transform","rotate(90)")
+									.attr("class",  function(d,i) { return "gray_light id"+i })
+									.style("width", 400)
+									.style("display", "block")
 									.style("text-anchor", "start")
-									.attr("dx", ".71em")
-									.attr("dy", "-.9em")
+									.attr("dx", "10px")
 									.on("mouseover", startnext.gesamtsumme.over)
 									.on("mouseout", startnext.gesamtsumme.out);
 
 						  svg.append("g")
-									.attr("class", "y-axis")
+									.classed("y-axis green_light", true)
+									.style("font-size", "13px")
 									.call(yAxis);
 
 						  svg.append("path")
-									.datum(data)
+									.datum(dataMonth)
 									.attr("class", "line")
+									.attr("transform", "translate(12,0)")
 									.attr("d", line);
-
+							
+							svg.append("g").attr("transform", "translate(-6,0)").selectAll("rect").data(dataMonth)
+								.enter()
+									.append("rect")
+									.style("opacity", "0")
+									.attr("x", function(d,i) { return i*13 })
+									.attr("width", 13)
+									.attr("height", 270)
+									.attr("id", function(d,i) { return "id"+i })
+									.on("mouseover", startnext.gesamtsumme.over)
+									.on("mouseout", startnext.gesamtsumme.out);
+									
+									
+									
 							ellipse = svg.append("ellipse").attr("id", "marker-over");
 							subtotal_summe_label = svg.append("text").attr("id", "label-over");
 							subtotal_date_label = svg.append("text")
@@ -121,50 +161,44 @@
 						return data;
 					},
 					over: function(d, i) {
-						// d3.select("#marker-over").remove();
 						var subtotal = 0;
-						var monthNames = [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ];
 								
-						data.forEach(function(el , index) {
-							if(el.enddatum < d) {
-								subtotal += parseInt(el.summe);
+						dataMonth.forEach(function(el , index) {
+							if(el.enddatum <= d.enddatum) {
+								subtotal += el.summe;
 							}
 						});
 						
-						d3.selectAll(".tick").transition().duration(500).style("opacity", "0.1");
+						d3.select(".id"+i).classed("green_light", true).classed("gray_light", false).style("font-size", "13px");
+						d3.selectAll(".x-axis .tick .gray_light").transition().duration(100).style("opacity", "0.1");
+						d3.selectAll(".y-axis .tick").transition().duration(100).style("opacity", "0.1");
 						
-						ellipse.transition()
+						
+						ellipse.classed("green_light", true).transition()
 								.duration(100)
 								.attr("cy", y(subtotal))
-								.attr("cx", x(d))
+								.attr("cx", x(d.enddatum))
 								.attr("rx", 5)
 								.attr("ry", 5)
 								.style("opacity", "1")
-								.attr("class", "green_light");
+								;
 						
 						subtotal_summe_label.transition()
 								.duration(100)
 								.attr("x", "-10px")
 								.attr("class", "x-axis green_light")
 								.attr("y", y(subtotal))
+								.style("font-size", "13px")
 								.style("opacity", "1")
 								.style("text-anchor", "end")
 								.text(subtotal);
-								
-						subtotal_date_label.transition()
-								.duration(100)
-								.attr("x", height+8)
-								.attr("class", "y-axis green_light")
-								.attr("y", -x(d))
-								.style("opacity", "1")
-								.style("text-anchor", "start")
-								.text(monthNames[d.getMonth()]);
 					},
-					out: function() {
-						d3.selectAll(".tick").transition().delay(1000).duration(500).style("opacity", "1");
-						ellipse.transition().delay(1000).duration(500).style("opacity", "0");
-						subtotal_summe_label.transition().delay(1000).duration(500).style("text-anchor", "end").style("opacity", "0");
-						subtotal_date_label.transition().delay(1000).duration(500).style("text-anchor", "start").style("opacity", "0");
+					out: function(d,i) {
+						d3.select(".id"+i).classed("gray_light", true).classed("green_light", false).style("font-size", "10px").style("opacity", "0.1");
+						d3.selectAll(".x-axis .tick .gray_light").transition().duration(100).style("opacity", "1");
+						d3.selectAll(".y-axis .tick").transition().duration(100).style("opacity", "1");
+						ellipse.transition().duration(100).style("opacity", "0");
+						subtotal_summe_label.transition().duration(100).style("text-anchor", "end").style("opacity", "0");
 					}
 
 				}

@@ -7,20 +7,112 @@
 */
 
 root { 
-    display: block;
+  display: block;
 }
 
 body {
-		  	background-color: #434A51;
-		  	color: #fff;
-		  }
-			div.games {
-				border: 1px solid #ccc;
-				padding: 10px;
-				margin-bottom: 30px;
-			}
+	font-family: Verdana, "Helvetica-Neue";
+	background-color: #434A51;
+  color: #fff;
+}
 
-			line {  
-        stroke: green;
-        stroke-width: 10px;
-      }
+h1 {
+  font-weight: lighter;
+}
+
+div.games {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+line {  
+  stroke: green;
+  stroke-width: 2px;
+}
+
+
+
+/*
+SVG
+*/
+
+#tooltip {
+  font-size:12px;
+}
+
+
+#FCBayernMünchen {
+  fill: #f00;
+  stroke: #f00;
+}
+
+#FortunaDüsseldorf {
+	fill: #e1702a;
+}
+
+#BayerLeverkusen {
+	fill: #0f0;
+}
+
+#BorussiaDortmund {
+	fill: #ffff73;
+}
+
+#BorussiaMönchengladbach {
+  fill: #06736e;
+}
+
+#FCNürnberg {
+  fill: #f0f;
+}
+
+#FCSchalke04 {
+  fill: #00f;
+}
+
+#Hannover96 {
+  fill: #0ff;
+}
+
+#VfLWolfsburg {
+  fill: #a5cc04;
+}
+
+#FSVMainz05 {
+  fill: #ccc;
+}
+
+#SCFreiburg {
+  fill: #6c09e0;
+}
+
+#EintrachtFrankfurt {
+	fill: #fff;
+}
+
+#SVWerderBremen {
+  fill: #0e5c15;
+}
+
+#899Hoffenheim {
+  fill: #f5b01d;
+}
+
+
+#VfBStuttgart {
+  fill: #2b020f;
+}
+
+#FCAugsburg {
+  fill: #b0d97c;
+}
+
+
+#SpVggGreutherFürth {
+	fill: #7c81d9;
+}
+
+#HamburgerSV {
+	fill: #403e52;
+}
